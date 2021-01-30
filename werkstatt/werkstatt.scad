@@ -5,25 +5,67 @@ roomLength = 4500;
 roomHeight = 2200;
 roomWallThickness = 150;
 
-module box(width, length, height, wallThickness, closed = false) {    
+module box(width, length, height, wallThickness, open = "top") {    
+    
+    // inner core in the center, equals to open == "none"
+    innerHeight = open == "bottom" ? height+1 : (open == "top" ? height+1 : height);
+    innerZ = open == "bottom" ? 0-wallThickness : (open == "top" ? wallThickness : 0);
+
     translate([0, 0, height / 2 + wallThickness])
+    
     difference() {
         cube(size = [length + 2 * wallThickness, width + 2 * wallThickness, height + 2 * wallThickness], center = true);
-        translate([0, 0, wallThickness]) cube(size = [length, width, height + wallThickness], center = true);
+        translate([0, 0, innerZ])
+            cube(size = [length, width, innerHeight], center = true);
     }
 }
 
-// translate([0, 40, 0]) {
-//     box(width = 60, length = 85, height = 14, wallThickness = 1);
-//     box(width = 58, length = 83, height = 17, wallThickness = 1);
-// }
-// translate([0, -40, 0]) {
-//     box(width = 60, length = 85, height = 8, wallThickness = 1);
-//     box(width = 58, length = 83, height = 5, wallThickness = 1);
-// }
-
 scale([1 / scaleFactor, 1 / scaleFactor, 1 / scaleFactor]) {
+    // room
     box(width = roomWidth, length = roomLength, height = roomHeight, wallThickness = roomWallThickness);
-    box(width = 1000, length = 1500, height = 1000, wallThickness = 18, closed = true );
+    // workbench in the middle
+    box(width = 1000, length = 1500, height = 1000, wallThickness = 18, open = "none" );
+
+    // Sharping station
+    boxWidth = 450;
+    boxLength = 600;
+    boxWallThickness = 18;
+    totallyRight = roomWidth / 2 - boxWidth / 2 - 2 * boxWallThickness;
+    tottalyFront = roomLength / 2 - boxLength / 2 - 2 * boxWallThickness;
+    translate([-tottalyFront, -totallyRight, 0]) box(width = boxWidth, length = boxLength, height = 1000, wallThickness = boxWallThickness, open = "none" );
+    
+
+    // Drill station
+    boxWidth1 = 600;
+    boxLength1 = 450;
+    boxWallThickness1 = 18;
+    totallyRight1 = roomWidth / 2 - boxWidth1 / 2 - 2 * boxWallThickness1;
+    tottalyFront1 = roomLength / 2 - boxLength1 / 2 - 2 * boxWallThickness1;
+    translate([-tottalyFront1, 0, 0]) box(width = boxWidth1, length = boxLength1, height = 1000, wallThickness = boxWallThickness1, open = "none" );
+    
+
+    // Mitre station
+    boxWidth2 = 450;
+    boxLength2 = 600;
+    boxWallThickness2 = 18;
+    totallyRight2 = roomWidth / 2 - boxWidth2 / 2 - 2 * boxWallThickness2;
+    tottalyFront2 = roomLength / 2 - boxLength2 / 2 - 2 * boxWallThickness2;
+    translate([-tottalyFront2, totallyRight2, 0]) box(width = boxWidth2, length = boxLength2, height = 1000, wallThickness = boxWallThickness2, open = "none" );
+    
+    // Saw station
+    boxWidth3 = 800;
+    boxLength3 = 800;
+    boxWallThickness3 = 18;
+    totallyRight3 = roomWidth / 2 - boxWidth3 / 2 - 2 * boxWallThickness3;
+    tottalyFront3 = roomLength / 2 - boxLength3 / 2 - 2 * boxWallThickness3;
+    translate([tottalyFront3, totallyRight3, 0]) box(width = boxWidth3, length = boxLength3, height = 1000, wallThickness = boxWallThickness3, open = "none" );
+    
+
+
+
+
+    // Fat Boy
     translate([0, 900, 0]) cylinder(d=320,h=1830);
+    // Lil Girl
+    translate([0, -900, 0]) cylinder(d=180,h=1150);
 }
