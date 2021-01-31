@@ -1,3 +1,5 @@
+include <workbench.scad>;
+
 scaleFactor = 10;
 
 roomWidth = 3500;
@@ -23,7 +25,16 @@ scale([1 / scaleFactor, 1 / scaleFactor, 1 / scaleFactor]) {
     box(width = roomWidth, length = roomLength, height = roomHeight, wallThickness = roomWallThickness);
 
     // workbench in the middle
-    box(width = 1000, length = 1500, height = 1000, wallThickness = 18, open = "none" );
+    //box(width = 1000, length = 1500, height = 1000, wallThickness = 18, open = "none" );
+    
+    workbench(
+        width = 1200,
+        length = 1800,
+        height = 1000,
+        deskThickness = 100,
+        legThickness = 120,
+        overstandDesk = 50
+    );
 
     // Sharping station
     boxWidth = 450;
