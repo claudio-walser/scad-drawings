@@ -1,7 +1,7 @@
 
 module workbench(width = 1000, length = 1500, height = 1000, deskThickness = 80, legThickness = 80, overstandDesk = 50) {
 
-    legInnerWidth = width - overstandDesk * 2 - legThickness * 2;
+    legInnerWidth = width - legThickness * 2;
     legInnerLength = length - overstandDesk * 2 - legThickness * 2;
     legInnerHeight = height - deskThickness;
 
@@ -24,7 +24,7 @@ module workbench(width = 1000, length = 1500, height = 1000, deskThickness = 80,
         // bottom cross beam width
         translate([0, 0, legThickness + legThickness/2]) cube(size=[legThickness, legInnerWidth, legThickness], center = true);
         // top cross beam width
-        translate([0, 0, legInnerHeight - legThickness*2 + legThickness/2]) cube(size=[legThickness, legInnerWidth, legThickness], center = true);
+        translate([0, 0, legInnerHeight - legThickness/2]) cube(size=[legThickness, legInnerWidth, legThickness], center = true);
 
         // left leg
         translate([0, legInnerWidth/2 + legThickness/2, legInnerHeight/2]) cube(size=[legThickness, legThickness, legInnerHeight], center = true);
@@ -36,11 +36,18 @@ module workbench(width = 1000, length = 1500, height = 1000, deskThickness = 80,
     desk();
 }
 
+//scaleFactor = 10;
+//scale([1 / scaleFactor, 1 / scaleFactor, 1 / scaleFactor]) {
+    // translate for printing
+    //translate([0,0,1000])
+    // rotate for printing
+    //rotate([0, 180, 0])
     workbench(
         width = 1000,
-        length = 1500,
+        length = 2200,
         height = 1000,
-        deskThickness = 100,
-        legThickness = 120,
-        overstandDesk = 50
+        deskThickness = 60,
+        legThickness = 200,
+        overstandDesk = 300
     );
+//}
