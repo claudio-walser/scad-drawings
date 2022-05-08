@@ -1,3 +1,4 @@
+include <../library/modules.scad>
 include <workbench.scad>;
 
 scaleFactor = 10;
@@ -6,19 +7,6 @@ roomWidth = 3500;
 roomLength = 4500;
 roomHeight = 150;
 roomWallThickness = 150;
-
-module box(width, length, height, wallThickness, open = "top") {    
-    // inner core in the center, equals to open == "none"
-    innerHeight = open == "bottom" ? height+1 : (open == "top" ? height+1 : height);
-    innerZ = open == "bottom" ? -wallThickness : (open == "top" ? wallThickness : 0);
-
-    translate([0, 0, height / 2 + wallThickness])
-    difference() {
-        cube(size = [length + 2 * wallThickness, width + 2 * wallThickness, height + 2 * wallThickness], center = true);
-        translate([0, 0, innerZ])
-            cube(size = [length, width, innerHeight], center = true);
-    }
-}
 
 scale([1 / scaleFactor, 1 / scaleFactor, 1 / scaleFactor]) {
     // room
