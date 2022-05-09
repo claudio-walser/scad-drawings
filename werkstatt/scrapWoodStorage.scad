@@ -1,5 +1,5 @@
 
-module workbench(width = 1000, length = 1500, height = 1000, deskThickness = 80, legThickness = 80, overstandDesk = 50) {
+module scrapWoodStorage(width = 1000, length = 1500, height = 1000, deskThickness = 80, legThickness = 80, overstandDesk = 50) {
 
     legInnerWidth = width - legThickness * 2;
     legInnerLength = length - overstandDesk * 2 - legThickness * 2;
@@ -32,21 +32,8 @@ module workbench(width = 1000, length = 1500, height = 1000, deskThickness = 80,
         translate([0, -(legInnerWidth/2 + legThickness/2), legInnerHeight/2]) cube(size=[legThickness, legThickness, legInnerHeight], center = true);
     }
 
-    module partsList() {
-        // desk
-        echo(str("Tischplatte", " ", "1", " ", length, " ", width, " ", deskThickness));
-        // legs
-        echo(str("Beine", " ", "4", " ", legInnerHeight, " ", legThickness, " ", legThickness));
-        // leg cross bars
-        echo(str("Beine Querstreben", " ", "4", " ", legInnerWidth, " ", legThickness, " ", legThickness));
-        // leg cross bars length
-        echo(str("Beine Längsstreben", " ", "2", " ", legInnerLength, " ", legThickness, " ", legThickness));
-    }
-
     legBase();
     desk();
-
-    partsList();
 }
 
 //scaleFactor = 10;
@@ -55,22 +42,12 @@ module workbench(width = 1000, length = 1500, height = 1000, deskThickness = 80,
     //translate([0,0,1000])
     // rotate for printing
     //rotate([0, 180, 0])
-    // workbench(
-    //     width = 1000,
-    //     length = 1800,
-    //     height = 1000,
-    //     deskThickness = 80,
-    //     legThickness = 80,
-    //     overstandDesk = 200
-    // );
+    scrapWoodStorage(
+        width = 1000,
+        length = 1800,
+        height = 1000,
+        deskThickness = 120,
+        legThickness = 100,
+        overstandDesk = 200
+    );
 //}
-
-
-// workbench(
-//     width = 1000,
-//     length = 2200,
-//     height = 1000,
-//     deskThickness = 80,
-//     legThickness = 120,
-//     overstandDesk = 400
-// );

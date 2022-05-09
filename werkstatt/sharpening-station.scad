@@ -1,5 +1,11 @@
 
-module workbench(width = 1000, length = 1500, height = 1000, deskThickness = 80, legThickness = 80, overstandDesk = 50) {
+include <settings.scad>;
+
+module sharpeningStation(width = 1000, length = 1500, height = 1000, deskThickness = 80, legThickness = 80, overstandDesk = 50) {
+
+
+
+    echo(str("Wheelheight", wheelHeight));
 
     legInnerWidth = width - legThickness * 2;
     legInnerLength = length - overstandDesk * 2 - legThickness * 2;
@@ -66,11 +72,11 @@ module workbench(width = 1000, length = 1500, height = 1000, deskThickness = 80,
 //}
 
 
-// workbench(
-//     width = 1000,
-//     length = 2200,
-//     height = 1000,
-//     deskThickness = 80,
-//     legThickness = 120,
-//     overstandDesk = 400
-// );
+sharpeningStation(
+    width = 1000,
+    length = 2200,
+    height = 1000,
+    deskThickness = 80,
+    legThickness = 120,
+    overstandDesk = 400
+);
