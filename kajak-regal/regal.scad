@@ -5,13 +5,13 @@ module regal(width, length, height, logThickness) {
     // überstand seitlich
     overhang = 250;
     // Höhenunterschied Dach
-    heightDiff = 300;
+    heightDiff = 450;
     // Abstand von Unten bis zur untersten Querstrebe
     supportLowerSpace = 100;
     // Abstand von Oben/Vorne bis zur obersten Querstrebe
-    supportUpperSpace = 150;
+    supportUpperSpace = 250;
     // Höhe der Kajaks
-    kajakHeight=450;
+    kajakHeight=380;
 
 
     // breite minus überstand seitlich geteilt durch zwei, wird Intern benötigt um die Pfosten zu positionieren
@@ -120,9 +120,6 @@ module regal(width, length, height, logThickness) {
         cube(size = [width - (overhang * 2), logThickness, logThickness], center = true);
 
 
-
-
-
     module partsList() {
         // Beine Hinten
         echo(str("Beine Hinten", " ", "2", " ", height, " ", logThickness, " ", logThickness));
@@ -138,4 +135,4 @@ module regal(width, length, height, logThickness) {
 }
 
 
-regal(2500, 700, 2200, 80);
+regal(2500, 640, 2950, 80);
