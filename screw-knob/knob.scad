@@ -19,7 +19,7 @@ module nutHolder() {
     }
 }
 
-module knob() {
+module knob(screwHole = false) {
 
     
     //rotate([0, 90, 0]) cylinder(d = 5, h = 200, center = true);
@@ -30,7 +30,9 @@ module knob() {
             rotate([0, 90, 0]) cylinder(d = 2);
         }
         
-        screwHole(6);
+        if (screwHole) {
+            screwHole(6);
+        }
         for ($angle = [0 : 60 : 360]) {
             rotate([0, 0, $angle]) translate([25, 0, -0.01]) cylinder(d = 20, h = 100 + 0.01);
         }
@@ -41,6 +43,9 @@ module knob() {
 
 
 translate([40, 0, 0]) nutHolder();
+
+translate([0, 0, 0]) knob(true);
+
 translate([0, 0, 0]) knob();
 
 
