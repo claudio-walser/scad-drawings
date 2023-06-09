@@ -42,10 +42,10 @@ module knob(screwHole = false) {
 
 
 
-translate([40, 0, 0]) nutHolder();
+//translate([0, 0, 0]) nutHolder();
 
 translate([0, 0, 0]) knob(true);
 
-translate([0, 0, 0]) knob();
+//translate([80, 0, 0]) knob();
 
 
