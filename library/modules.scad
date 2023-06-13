@@ -19,7 +19,6 @@ module box(width, length, height, wallThickness, open = "top") {
     }
 }
 
-
 module prism(l, w, h) {
        polyhedron(points=[
                [0,0,h],           // 0    front top corner
