@@ -25,9 +25,9 @@ mirror([1,0,0]) {
 
 
             // l-shift, l-ctrl and l-alt as switches
-            translate([20, 20, 0]) buttonBasePocket(type = "default");
-            translate([40, 20, 0]) buttonBasePocket(type = "default");
-            translate([60, 20, 0]) buttonBasePocket(type = "default");
+            translate([20, 20, 0]) buttonBasePocket(type = "switch");
+            translate([40, 20, 0]) buttonBasePocket(type = "switch");
+            translate([60, 20, 0]) buttonBasePocket(type = "switch");
 
 
             // F2, F3 and F4
@@ -54,9 +54,9 @@ mirror([1,0,0]) {
             translate([60, 145, 0]) buttonBasePocket(type = "default");
 
             // r-shift, r-ctrl and r-alt as switches
-            translate([20, 210, 0]) buttonBasePocket(type = "default");
-            translate([40, 210, 0]) buttonBasePocket(type = "default");
-            translate([60, 210, 0]) buttonBasePocket(type = "default");
+            translate([20, 210, 0]) buttonBasePocket(type = "switch");
+            translate([40, 210, 0]) buttonBasePocket(type = "switch");
+            translate([60, 210, 0]) buttonBasePocket(type = "switch");
 
         }
 
@@ -85,9 +85,9 @@ mirror([1,0,0]) {
 
 
         // l-shift, l-ctrl and l-alt as switches
-        translate([20, 20, 0]) buttonBaseHole(type = "default", socketHoles = true);
-        translate([40, 20, 0]) buttonBaseHole(type = "default", socketHoles = true);
-        translate([60, 20, 0]) buttonBaseHole(type = "default", socketHoles = true);
+        translate([20, 20, 0]) buttonBaseHole(type = "switch");
+        translate([40, 20, 0]) buttonBaseHole(type = "switch");
+        translate([60, 20, 0]) buttonBaseHole(type = "switch");
 
 
         // F2, F3 and F4
@@ -114,9 +114,9 @@ mirror([1,0,0]) {
         translate([60, 145, 0]) buttonBaseHole(type = "default", socketHoles = true);
 
         // r-shift, r-ctrl and r-alt as switches
-        translate([20, 210, 0]) buttonBaseHole(type = "default", socketHoles = true);
-        translate([40, 210, 0]) buttonBaseHole(type = "default", socketHoles = true);
-        translate([60, 210, 0]) buttonBaseHole(type = "default", socketHoles = true);
+        translate([20, 210, 0]) buttonBaseHole(type = "switch");
+        translate([40, 210, 0]) buttonBaseHole(type = "switch");
+        translate([60, 210, 0]) buttonBaseHole(type = "switch");
     }
 
 
@@ -126,7 +126,7 @@ mirror([1,0,0]) {
 
     // faceplate
     translate([100, 0, 0])
-    !difference() {
+    difference() {
         cube(size = [80, 230, 1], center = false);
 
 
@@ -148,8 +148,8 @@ mirror([1,0,0]) {
 
 
             // right
-            translate([10, 220, 0]) cylinder(d = 2.7, h = 30, $fn = 100);
-            translate([70, 220, 0]) cylinder(d = 2.7, h = 30, $fn = 100);
+            translate([10, 220, 0]) cylinder(d = 3.1, h = 30, $fn = 100);
+            translate([70, 220, 0]) cylinder(d = 3.1, h = 30, $fn = 100);
 
         }
 
@@ -158,9 +158,9 @@ mirror([1,0,0]) {
 
 
         // l-shift, l-ctrl and l-alt as switches
-        translate([20, 20, 0]) buttonCoverHole(type = "default");
-        translate([40, 20, 0]) buttonCoverHole(type = "default");
-        translate([60, 20, 0]) buttonCoverHole(type = "default");
+        translate([20, 20, 0]) buttonCoverHole(type = "switch");
+        translate([40, 20, 0]) buttonCoverHole(type = "switch");
+        translate([60, 20, 0]) buttonCoverHole(type = "switch");
 
 
         // F2, F3 and F4
@@ -187,8 +187,8 @@ mirror([1,0,0]) {
         translate([60, 145, 0]) buttonCoverHole(type = "default");
 
         // r-shift, r-ctrl and r-alt as switches
-        translate([20, 210, 0]) buttonCoverHole(type = "default");
-        translate([40, 210, 0]) buttonCoverHole(type = "default");
-        translate([60, 210, 0]) buttonCoverHole(type = "default");
+        translate([20, 210, 0]) buttonCoverHole(type = "switch");
+        translate([40, 210, 0]) buttonCoverHole(type = "switch");
+        translate([60, 210, 0]) buttonCoverHole(type = "switch");
     }
 }

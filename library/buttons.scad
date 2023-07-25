@@ -6,6 +6,8 @@ module buttonCoverHole(type = "default") {
         cylinder(d = 11.6, h = 10, $fn = 100);
     } else if (type == "tactile") {
         cylinder(d = 6.8, h = 10, $fn = 100);
+    } else if (type == "switch") {
+        cylinder(d = 4.2, h = 10, $fn = 100);
     } else {
         cylinder(d = 6.8, h = 10, $fn = 100);
     }
@@ -17,6 +19,8 @@ module buttonBaseHole(type = "default", socketHoles = false) {
        cube(size = [14, 11.9, 16], center = true);
     } else if (type == "tactile") {
        cube(size = [14, 11.9, 7], center = true);
+    } else if (type == "switch") {
+        translate([0, 0, -7]) cylinder(d = 4.2, h = 10, $fn = 100);
     } else {
         translate([0, 0, -7]) cylinder(d = 6.8, h = 10, $fn = 100);
     }
