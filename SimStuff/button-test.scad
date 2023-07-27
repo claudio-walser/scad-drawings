@@ -118,13 +118,13 @@ mirror([1,0,0]) {
         translate([40, 210, 0]) buttonBaseHole(type = "switch");
         translate([60, 210, 0]) buttonBaseHole(type = "switch");
     }
+}
 
 
 
 
-
-
-    // faceplate
+// faceplate
+mirror([1,0,0]) {
     translate([100, 0, 0])
     difference() {
         cube(size = [80, 230, 1], center = false);
