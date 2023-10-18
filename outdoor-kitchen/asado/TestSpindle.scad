@@ -1,0 +1,3 @@
+include <./spindle.scad>
+
+spindle();

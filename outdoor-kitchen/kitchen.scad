@@ -3,18 +3,61 @@ include <../library/modules.scad>
 // Fläche
 cube(size = [3750, 5250, 10]);
 
-// Fundament
-cube(size = [3750, 1000, 100]);
+
+
+
+
+
+
+// Fundament Ott
 cube(size = [1000, 5250, 100]);
 
-cube(size = [3750, 250, 1800]);
+// Wand Ott
 cube(size = [250, 5250, 1800]);
 
-translate([3500, 0, 0])
-cube(size = [250, 3750, 1200]);
-
+// Küchenzeile Ott
 translate([250, 0, 100])
 cube(size = [800, 5250, 900]);
 
+
+
+// Fundament Fussballplatz
+cube(size = [3750, 1000, 100]);
+
+// Wand Fussballplatz
+cube(size = [3750, 250, 1800]);
+
+// Küchenzeile Fussballplatz
 translate([0, 250, 100])
 cube(size = [3750, 800, 900]);
+
+
+
+// // Wand Rasen
+// translate([3500, 0, 0])
+// cube(size = [250, 3750, 1200]);
+
+// // Fundament Rasen
+// translate([2750, 0, 0])
+// cube(size = [1000, 3750, 100]);
+
+// // Küchenzeile Rasen
+// translate([2700, 0, 100])
+// cube(size = [800, 3750, 900]);
+
+
+
+
+
+// Fundament Strasse
+translate([0, 5250-1000, 0])
+cube(size = [3750, 1000, 100]);
+
+// Wand Strasse
+translate([0, 5250-250, 0])
+cube(size = [3750, 250, 1800]);
+
+// Küchenzeile Strasse
+translate([0, 5250-800-250, 100])
+cube(size = [3750, 800, 900]);
+

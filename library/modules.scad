@@ -7,7 +7,7 @@ module box(width, length, height, wallThickness, open = "top") {
     innerWidth = open == "left" ? width+1 : (open == "right" ? width+1 : width);
     innerX = open == "left" ? -wallThickness : (open == "right" ? wallThickness : 0);
 
-    innerLength = open == "front" ? length+1 : (open == "back" ? length+1 : length);
+    innerLength = open == "front" ? length-1 : (open == "back" ? length+1 : length);
     innerY = open == "front" ? -wallThickness : (open == "back" ? wallThickness : 0);
 
 
