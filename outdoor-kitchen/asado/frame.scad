@@ -5,8 +5,9 @@ module frame() {
 
     module partsList() {
 
-        // TODO: draw the parts as in the part list, its messy right now, the list ist correct
-
+        // TODO: draw the parts as in the part list, its messy right now, the list is correct
+        // TODO: Second drilling in the middle of the height for hog roast
+        // TODO: backholder for chickens or other stuff
         // Träger
         echo(str("1;Träger - Gehrung beidseitig", ";", "1", ";", outerWidth - fireBasketWidth - (profileSize * 2), ";", profileSize, ";", profileSize));
         // Stützen
