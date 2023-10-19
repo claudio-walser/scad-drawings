@@ -66,11 +66,11 @@ module workbench(width = 1000, length = 1500, height = 1000, deskThickness = 80,
 //}
 
 
-// workbench(
-//     width = 1000,
-//     length = 2200,
-//     height = 1000,
-//     deskThickness = 80,
-//     legThickness = 120,
-//     overstandDesk = 400
-// );
+workbench(
+    width = 1000,
+    length = 2200,
+    height = 1000,
+    deskThickness = 80,
+    legThickness = 120,
+    overstandDesk = 400
+);

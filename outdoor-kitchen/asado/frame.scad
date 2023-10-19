@@ -1,6 +1,34 @@
 include <./config.scad>
 
 module frame() {
+
+
+    module partsList() {
+        echo(str("Beschreibung;Stück;Länge;Breite;Höhe"));
+
+
+        // Träger
+        echo(str("Träger - Gehrung beidseitig", ";", "1", ";", outerWidth - fireBasketWidth - (profileSize * 2), ";", profileSize, ";", profileSize));
+        // Stützen
+        echo(str("Stützen - Gehrung einseitig / 22mm Bohrung für Spindel", ";", "2", ";", outerHight, ";", profileSize, ";", profileSize));
+
+        // Stützen
+        echo(str("Füsse Rechts - Stumpf", ";", "2", ";", fireBasketGroundClearance, ";", profileSize, ";", profileSize));
+
+        // Rahmen rechts
+        echo(str("Rahmen rechts - Gehrung einseitig", ";", "1", ";", outerDepth, ";", profileSize, ";", profileSize));
+
+        // Rahmen hinten
+        echo(str("Rahmen hinten - Gehrung einseitig", ";", "1", ";", outerWidth - fireBasketWidth - profileSize, ";", profileSize, ";", profileSize));
+
+
+
+    }
+
+
+
+
+
     // Rahmen
     // Fuss rechts Hinten
     cube(size = [profileSize, profileSize, fireBasketGroundClearance]);
@@ -32,7 +60,7 @@ module frame() {
 
     // Profil Rechts
     translate([0, 0, fireBasketGroundClearance])
-    cube(size = [profileSize, outerDepth, profileSize]);
+    #cube(size = [profileSize, outerDepth, profileSize]);
 
     // Profil Mitte
     translate([outerWidth - profileSize - fireBasketWidth, 0, fireBasketGroundClearance])
@@ -63,15 +91,18 @@ module frame() {
 
 
 
-    // Top Träger
+    // Träger
     translate([profileSize, (outerDepth/2) - (profileSize/2), outerHight - profileSize])
     cube(size = [outerWidth - fireBasketWidth - (profileSize * 2), profileSize, profileSize]);
 
-    // Säule Rechts
+    // Stütze Rechts
     translate([profileSize, (outerDepth/2) - (profileSize/2), 0])
     cube(size = [profileSize, profileSize, outerHight]);
 
-    // Säule Links
+    // Stütze Links
     translate([outerWidth - fireBasketWidth - (profileSize * 2), (outerDepth/2) - (profileSize/2), 0])
     cube(size = [profileSize, profileSize, outerHight]);
+
+
+    partsList();
 }
