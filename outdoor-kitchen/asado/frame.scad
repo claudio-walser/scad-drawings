@@ -4,24 +4,35 @@ module frame() {
 
 
     module partsList() {
-        echo(str("Beschreibung;Stück;Länge;Breite;Höhe"));
 
+        // TODO: draw the parts as in the part list, its messy right now, the list ist correct
 
         // Träger
-        echo(str("Träger - Gehrung beidseitig", ";", "1", ";", outerWidth - fireBasketWidth - (profileSize * 2), ";", profileSize, ";", profileSize));
+        echo(str("1;Träger - Gehrung beidseitig", ";", "1", ";", outerWidth - fireBasketWidth - (profileSize * 2), ";", profileSize, ";", profileSize));
         // Stützen
-        echo(str("Stützen - Gehrung einseitig / 22mm Bohrung für Spindel", ";", "2", ";", outerHight, ";", profileSize, ";", profileSize));
+        echo(str("2;Stützen - Gehrung einseitig / 22mm Bohrung für Spindel", ";", "2", ";", outerHight, ";", profileSize, ";", profileSize));
 
-        // Stützen
-        echo(str("Füsse Rechts - Stumpf", ";", "2", ";", fireBasketGroundClearance, ";", profileSize, ";", profileSize));
+        // Füsse
+        echo(str("3;Fuss Rechts Hinten - Stumpf", ";", "1", ";", fireBasketGroundClearance, ";", profileSize, ";", profileSize));
+        echo(str("4;Fuss Rechts Vorne - Gehrung einseitig", ";", "1", ";", fireBasketGroundClearance + profileSize, ";", profileSize, ";", profileSize));
 
         // Rahmen rechts
-        echo(str("Rahmen rechts - Gehrung einseitig", ";", "1", ";", outerDepth, ";", profileSize, ";", profileSize));
+        echo(str("6;Rahmen rechts - Gehrung beidseit / Gehrung einmal 90° gedreht für Fuss", ";", "1", ";", outerDepth, ";", profileSize, ";", profileSize));
 
         // Rahmen hinten
-        echo(str("Rahmen hinten - Gehrung einseitig", ";", "1", ";", outerWidth - fireBasketWidth - profileSize, ";", profileSize, ";", profileSize));
+        echo(str("7;Rahmen hinten - Gehrung einseitig", ";", "1", ";", outerWidth - fireBasketWidth - profileSize, ";", profileSize, ";", profileSize));
 
-
+        // Korbhalter
+        // Füsse lang
+        echo(str("8;Füsse Links - Gehrung einseitig", ";", "2", ";", fireBasketGroundClearance + profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
+        // Füsse kurz
+        echo(str("9;Füsse Mitte - Gehrung beidseitig", ";", "2", ";", profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
+        // Querstreben Gehrung
+        echo(str("10;Querstreben lang - Gehrung beidseitig", ";", "3", ";", outerDepth, ";", profileSize, ";", profileSize));
+        // Querstrebe Stumpf
+        echo(str("11;Querstrebe kurz - Stump", ";", "1", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
+        // Stege
+        echo(str("12;Stege kurz - Stump", ";", "3", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
 
     }
 
@@ -39,19 +50,19 @@ module frame() {
 
     // Fuss links Hinten
     translate([outerWidth - profileSize, 0, 0])
-    cube(size = [profileSize, profileSize, fireBasketGroundClearance + profileSize + fireBasketHeight]);
+    cube(size = [profileSize, profileSize, fireBasketGroundClearance + profileSize + profileSize + fireBasketHeight]);
 
     // Fuss links Vorne
     translate([outerWidth - profileSize, outerDepth - profileSize, 0])
-    cube(size = [profileSize, profileSize, fireBasketGroundClearance + profileSize + fireBasketHeight]);
+    cube(size = [profileSize, profileSize, fireBasketGroundClearance + profileSize + profileSize + fireBasketHeight]);
 
     // Fuss mitte Hinten
     translate([outerWidth - profileSize - fireBasketWidth, 0, fireBasketGroundClearance])
-    cube(size = [profileSize, profileSize, profileSize + fireBasketHeight]);
+    cube(size = [profileSize, profileSize, profileSize + profileSize + fireBasketHeight]);
 
     // Fuss mitte Vorne
     translate([outerWidth - profileSize - fireBasketWidth, outerDepth - profileSize, fireBasketGroundClearance])
-    cube(size = [profileSize, profileSize, profileSize + fireBasketHeight]);
+    cube(size = [profileSize, profileSize, profileSize + profileSize + fireBasketHeight]);
 
 
     // Profil Hinten
@@ -60,7 +71,7 @@ module frame() {
 
     // Profil Rechts
     translate([0, 0, fireBasketGroundClearance])
-    #cube(size = [profileSize, outerDepth, profileSize]);
+    cube(size = [profileSize, outerDepth, profileSize]);
 
     // Profil Mitte
     translate([outerWidth - profileSize - fireBasketWidth, 0, fireBasketGroundClearance])

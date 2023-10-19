@@ -16,6 +16,9 @@ module reference() {
 
 //reference();
 
+// start csv shizzle
+echo(str("Nr;Beschreibung;Stück;Länge;Breite;Höhe"));
+
 difference() {
 	frame();
 	
@@ -25,5 +28,3 @@ difference() {
 
 translate([profileSize-spindleWallExtension-10, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
 spindle();
-
-//spindlePlate();
