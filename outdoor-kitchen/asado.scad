@@ -3,7 +3,6 @@ include <./asado/frame.scad>
 include <./asado/spindle.scad>
 include <./asado/spindleHole.scad>
 include <./asado/spindlePlate.scad>
-include <../library/roundedcube.scad>
 
 
 module reference() {
@@ -27,8 +26,12 @@ difference() {
     spindleHole();
 }
 
+translate([-125, outerDepth / 2, outerHight - profileSize - spindleDiameter - 20])
+rotate([0, -90, 0])
+!spindlePlate();
+
 translate([profileSize-spindleWallExtension-10, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
+//color([0.5,0.5,0,0.2]) 
 spindle();
 
 
-roundedcube(3000, true, 700, "xmin");

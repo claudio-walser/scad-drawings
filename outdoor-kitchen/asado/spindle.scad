@@ -27,7 +27,7 @@ module spindle() {
 
         // Aretiermutter
         translate([0, 0, spindleDiameter])
-        cylinder(h=spindleDiameter, r=spindleDiameter * 2, $fn = 8);
+        cylinder(h=spindleDiameter, r=spindleDiameter, $fn = 6);
     }
 
     partsList();
