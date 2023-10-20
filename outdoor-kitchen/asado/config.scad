@@ -9,8 +9,10 @@ fireBasketWidth = 400;
 fireBasketGroundClearance = 100;
 
 spindleDiameter  = 20;
+spindleOverlength = 10;
 spindleWallExtension = 200;
 spindleWheelDiameter = 200;
-spindlePlateThickness = 4;
+spindlePlateThickness = 5;
+spindlePlateGap = 2;
 
 $fn = 120;

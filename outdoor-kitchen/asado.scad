@@ -3,6 +3,7 @@ include <./asado/frame.scad>
 include <./asado/spindle.scad>
 include <./asado/spindleHole.scad>
 include <./asado/spindlePlate.scad>
+include <./asado/spindleFlange.scad>
 
 
 module reference() {
@@ -22,16 +23,19 @@ echo(str("Nr;Beschreibung;Stück;Länge;Breite;Höhe"));
 difference() {
 	frame();
 	
-    translate([profileSize-10, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
+    translate([profileSize-spindleOverlength, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
     spindleHole();
 }
 
-translate([-125, outerDepth / 2, outerHight - profileSize - spindleDiameter - 20])
-rotate([0, -90, 0])
-!spindlePlate();
-
-translate([profileSize-spindleWallExtension-10, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
-//color([0.5,0.5,0,0.2]) 
+translate([profileSize-spindleWallExtension-spindleOverlength, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
+//color([0.5,0.5,0,0.2])
 spindle();
 
 
+
+//translate([profileSize-spindleWallExtension+(spindleDiameter*2)-spindlePlateThickness, outerDepth / 2, outerHight - profileSize - spindleDiameter - 20])
+translate([profileSize-spindleWallExtension-spindleOverlength + (spindleDiameter*2) + (spindlePlateThickness+spindlePlateGap), outerDepth / 2, outerHight - profileSize - spindleDiameter - 20])
+rotate([0, -90, 0])
+spindlePlate();
+
+spindleFlange();

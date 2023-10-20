@@ -2,7 +2,7 @@ include <./config.scad>
 
 module spindle() {
 
-    spindleLength = outerWidth - fireBasketWidth - (profileSize * 2) + spindleWallExtension + 20;
+    spindleLength = outerWidth - fireBasketWidth - (profileSize * 2) + spindleWallExtension + (spindleOverlength * 2);
 
     module partsList() {
         // Spindel
@@ -20,14 +20,15 @@ module spindle() {
     rotate([0, 90, 0]) {
         
         // Spindel
-        cylinder(d = spindleDiameter, h = spindleLength, $fn = 100);
+        cylinder(d = spindleDiameter, h = spindleLength);
         
         // Rad
-        cylinder(h=20, r=spindleWheelDiameter, $fn = 100);
+        cylinder(h=spindleDiameter, r=spindleWheelDiameter);
 
         // Aretiermutter
         translate([0, 0, spindleDiameter])
         cylinder(h=spindleDiameter, r=spindleDiameter, $fn = 6);
+
     }
 
     partsList();

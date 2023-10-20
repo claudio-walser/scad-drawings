@@ -3,7 +3,24 @@ include <../../library/polyround.scad>
 
 module spindlePlate() {
 
-    plateWidth = spindleWheelDiameter - 50;
+    plateWidth = spindleDiameter * 10;
+    handleLength = spindleWheelDiameter + 150;
+    handleWidth = 60;
+
+    module partsList() {
+        // Spindelplatte
+        echo(str("40;Spindelplatte - 4mm Blech - Ecken 2mm gerundet;1;", plateWidth, ";", plateWidth, ";", spindlePlateThickness));
+
+        // Feststellgriff
+        echo(str("41;Feststellgriff - 4mm Blech anhand der Zeichnung;1;", handleLength, ";", handleWidth, ";", spindlePlateThickness));
+
+        // Pin als Achspunkt
+        echo(str("42;Pin - Achspunkt für Griff - Rundstahl 4mm ;1;", spindlePlateThickness*2+spindlePlateGap, ";4;4"));
+
+        // TODO: flanges for metal strings
+    }
+
+
 
     module plate() {
         // x, y, diameter
@@ -24,10 +41,10 @@ module spindlePlate() {
         // x, y, diameter
         radiiPoints=[
             [0,0,10],
-            [0,350,10],
-            [20,350,10],
-            [20,60,100],
-            [40,60,10],
+            [0,handleLength,10],
+            [20,handleLength,10],
+            [20,handleWidth,100],
+            [40,handleWidth,10],
             [40,0,10],
         ];
 
@@ -42,7 +59,9 @@ module spindlePlate() {
         }
 
         // pin
-        cylinder(h=spindlePlateThickness*2, d=4);
+        translate([7, 7, -(spindlePlateThickness+spindlePlateGap)])
+        //translate([33, 7, -(spindlePlateThickness+2)])
+        cylinder(h=spindlePlateThickness*2+spindlePlateGap, d=4);
     }
 
     module screwHoles(gap = 20) {
@@ -66,11 +85,12 @@ module spindlePlate() {
 
     translate([-plateWidth/2, -plateWidth/2, 0])
     difference() {
-        plate();
-        screwHoles(15);
-        spindleHole();
+       plate();
+       screwHoles(15);
+       spindleHole();
     }
-    translate([0, -40, 10])
+    translate([0, -40, spindlePlateThickness + spindlePlateGap])
     handle();
 
+    partsList();
 }
