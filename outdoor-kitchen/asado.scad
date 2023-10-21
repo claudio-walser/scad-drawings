@@ -1,5 +1,6 @@
 include <./asado/config.scad>
 include <./asado/frame.scad>
+include <./asado/fireBasket.scad>
 include <./asado/spindle.scad>
 include <./asado/spindleHole.scad>
 include <./asado/spindlePlate.scad>
@@ -26,6 +27,10 @@ difference() {
     translate([profileSize-spindleOverlength, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
     spindleHole();
 }
+
+
+fireBasket();
+
 
 translate([profileSize-spindleWallExtension-spindleOverlength, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
 //color([0.5,0.5,0,0.2])
