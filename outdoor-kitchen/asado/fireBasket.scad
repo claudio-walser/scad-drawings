@@ -5,7 +5,7 @@ module fireBasket() {
     basketClearance = 5;
     basketFlatIron = 3;
     totalClearance = basketClearance + basketFlatIron;
-    basketFrameGap = 80;
+    basketFrameGap = 60;
     basketProfileSize = profileSize / 2;
     basketWidth = fireBasketWidth - (profileSize) - (totalClearance * 2);
     basketHeight = fireBasketHeight + (profileSize);
@@ -25,7 +25,10 @@ module fireBasket() {
         // Spindelplatte
         echo(str("60;Feuerkorb Seitlich - Vierkantrohr;", numRips * 2, ";", basketHeight - basketFlatIron, ";", basketProfileSize, ";", basketProfileSize));
         echo(str("61;Feuerkorb Unten - Vierkantrohr ;", numRips, ";", basketWidth, ";", basketProfileSize, ";", basketProfileSize));
-        //echo(str("62;Fillets Vorne und Hinten - Vierkantrohr ;", (numFillet+1) * 2, ";", basketWidth - (basketProfileSize * 2), ";", basketProfileSize, ";", basketProfileSize));
+        echo(str("62;Fillets Vorne und Hinten - Vierkantrohr ;", (numFillet+1) * 2, ";", basketHeight - basketFlatIron - basketProfileSize, ";", basketProfileSize, ";", basketProfileSize));
+        echo(str("63;Flachstahl lang ;", 4, ";", outerDepth, ";", basketProfileSize, ";", basketFlatIron));
+        echo(str("64;Flachstahl kurz ;", 2, ";", basketWidth + (basketFlatIron * 2), ";", basketProfileSize, ";", basketFlatIron));
+
     }
 
     module basketFrame() {
