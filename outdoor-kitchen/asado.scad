@@ -33,9 +33,20 @@ spindle();
 
 
 
-//translate([profileSize-spindleWallExtension+(spindleDiameter*2)-spindlePlateThickness, outerDepth / 2, outerHight - profileSize - spindleDiameter - 20])
 translate([profileSize-spindleWallExtension-spindleOverlength + (spindleDiameter*2) + (spindlePlateThickness+spindlePlateGap), outerDepth / 2, outerHight - profileSize - spindleDiameter - 20])
 rotate([0, -90, 0])
 spindlePlate();
 
-spindleFlange();
+
+
+
+translate([profileSize * 2, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
+rotate([0, 90, 0])
+spindleFlange(parts = true);
+
+mirror([1,0,0]) {
+    translate([profileSize * 2 - (outerWidth - fireBasketWidth), outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
+    //translate([profileSize * 2, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
+    rotate([0, 90, 0])
+    spindleFlange();
+}
