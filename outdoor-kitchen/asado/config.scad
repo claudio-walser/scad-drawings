@@ -4,8 +4,8 @@ outerHight = 900;
 
 profileSize = 40;
 
-fireBasketHeight = 150;
-fireBasketWidth = 350;
+fireBasketHeight = 250;
+fireBasketWidth = 450;
 fireBasketGroundClearance = 100;
 
 spindleDiameter  = 20;

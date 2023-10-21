@@ -28,10 +28,6 @@ difference() {
     spindleHole();
 }
 
-
-fireBasket();
-
-
 translate([profileSize-spindleWallExtension-spindleOverlength, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
 //color([0.5,0.5,0,0.2])
 spindle();
@@ -55,3 +51,6 @@ mirror([1,0,0]) {
     rotate([0, 90, 0])
     spindleFlange();
 }
+
+translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
+fireBasket();
