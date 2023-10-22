@@ -7,9 +7,10 @@ profileSize = 40;
 fireBasketHeight = 250;
 fireBasketWidth = 400;
 fireBasketGroundClearance = 100;
+fireBasketFrontOpen = true;
 
-spindleDiameter  = 20;
-spindleOverlength = 10;
+spindleDiameter  = 30;
+spindleOverlength = 5;
 spindleWallExtension = 200;
 spindleWheelDiameter = 200;
 spindlePlateThickness = 5;

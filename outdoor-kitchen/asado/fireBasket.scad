@@ -54,20 +54,21 @@ module fireBasket() {
             basketFrame();
         }
 
-        // back fillets
-        for ( i = [1 : numFillet] ){
-            stepMove = (i * filletGap) + basketProfileSize - (basketProfileSize * 1.5);
-            translate([stepMove, 0, 0])
-            fillet();
-        }
+        if (!fireBasketFrontOpen) {
+            // back fillets
+            for ( i = [1 : numFillet] ){
+                stepMove = (i * filletGap) + basketProfileSize - (basketProfileSize * 1.5);
+                translate([stepMove, 0, 0])
+                fillet();
+            }
 
-        translate([0, outerDepth - basketProfileSize, 0])
-        for ( i = [1 : numFillet] ){
-            stepMove = (i * filletGap) + basketProfileSize - (basketProfileSize * 1.5);
-            translate([stepMove, 0, 0])
-            fillet();
+            translate([0, outerDepth - basketProfileSize, 0])
+            for ( i = [1 : numFillet] ){
+                stepMove = (i * filletGap) + basketProfileSize - (basketProfileSize * 1.5);
+                translate([stepMove, 0, 0])
+                fillet();
+            }
         }
-
 
         // flat iron below
         translate([(basketWidth / 4), 0, - basketFlatIron])
@@ -83,13 +84,15 @@ module fireBasket() {
         cube(size = [basketFlatIron, outerDepth, basketProfileSize]);
 
 
-        // flat iron front and back
-        translate([-basketFlatIron, -basketFlatIron, fireBasketHeight - basketFlatIron - (basketProfileSize * 2)])
-        cube(size = [basketWidth + (basketFlatIron * 2), basketFlatIron, basketProfileSize]);
-        // flat iron front and back
-        translate([-basketFlatIron, outerDepth, fireBasketHeight - basketFlatIron - (basketProfileSize * 2)])
-        cube(size = [basketWidth + (basketFlatIron * 2), basketFlatIron, basketProfileSize]);
 
+        if (!fireBasketFrontOpen) {
+            // flat iron front and back
+            translate([-basketFlatIron, -basketFlatIron, fireBasketHeight - basketFlatIron - (basketProfileSize * 2)])
+            cube(size = [basketWidth + (basketFlatIron * 2), basketFlatIron, basketProfileSize]);
+            // flat iron front and back
+            translate([-basketFlatIron, outerDepth, fireBasketHeight - basketFlatIron - (basketProfileSize * 2)])
+            cube(size = [basketWidth + (basketFlatIron * 2), basketFlatIron, basketProfileSize]);
+        }
 
 
 
