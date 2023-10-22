@@ -2,12 +2,12 @@ include <./config.scad>
 
 module spindleFlange(parts = false) {
 
-    flangeGap = 0.5;
-    drillSize = 5;
+    flangeGap = 0.25;
+    drillSize = spindleDiameter / 4;
 
     module partsList() {
         // Spindelplatte
-        echo(str("43;Flanschen - Rundstahl gedrechselt - Bohrung Madenschraube 4mm - Bohrung Stahlseil 4mm 15°/ 25°;2;", spindleDiameter*3, ";", spindleDiameter * 3, ";", spindleDiameter * 3));
+        echo(str("43;Flanschen - Rundstahl gedrechselt - Bohrung Madenschraube ", drillSize , "mm - Bohrung Stahlseil ", drillSize , "mm 25°/ 25°;2;", spindleDiameter * 3, ";", spindleDiameter * 2, ";", spindleDiameter * 3));
     }
 
     rotate([0, 0,-90])
@@ -17,7 +17,7 @@ module spindleFlange(parts = false) {
             // Inner
             cylinder(d = spindleDiameter * 1.5, h = spindleDiameter * 3);
             // Outer
-            cylinder(d = spindleDiameter * 2, h = spindleDiameter / 2);
+            cylinder(d = spindleDiameter * 2, h = spindleDiameter / 1.5);
         }
 
         // Spindel
@@ -32,12 +32,12 @@ module spindleFlange(parts = false) {
 
         // Befestigung Stahlseil
         //translate([(spindleDiameter * 3)/2, 22, spindleDiameter / 4 + 5])
-        translate([-spindleDiameter + (drillSize / 2), 0, spindleDiameter / 4 + drillSize / 2 + 1])
+        translate([-spindleDiameter + (drillSize / 2), 0, spindleDiameter / 4 + drillSize / 2])
         rotate([270, 0, 0]) {
             // reference cylinder without rotation
             //cylinder(h = spindleDiameter * 3, d = drillSize);
 
-            rotate([15, 25, 0])
+            rotate([25, 25, 0])
             translate([0, 0, -spindleDiameter * 3])
             cylinder(h = spindleDiameter * 7, d = drillSize);
         }
