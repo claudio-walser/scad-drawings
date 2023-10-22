@@ -9,7 +9,7 @@ fireBasketWidth = 400;
 fireBasketGroundClearance = 100;
 fireBasketFrontOpen = true;
 
-spindleDiameter  = 30;
+spindleDiameter  = 20;
 spindleOverlength = 5;
 spindleWallExtension = 200;
 spindleWheelDiameter = 200;
