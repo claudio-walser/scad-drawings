@@ -21,9 +21,9 @@ module spindle() {
         
         // Spindel
         cylinder(d = spindleDiameter, h = spindleLength);
-        
+
         // Rad
-        cylinder(h=spindleDiameter, r=spindleWheelDiameter);
+        //cylinder(h=spindleDiameter, r=spindleWheelDiameter);
 
         // Aretiermutter
         translate([0, 0, spindleDiameter])

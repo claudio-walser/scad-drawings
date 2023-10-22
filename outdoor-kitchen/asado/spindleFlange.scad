@@ -10,14 +10,14 @@ module spindleFlange(parts = false) {
         echo(str("43;Flanschen - Rundstahl gedrechselt - Bohrung Madenschraube 4mm - Bohrung Stahlseil 4mm 15°/ 25°;2;", spindleDiameter*3, ";", spindleDiameter * 3, ";", spindleDiameter * 3));
     }
 
-
+    rotate([0, 0,-90])
     difference() {
         // Körper
         union() {
             // Inner
-            cylinder(d = spindleDiameter * 2, h = spindleDiameter * 3);
+            cylinder(d = spindleDiameter * 1.5, h = spindleDiameter * 3);
             // Outer
-            cylinder(d = spindleDiameter * 3, h = spindleDiameter / 2);
+            cylinder(d = spindleDiameter * 2, h = spindleDiameter / 2);
         }
 
         // Spindel
@@ -31,9 +31,16 @@ module spindleFlange(parts = false) {
         cylinder(h = spindleDiameter, d = drillSize);
 
         // Befestigung Stahlseil
-        translate([10, 31, spindleDiameter / 4 + 10])
-        rotate([155, 75, 0])
-        cylinder(h = spindleDiameter * 3, d = drillSize);
+        //translate([(spindleDiameter * 3)/2, 22, spindleDiameter / 4 + 5])
+        translate([-spindleDiameter + (drillSize / 2), 0, spindleDiameter / 4 + drillSize / 2 + 1])
+        rotate([270, 0, 0]) {
+            // reference cylinder without rotation
+            //cylinder(h = spindleDiameter * 3, d = drillSize);
+
+            rotate([15, 25, 0])
+            translate([0, 0, -spindleDiameter * 3])
+            cylinder(h = spindleDiameter * 7, d = drillSize);
+        }
 
     }
 
