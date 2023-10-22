@@ -1,3 +1,0 @@
-include <./frame.scad>
-
-frame();

@@ -1,3 +1,0 @@
-include <./spindlePlate.scad>
-
-spindlePlate();
