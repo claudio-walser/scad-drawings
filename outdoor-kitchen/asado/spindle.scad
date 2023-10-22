@@ -29,6 +29,22 @@ module spindle() {
         translate([0, 0, spindleDiameter])
         cylinder(h=spindleDiameter, r=spindleDiameter, $fn = 6);
 
+
+        #for ( i = [0 : 5] ){
+            stepMove = i * 60;
+            rotation = i * 60;
+            rotate([0, 0, -rotation])
+            
+            translate([5, 10, 0]) 
+            polygon(
+                points = [
+                     [0, 0], // 0
+                     [40, 0], // 1
+                     [0, 25], // 92
+                ]
+            );
+        }
+
     }
 
     partsList();
