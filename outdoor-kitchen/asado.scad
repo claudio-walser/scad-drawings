@@ -20,10 +20,16 @@ module reference() {
 
 // start csv shizzle
 echo(str("Nr;Beschreibung;Stück;Länge;Breite;Höhe"));
+projectionGap = 200;
+
+
+
+!drawFrameProjections();
+framePartsList();
 
 difference() {
 	frame();
-	
+
     translate([profileSize-spindleOverlength, outerDepth/2, outerHight - profileSize - spindleDiameter - 20])
     spindleHole();
 }

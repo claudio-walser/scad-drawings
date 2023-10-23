@@ -1,46 +1,6 @@
 include <./config.scad>
 
 module frame() {
-
-
-    module partsList() {
-
-        // TODO: draw the parts as in the part list, its messy right now, the list is correct
-        // TODO: Second drilling in the middle of the height for hog roast
-        // TODO: backholder for chickens or other stuff
-        // Träger
-        echo(str("1;Träger - Gehrung beidseitig", ";", "1", ";", outerWidth - fireBasketWidth - (profileSize * 2), ";", profileSize, ";", profileSize));
-        // Stützen
-        echo(str("2;Stützen - Gehrung einseitig / 22mm Bohrung für Spindel", ";", "2", ";", outerHight, ";", profileSize, ";", profileSize));
-
-        // Füsse
-        echo(str("3;Fuss Rechts Hinten - Stumpf", ";", "1", ";", fireBasketGroundClearance, ";", profileSize, ";", profileSize));
-        echo(str("4;Fuss Rechts Vorne - Gehrung einseitig", ";", "1", ";", fireBasketGroundClearance + profileSize, ";", profileSize, ";", profileSize));
-
-        // Rahmen rechts
-        echo(str("6;Rahmen rechts - Gehrung beidseit / Gehrung einmal 90° gedreht für Fuss", ";", "1", ";", outerDepth, ";", profileSize, ";", profileSize));
-
-        // Rahmen hinten
-        echo(str("7;Rahmen hinten - Gehrung einseitig", ";", "1", ";", outerWidth - fireBasketWidth - profileSize, ";", profileSize, ";", profileSize));
-
-        // Korbhalter
-        // Füsse lang
-        echo(str("8;Füsse Links - Gehrung einseitig", ";", "2", ";", fireBasketGroundClearance + profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
-        // Füsse kurz
-        echo(str("9;Füsse Mitte - Gehrung beidseitig", ";", "2", ";", profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
-        // Querstreben Gehrung
-        echo(str("10;Querstreben lang - Gehrung beidseitig", ";", "3", ";", outerDepth, ";", profileSize, ";", profileSize));
-        // Querstrebe Stumpf
-        echo(str("11;Querstrebe kurz - Stump", ";", "1", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
-        // Stege
-        echo(str("12;Stege kurz - Stump", ";", "3", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
-
-    }
-
-
-
-
-
     // Rahmen
     // Fuss rechts Hinten
     cube(size = [profileSize, profileSize, fireBasketGroundClearance]);
@@ -114,7 +74,65 @@ module frame() {
     // Stütze Links
     translate([outerWidth - fireBasketWidth - (profileSize * 2), (outerDepth/2) - (profileSize/2), 0])
     cube(size = [profileSize, profileSize, outerHight]);
+}
 
+    module framePartsList() {
 
-    partsList();
+        // TODO: draw the parts as in the part list, its messy right now, the list is correct
+        // TODO: Second drilling in the middle of the height for hog roast
+        // TODO: backholder for chickens or other stuff
+        // Träger
+        echo(str("1;Träger - Gehrung beidseitig", ";", "1", ";", outerWidth - fireBasketWidth - (profileSize * 2), ";", profileSize, ";", profileSize));
+        // Stützen
+        echo(str("2;Stützen - Gehrung einseitig / 22mm Bohrung für Spindel", ";", "2", ";", outerHight, ";", profileSize, ";", profileSize));
+
+        // Füsse
+        echo(str("3;Fuss Rechts Hinten - Stumpf", ";", "1", ";", fireBasketGroundClearance, ";", profileSize, ";", profileSize));
+        echo(str("4;Fuss Rechts Vorne - Gehrung einseitig", ";", "1", ";", fireBasketGroundClearance + profileSize, ";", profileSize, ";", profileSize));
+
+        // Rahmen rechts
+        echo(str("6;Rahmen rechts - Gehrung beidseit / Gehrung einmal 90° gedreht für Fuss", ";", "1", ";", outerDepth, ";", profileSize, ";", profileSize));
+
+        // Rahmen hinten
+        echo(str("7;Rahmen hinten - Gehrung einseitig", ";", "1", ";", outerWidth - fireBasketWidth - profileSize, ";", profileSize, ";", profileSize));
+
+        // Korbhalter
+        // Füsse lang
+        echo(str("8;Füsse Links - Gehrung einseitig", ";", "2", ";", fireBasketGroundClearance + profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
+        // Füsse kurz
+        echo(str("9;Füsse Mitte - Gehrung beidseitig", ";", "2", ";", profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
+        // Querstreben Gehrung
+        echo(str("10;Querstreben lang - Gehrung beidseitig", ";", "3", ";", outerDepth, ";", profileSize, ";", profileSize));
+        // Querstrebe Stumpf
+        echo(str("11;Querstrebe kurz - Stump", ";", "1", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
+        // Stege
+        echo(str("12;Stege kurz - Stump", ";", "3", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
+
+    }
+
+module drawFrameProjections() {
+
+    // // Vorne
+    translate([outerWidth, - outerHight, 0])
+    projection() {
+        rotate([90,0,180])
+        frame();
+    }
+
+    // Seite
+    translate([outerWidth + outerDepth + projectionGap, - outerHight, 0])
+    rotate([0,0,90])
+    projection() {
+        translate([0, 0, 0])
+        rotate([0,90,0])
+        frame();
+    }
+
+    // Draufsicht
+    translate([outerWidth, - (outerHight + projectionGap), 0])
+    projection() {
+        rotate([0,0,180])
+        frame();
+    }
+
 }

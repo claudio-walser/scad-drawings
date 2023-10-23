@@ -30,7 +30,7 @@ module spindle() {
         cylinder(h=spindleDiameter, r=spindleDiameter, $fn = 6);
 
 
-        #for ( i = [0 : 5] ){
+        /*for ( i = [0 : 5] ){
             stepMove = i * 60;
             rotation = i * 60;
             rotate([0, 0, -rotation])
@@ -43,7 +43,7 @@ module spindle() {
                      [0, 25], // 92
                 ]
             );
-        }
+        }*/
 
     }
 
