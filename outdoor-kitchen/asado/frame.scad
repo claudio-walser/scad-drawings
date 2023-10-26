@@ -64,63 +64,140 @@ module frame() {
 
 
     // Träger
-    translate([profileSize, (outerDepth/2) - (profileSize/2), outerHight - profileSize])
+    translate([profileSize, (outerDepth/2) - (profileSize/2), outerHeight - profileSize])
     cube(size = [outerWidth - fireBasketWidth - (profileSize * 2), profileSize, profileSize]);
 
     // Stütze Rechts
     translate([profileSize, (outerDepth/2) - (profileSize/2), 0])
-    cube(size = [profileSize, profileSize, outerHight]);
+    cube(size = [profileSize, profileSize, outerHeight]);
 
     // Stütze Links
     translate([outerWidth - fireBasketWidth - (profileSize * 2), (outerDepth/2) - (profileSize/2), 0])
-    cube(size = [profileSize, profileSize, outerHight]);
+    cube(size = [profileSize, profileSize, outerHeight]);
 }
 
-    module framePartsList() {
+module framePartsList() {
+    // TODO: draw the parts as in the part list, its messy right now, the list is correct
+    // TODO: Second drilling in the middle of the height for hog roast
+    // TODO: backholder for chickens or other stuff
+    // Träger
+    echo(str("1;Träger - Gehrung beidseitig", ";", "1", ";", outerWidth - fireBasketWidth - (profileSize * 2), ";", profileSize, ";", profileSize));
+    // Stützen
+    echo(str("2;Stützen - Gehrung einseitig / 22mm Bohrung für Spindel", ";", "2", ";", outerHeight, ";", profileSize, ";", profileSize));
 
-        // TODO: draw the parts as in the part list, its messy right now, the list is correct
-        // TODO: Second drilling in the middle of the height for hog roast
-        // TODO: backholder for chickens or other stuff
-        // Träger
-        echo(str("1;Träger - Gehrung beidseitig", ";", "1", ";", outerWidth - fireBasketWidth - (profileSize * 2), ";", profileSize, ";", profileSize));
-        // Stützen
-        echo(str("2;Stützen - Gehrung einseitig / 22mm Bohrung für Spindel", ";", "2", ";", outerHight, ";", profileSize, ";", profileSize));
+    // Füsse
+    echo(str("3;Fuss Rechts Hinten - Stumpf", ";", "1", ";", fireBasketGroundClearance, ";", profileSize, ";", profileSize));
+    echo(str("4;Fuss Rechts Vorne - Gehrung einseitig", ";", "1", ";", fireBasketGroundClearance + profileSize, ";", profileSize, ";", profileSize));
 
-        // Füsse
-        echo(str("3;Fuss Rechts Hinten - Stumpf", ";", "1", ";", fireBasketGroundClearance, ";", profileSize, ";", profileSize));
-        echo(str("4;Fuss Rechts Vorne - Gehrung einseitig", ";", "1", ";", fireBasketGroundClearance + profileSize, ";", profileSize, ";", profileSize));
+    // Rahmen rechts
+    echo(str("6;Rahmen rechts - Gehrung beidseit / Gehrung einmal 90° gedreht für Fuss", ";", "1", ";", outerDepth, ";", profileSize, ";", profileSize));
 
-        // Rahmen rechts
-        echo(str("6;Rahmen rechts - Gehrung beidseit / Gehrung einmal 90° gedreht für Fuss", ";", "1", ";", outerDepth, ";", profileSize, ";", profileSize));
+    // Rahmen hinten
+    echo(str("7;Rahmen hinten - Gehrung einseitig", ";", "1", ";", outerWidth - fireBasketWidth - profileSize, ";", profileSize, ";", profileSize));
 
-        // Rahmen hinten
-        echo(str("7;Rahmen hinten - Gehrung einseitig", ";", "1", ";", outerWidth - fireBasketWidth - profileSize, ";", profileSize, ";", profileSize));
-
-        // Korbhalter
-        // Füsse lang
-        echo(str("8;Füsse Links - Gehrung einseitig", ";", "2", ";", fireBasketGroundClearance + profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
-        // Füsse kurz
-        echo(str("9;Füsse Mitte - Gehrung beidseitig", ";", "2", ";", profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
-        // Querstreben Gehrung
-        echo(str("10;Querstreben lang - Gehrung beidseitig", ";", "3", ";", outerDepth, ";", profileSize, ";", profileSize));
-        // Querstrebe Stumpf
-        echo(str("11;Querstrebe kurz - Stump", ";", "1", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
-        // Stege
-        echo(str("12;Stege kurz - Stump", ";", "3", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
-
-    }
+    // Korbhalter
+    // Füsse lang
+    echo(str("8;Füsse Links - Gehrung einseitig", ";", "2", ";", fireBasketGroundClearance + profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
+    // Füsse kurz
+    echo(str("9;Füsse Mitte - Gehrung beidseitig", ";", "2", ";", profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
+    // Querstreben Gehrung
+    echo(str("10;Querstreben lang - Gehrung beidseitig", ";", "3", ";", outerDepth, ";", profileSize, ";", profileSize));
+    // Querstrebe Stumpf
+    echo(str("11;Querstrebe kurz - Stump", ";", "1", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
+    // Stege
+    echo(str("12;Stege kurz - Stump", ";", "3", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
+}
 
 module drawFrameProjections() {
 
+    lineThickness = 1;
+    translate([0, 100, 0]) {
+
+        square([lineThickness,1000]);
+
+        translate([profileSize, 0, 0])
+        #square([lineThickness,600]);
+
+        translate([fireBasketWidth, 0, 0])
+        #square([lineThickness,600]);
+
+        translate([fireBasketWidth + profileSize, 0, 0])
+        square([lineThickness,800]);
+
+        translate([outerWidth - profileSize, 0, 0])
+        #square([lineThickness,800]);
+
+        translate([outerWidth, 0, 0])
+        square([lineThickness,1000]);
+
+
+        translate([-20, 980, 0]) {
+            length = outerWidth + 40;
+            translate([outerWidth / 2, 15, 0])
+            text(size = 100, str(outerWidth));
+            square([length, lineThickness]);
+        }
+
+        translate([-20, 780, 0]) {
+            length = outerWidth + 40;
+            translate([fireBasketWidth / 2, 15, 0])
+            text(size = 100, str(fireBasketWidth + profileSize));
+
+            translate([outerWidth / 2, 15, 0])
+            text(size = 100, str(outerWidth - (fireBasketWidth + profileSize)));
+            square([length, lineThickness]);
+        }
+
+
+        translate([-20, 580, 0]) {
+            length = outerWidth + 40;
+            translate([-150, 15, 0])
+            text(size = 100, str(profileSize));
+
+            translate([150, 15, 0])
+            text(size = 100, str(fireBasketWidth - profileSize));
+
+            translate([fireBasketWidth + 70, 15, 0])
+            text(size = 100, str(profileSize));
+
+            translate([outerWidth -200, 15, 0])
+            text(size = 100, str(profileSize));
+
+            translate([outerWidth / 2, 15, 0])
+            text(size = 100, str(outerWidth - fireBasketWidth - (profileSize * 2)));
+
+            square([length, lineThickness]);
+        }
+
+
+
+        translate([-20, 380, 0]) {
+            length = outerWidth + 40;
+
+            translate([fireBasketWidth + 120, 15, 0])
+            text(size = 100, str(profileSize));
+
+            translate([outerWidth -300, 15, 0])
+            text(size = 100, str(profileSize));
+
+            translate([outerWidth / 2 + 40, 15, 0])
+            text(size = 100, str(outerWidth - fireBasketWidth - (profileSize * 4)));
+
+            square([length, lineThickness]);
+        }
+
+
+    }
+
     // // Vorne
-    translate([outerWidth, - outerHight, 0])
+    translate([outerWidth, - outerHeight, 0])
     projection() {
         rotate([90,0,180])
         frame();
     }
 
     // Seite
-    translate([outerWidth + outerDepth + projectionGap, - outerHight, 0])
+    translate([outerWidth + outerDepth + projectionGap, - outerHeight, 0])
     rotate([0,0,90])
     projection() {
         translate([0, 0, 0])
@@ -129,10 +206,9 @@ module drawFrameProjections() {
     }
 
     // Draufsicht
-    translate([outerWidth, - (outerHight + projectionGap), 0])
+    translate([outerWidth, - (outerHeight + projectionGap), 0])
     projection() {
         rotate([0,0,180])
         frame();
     }
-
 }
