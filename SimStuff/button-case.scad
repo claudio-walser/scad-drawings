@@ -183,22 +183,76 @@ mirror([1,0,0]) {
 
 
 
-! rotate([0, 0, 90]) {
-    translate([115, -100, 0]) {
-        union() {
-            difference() {
-                box(50, 226, 76, 2, open = "front");
-                rotate([22.5, 0, 0]) translate([0, 50, 30]) cube(size = [270, 80, 120], center = true);
-            }
+rotate([0, 0, 90]) {
+    difference() {
+        translate([115, -100, 0]) {
+            union() {
+                difference() {
+                    box(55, 226, 76, 2, open = "front");
+                    rotate([22.5, 0, 0]) translate([0, 50, 30]) cube(size = [270, 80, 120], center = true);
+                }
 
-            translate([0, 18.5, 7.6]) {
-                rotate([45, 0, 0]) {
+                translate([0, 18.5, 7.6]) {
+                    rotate([45, 0, 0]) {
                         difference() {
                             box(50, 226, 76, 2, open = "front");
                             rotate([-22.5, 0, 0]) translate([0, -50, 30]) cube(size = [270, 80, 120], center = true);
                         }
+                    }
                 }
+
             }
         }
+
+        // drill holes
+        translate([0, -131, 0]) {
+            rotate([0, 0, -90]) {
+                translate([-5, 20, -5]) cylinder(d = 3.2, h = 90, $fn = 100);
+                translate([-5, 210, -5]) cylinder(d = 3.2, h = 90, $fn = 100);
+                
+                translate([-5, 115, -5]) cylinder(d = 3.2, h = 11, $fn = 100);
+                translate([-5, 115, 74]) cylinder(d = 3.2, h = 11, $fn = 100);
+            
+            }
+        }
+
+        // drill holes cable
+        translate([15, -75, 0]) {
+            rotate([45, 0, 0]) {
+                cylinder(d = 12, h = 20, $fn = 100);
+                translate([-7, -7, 0]) cylinder(d = 2.7, h = 20, $fn = 100);
+                translate([7, -7, 0]) cylinder(d = 2.7, h = 20, $fn = 100);
+                translate([7, 7, 0]) cylinder(d = 2.7, h = 20, $fn = 100);
+                translate([-7, 7, 0]) cylinder(d = 2.7, h = 20, $fn = 100);
+            }
+        }
+
+    }
+
+    // screw bumps cable
+    difference() {
+        translate([15, -82.5, 7.5]) {
+            rotate([45, 0, 0]) {
+                translate([-7, -7, 0]) cylinder(d = 7, h = 8, $fn = 100);
+                translate([7, -7, 0]) cylinder(d = 7, h = 8, $fn = 100);
+                translate([7, 7, 0]) cylinder(d = 7, h = 8, $fn = 100);
+                translate([-7, 7, 0]) cylinder(d = 7, h = 8, $fn = 100);
+            }
+        }
+
+
+
+        // screw holes cable
+        translate([15, -75, 0]) {
+            rotate([45, 0, 0]) {
+                cylinder(d = 12, h = 20, $fn = 100);
+                translate([-7, -7, 0]) cylinder(d = 2.7, h = 40, $fn = 100);
+                translate([7, -7, 0]) cylinder(d = 2.7, h = 40, $fn = 100);
+                translate([7, 7, 0]) cylinder(d = 2.7, h = 40, $fn = 100);
+                translate([-7, 7, 0]) cylinder(d = 2.7, h = 40, $fn = 100);
+            }
+        }
+
+
     }
 }
