@@ -2,10 +2,10 @@ include <../library/modules.scad>
 
 
 
-width = 1.400;
-height = 1.400;
-depth = 0.400;
-thickness = 0.025;
+width = 1400;
+height = 1400;
+depth = 400;
+thickness = 25;
 
 
 // lower board
@@ -21,8 +21,8 @@ translate([width, 0, 0]) rotate([0, -90, 0]) boardMitreJoints(width, depth, thic
 
 module partsList() {
     // Beine Hinten
-    echo(str("Nussbaum Bretter unten/oben", " ", "2", " ", width, " ", depth, " ", thickness));
-    echo(str("Nussbaum Bretter seitlich", " ", "2", " ", height, " ", depth, " ", thickness));
+    echo(str("Nussbaum Bretter unten/oben", ";", "2", ";", width, ";", depth, ";", thickness));
+    echo(str("Nussbaum Bretter seitlich", ";", "2", ";", height, ";", depth, ";", thickness));
 }
 
 partsList();

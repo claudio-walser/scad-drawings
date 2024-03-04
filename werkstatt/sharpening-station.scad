@@ -40,13 +40,13 @@ module sharpeningStation(width = 1000, length = 1500, height = 1000, deskThickne
 
     module partsList() {
         // desk
-        echo(str("Tischplatte", " ", "1", " ", length, " ", width, " ", deskThickness));
+        echo(str("Tischplatte", ";", "1", ";", length, ";", width, ";", deskThickness));
         // legs
-        echo(str("Beine", " ", "4", " ", legInnerHeight, " ", legThickness, " ", legThickness));
+        echo(str("Beine", ";", "4", ";", legInnerHeight, ";", legThickness, ";", legThickness));
         // leg cross bars
-        echo(str("Beine Querstreben", " ", "4", " ", legInnerWidth, " ", legThickness, " ", legThickness));
+        echo(str("Beine Querstreben", ";", "4", ";", legInnerWidth, ";", legThickness, ";", legThickness));
         // leg cross bars length
-        echo(str("Beine Längsstreben", " ", "2", " ", legInnerLength, " ", legThickness, " ", legThickness));
+        echo(str("Beine Längsstreben", ";", "2", ";", legInnerLength, ";", legThickness, ";", legThickness));
     }
 
     legBase();

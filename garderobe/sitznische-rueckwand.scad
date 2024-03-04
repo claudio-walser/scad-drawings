@@ -122,10 +122,10 @@ module regal(width, length, height, logThickness) {
 
     module partsList() {
         // Beine Hinten
-        echo(str("Beine Hinten", " ", "2", " ", height, " ", logThickness, " ", logThickness));
-        echo(str("Beine Vorne", " ", "2", " ", height - heightDiff, " ", logThickness, " ", logThickness));
-        echo(str("Quer-Streben", " ", "8", " ", length, " ", logThickness, " ", logThickness));
-        echo(str("Längs-Streben", " ", "6", " ", width - (overhang * 2), " ", logThickness, " ", logThickness));
+        echo(str("Beine Hinten", ";", "2", ";", height, ";", logThickness, ";", logThickness));
+        echo(str("Beine Vorne", ";", "2", ";", height - heightDiff, ";", logThickness, ";", logThickness));
+        echo(str("Quer-Streben", ";", "8", ";", length, ";", logThickness, ";", logThickness));
+        echo(str("Längs-Streben", ";", "6", ";", width - (overhang * 2), ";", logThickness, ";", logThickness));
     }
 
     partsList();
