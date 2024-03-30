@@ -1,8 +1,10 @@
 floorWidth = 5250;
 floorLength = 3750;
 
-pergolaWidth = floorWidth-200;
-pergolaLength = floorLength-200;
+floorToPergolaOverlap = 100;
+
+pergolaWidth = floorWidth-floorToPergolaOverlap;
+pergolaLength = floorLength-floorToPergolaOverlap;
 
 thickness = 150;
 height = 2300;
@@ -14,7 +16,7 @@ roofToBeamOverlap = 100;
 cube(size=[floorLength, floorWidth, 10]);
 
 
-translate([100, 100, 0]) {
+translate([floorToPergolaOverlap/2, floorToPergolaOverlap/2, 0]) {
 	// supports
 	cube(size=[thickness, thickness, height+thickness]);
 
@@ -62,7 +64,7 @@ translate([100, 100, 0]) {
 
 
 	// roof
-	for ( i = [1 : 48] ){
+	for ( i = [1 : 49] ){
 		currentOverlap = (i * roofGap) - beamOverlap + (i*30);
 		translate([-roofOverlap, currentOverlap, height+50])
 		cube(size=[pergolaLength+roofOverlap+roofOverlap, 30, thickness]);
