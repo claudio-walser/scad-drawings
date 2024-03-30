@@ -169,12 +169,15 @@ module eggInlineMaze() {
 	}
 }
 
+
+
 egg();
 // eggInlineEggs();
 // eggInlineBigEggs();
 // eggInlineFiboneggi();
 // eggInlineSpiral();
-eggInlineMaze();
+// eggInlineMaze();
+ eggInlineMaze();
 
 
 

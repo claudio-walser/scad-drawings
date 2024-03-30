@@ -32,7 +32,7 @@ module scrapWoodStorage(width = 1000, length = 1500, height = 1000, deskThicknes
         translate([0, -(legInnerWidth/2 + legThickness/2), legInnerHeight/2]) cube(size=[legThickness, legThickness, legInnerHeight], center = true);
     }
 
-    legBase();
+    color("#FF9966") legBase();
     desk();
 }
 
