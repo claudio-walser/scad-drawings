@@ -183,7 +183,7 @@ mirror([1,0,0]) {
 
 
 
-rotate([0, 0, 90]) {
+!rotate([0, 0, 90]) {
     difference() {
         translate([115, -100, 0]) {
             union() {
@@ -217,7 +217,7 @@ rotate([0, 0, 90]) {
         }
 
         // drill holes cable
-        translate([15, -75, 0]) {
+        translate([15, -65, 10]) {
             rotate([45, 0, 0]) {
                 cylinder(d = 12, h = 20, $fn = 100);
                 translate([-7, -7, 0]) cylinder(d = 2.7, h = 20, $fn = 100);
@@ -231,7 +231,7 @@ rotate([0, 0, 90]) {
 
     // screw bumps cable
     difference() {
-        translate([15, -82.5, 7.5]) {
+        translate([15, -72.5, 17.5]) {
             rotate([45, 0, 0]) {
                 translate([-7, -7, 0]) cylinder(d = 7, h = 8, $fn = 100);
                 translate([7, -7, 0]) cylinder(d = 7, h = 8, $fn = 100);
@@ -243,7 +243,7 @@ rotate([0, 0, 90]) {
 
 
         // screw holes cable
-        translate([15, -75, 0]) {
+        translate([15, -65, 10]) {
             rotate([45, 0, 0]) {
                 cylinder(d = 12, h = 20, $fn = 100);
                 translate([-7, -7, 0]) cylinder(d = 2.7, h = 40, $fn = 100);
