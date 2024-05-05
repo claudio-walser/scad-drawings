@@ -5,6 +5,7 @@ include <./asado/spindle.scad>
 include <./asado/spindleHole.scad>
 include <./asado/spindlePlate.scad>
 include <./asado/spindleFlange.scad>
+include <./asado/grate.scad>
 
 
 module reference() {
@@ -22,8 +23,6 @@ module reference() {
 echo(str("Nr;Beschreibung;Stück;Länge;Breite;Höhe"));
 projectionGap = 200;
 
-
-
 //!drawFrameProjections();
 
 framePartsList();
@@ -39,14 +38,9 @@ translate([profileSize-spindleWallExtension-spindleOverlength, outerDepth/2, out
 //color([0.5,0.5,0,0.2])
 spindle();
 
-
-
 translate([profileSize-spindleWallExtension-spindleOverlength + (spindleDiameter*2) + (spindlePlateThickness+spindlePlateGap), outerDepth / 2, outerHeight - profileSize - spindleDiameter - 20])
 rotate([0, -90, 0])
 spindlePlate();
-
-
-
 
 translate([profileSize * 2, outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
 rotate([0, 90, 0])
@@ -61,3 +55,6 @@ mirror([1,0,0]) {
 
 translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
 fireBasket();
+
+translate([0, 0, fireBasketGroundClearance + 100])
+grateFrame();

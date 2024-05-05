@@ -68,12 +68,12 @@ module frame() {
     cube(size = [outerWidth - fireBasketWidth - (profileSize * 2), profileSize, profileSize]);
 
     // Stütze Rechts
-    translate([profileSize, (outerDepth/2) - (profileSize/2), 0])
-    cube(size = [profileSize, profileSize, outerHeight]);
+    translate([profileSize, (outerDepth/2) - (profileSize/2), fireBasketGroundClearance])
+    cube(size = [profileSize, profileSize, outerHeight - fireBasketGroundClearance]);
 
     // Stütze Links
-    translate([outerWidth - fireBasketWidth - (profileSize * 2), (outerDepth/2) - (profileSize/2), 0])
-    cube(size = [profileSize, profileSize, outerHeight]);
+    translate([outerWidth - fireBasketWidth - (profileSize * 2), (outerDepth/2) - (profileSize/2), fireBasketGroundClearance])
+    cube(size = [profileSize, profileSize, outerHeight - fireBasketGroundClearance]);
 }
 
 module framePartsList() {
