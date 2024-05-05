@@ -16,4 +16,8 @@ spindleWheelDiameter = 200;
 spindlePlateThickness = 5;
 spindlePlateGap = 2;
 
+grateGap = 4;
+grateSize = 30;
+grateProfileThickness = 3;
+
 $fn = 120;

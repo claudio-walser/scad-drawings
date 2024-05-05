@@ -56,5 +56,5 @@ mirror([1,0,0]) {
 translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
 fireBasket();
 
-translate([0, 0, fireBasketGroundClearance + 100])
+translate([(profileSize * 2) + grateGap, profileSize + grateGap + grateProfileThickness, fireBasketGroundClearance + 100])
 grateFrame();
