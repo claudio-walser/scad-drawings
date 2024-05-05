@@ -1,49 +1,35 @@
 include <../../library/profiles.scad>
 include <./config.scad>
 
-module grateFrame() {
+module grate() {
 
-
-    grateLength = outerWidth - fireBasketWidth - (profileSize * 4) - (grateGap * 4);
-    grateWidth = outerDepth - profileSize - (2 * grateProfileThickness);
+    grateLength = outerWidth - fireBasketWidth - (profileSize * 4) - (grateGap * 4) - ((4 * grateProfileThickness));
+    grateWidth = outerDepth - profileSize - (6 * grateProfileThickness);
 
     module partsList() {
 
     }
+
     partsList();
 
+    // hinten
+    cube([grateLength, profileSize + 5, profileSize+ 5]);
+    
+    // vorne
+    translate([0, grateWidth - profileSize, 0])
+    cube([grateLength, profileSize, profileSize]);
+    
 
-    translate([grateGap, 0, 0]) {
-        // x (profileSize * 2) + grateGap
-        // y profileSize + grateGap + grateProfileThickness
-        // hinten
-        lShapeProfile(grateLength, grateSize, grateProfileThickness);
-
-        // rechts
-        rotate([90, 0, 90])
-        lShapeProfile(grateWidth, grateSize, grateProfileThickness);
-
-        // links
-        rotate([0, 0, 90])
-        translate([0, -(grateLength), 0])
-        lShapeProfile(grateWidth, grateSize, grateProfileThickness);
-
-        // vorne
-        translate([
-            grateLength,
-            grateWidth,
-            0
-        ])
-
-        rotate([0, 0, 180])
-        lShapeProfile(grateLength, grateSize, grateProfileThickness);
-
-        translate([0, (grateWidth / 2) - ((profileSize + 10) - 1), 0])
-        rotate([0, 270, 0])
-        uShapeProfile(fireBasketGroundClearance - 20, profileSize + 10, 4);
-
-        translate([grateLength, (grateWidth / 2) - ((profileSize + 10) - 1), fireBasketGroundClearance - 20])
-        rotate([0, 90, 0])
-        uShapeProfile(fireBasketGroundClearance - 20, profileSize + 10, 4);
+    // rippen
+    amount = floor(grateLength / 35);
+    startPos = 18;
+    echo(str("anzahl ", amount))
+    for ( i = [0 : amount - 1] ) {
+        translate([(i * 35) + startPos, 0, 45])
+        rotate([45, 0.5, 90])
+        lShapeProfile(grateWidth + 20, 20, 2);
     }
 }
+
+
+

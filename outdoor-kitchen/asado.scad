@@ -5,6 +5,7 @@ include <./asado/spindle.scad>
 include <./asado/spindleHole.scad>
 include <./asado/spindlePlate.scad>
 include <./asado/spindleFlange.scad>
+include <./asado/grateFrame.scad>
 include <./asado/grate.scad>
 
 
@@ -56,5 +57,9 @@ mirror([1,0,0]) {
 translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
 fireBasket();
 
-translate([(profileSize * 2) + grateGap, profileSize + grateGap + grateProfileThickness, fireBasketGroundClearance + 100])
-grateFrame();
+translate([(profileSize * 2) + grateGap, profileSize + grateGap + grateProfileThickness, fireBasketGroundClearance + 180]) {
+	grateFrame();
+    translate([grateProfileThickness * 2, grateProfileThickness * 2, 0])
+    grate();
+}
+
