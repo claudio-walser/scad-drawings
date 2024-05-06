@@ -38,30 +38,19 @@ module spindlePlate() {
     }
 
     module handle() {
-        // x, y, diameter
-        radiiPoints=[
-            [0,0,10],
-            [0,handleLength,10],
-            [20,handleLength,10],
-            [20,handleWidth,100],
-            [40,handleWidth,10],
-            [40,0,10],
-        ];
 
-        difference() {
-            linear_extrude(spindlePlateThickness)
-            polygon(
-              polyRound(radiiPoints,30)
-            );
+    }
 
-            translate([0, 40, - spindlePlateThickness/2])
-            cylinder(h=spindlePlateThickness*2, d=spindleDiameter*2 + 2, $fn = 6);
+    module lock() {
+
+        hull() {
+            cylinder(d = 10, h = 8);
+
+            translate([60, 0, 0])
+            cylinder(d = 20, h = 8);
         }
-
-        // pin
-        translate([7, 7, -(spindlePlateThickness+spindlePlateGap)])
-        //translate([33, 7, -(spindlePlateThickness+2)])
-        cylinder(h=spindlePlateThickness*2+spindlePlateGap, d=4);
+        translate([60, 0, -3])
+        cylinder(d = 10, h = 11.2);
     }
 
     module screwHoles(gap = 20) {
@@ -89,8 +78,10 @@ module spindlePlate() {
        screwHoles(15);
        spindleHole();
     }
-    translate([0, -40, spindlePlateThickness + spindlePlateGap])
-    handle();
+
+    translate([50, 20, spindlePlateThickness + spindlePlateGap])
+    rotate([0, 0, 70])
+    color([90/255, 50/255, 80/255]) lock();
 
     partsList();
 }

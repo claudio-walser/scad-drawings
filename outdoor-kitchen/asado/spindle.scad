@@ -26,26 +26,29 @@ module spindle() {
         //cylinder(h=spindleDiameter, r=spindleWheelDiameter);
 
         // Aretiermutter
-        translate([0, 0, spindleDiameter])
-        cylinder(h=spindleDiameter, r=spindleDiameter, $fn = 6);
+        //translate([0, 0, spindleDiameter])
+        //cylinder(h=spindleDiameter, r=spindleDiameter, $fn = 6);
 
 
-        // Ratschenmechanismus
-        for ( i = [0 : 5] ){
-            stepMove = i * 60;
-            rotation = i * 60;
-            rotate([0, 0, -rotation])
-            
-            translate([5, 10, 0]) 
-            polygon(
-                points = [
-                     [0, 0], // 0
-                     [40, 0], // 1
-                     [0, 25], // 92
-                ]
-            );
+        // Zahnrad
+        translate([0, 0, spindleDiameter + 12])
+        difference() {
+            cylinder(d = 100, h = 8);
+
+            translate([0, 0, -5])
+            for ($angle = [0 : 18 : 360]) {
+
+                hull() {
+                    rotate([0, 0, $angle]) translate([48, 0, -0.01])
+                    cylinder(d = 10, h = 20);
+
+                    rotate([0, 0, $angle]) translate([60, 0, -0.01])
+                    cylinder(d = 20, h = 20);
+                }
+            }
+            translate([0, 0, -5])
+            cylinder(d = spindleDiameter, h = 20);
         }
-
     }
 
     partsList();

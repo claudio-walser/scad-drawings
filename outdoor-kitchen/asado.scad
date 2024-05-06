@@ -28,14 +28,14 @@ projectionGap = 200;
 
 framePartsList();
 
-difference() {
+color([65/255, 75/255, 95/255]) difference() {
 	frame();
 
     translate([profileSize-spindleOverlength, outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
     spindleHole();
 }
 
-translate([profileSize-spindleWallExtension-spindleOverlength, outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
+color([40/255, 255/255, 45/255]) translate([profileSize-spindleWallExtension-spindleOverlength, outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
 //color([0.5,0.5,0,0.2])
 spindle();
 
@@ -43,22 +43,23 @@ translate([profileSize-spindleWallExtension-spindleOverlength + (spindleDiameter
 rotate([0, -90, 0])
 spindlePlate();
 
-translate([profileSize * 2, outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
+color([85/255, 95/255, 55/255]) translate([profileSize * 2, outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
 rotate([0, 90, 0])
 spindleFlange(parts = true);
 
-mirror([1,0,0]) {
+color([85/255, 95/255, 55/255]) mirror([1,0,0]) {
     translate([profileSize * 2 - (outerWidth - fireBasketWidth), outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
     //translate([profileSize * 2, outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
     rotate([0, 90, 0])
     spindleFlange();
 }
 
-translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
+color([75/255, 70/255, 255/255]) translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
 fireBasket();
 
-translate([(profileSize * 2) + grateGap, profileSize + grateGap + grateProfileThickness, fireBasketGroundClearance + 180]) {
+color([78/255, 5/255, 1/255]) translate([(profileSize * 2) + grateGap, profileSize + grateGap + grateProfileThickness, fireBasketGroundClearance + 180]) {
 	grateFrame();
+
     translate([grateProfileThickness * 2, grateProfileThickness * 2, 0])
     grate();
 }
