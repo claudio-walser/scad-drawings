@@ -22,9 +22,6 @@ module reference() {
 
 // start csv shizzle
 echo(str("Nr;Beschreibung;Stück;Länge;Breite;Höhe"));
-projectionGap = 200;
-
-//!drawFrameProjections();
 
 framePartsList();
 

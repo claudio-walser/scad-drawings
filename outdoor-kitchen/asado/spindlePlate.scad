@@ -31,7 +31,7 @@ module spindlePlate() {
             [plateWidth, 0, 2]
         ];
 
-        linear_extrude(spindlePlateThickness)
+        #linear_extrude(spindlePlateThickness)
         polygon(
           polyRound(radiiPoints,30)
         );
