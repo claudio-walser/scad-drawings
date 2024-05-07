@@ -1,6 +1,6 @@
 outerWidth = 1500;
 outerDepth = 700;
-outerHeight = 900;
+outerHeight = 700;
 
 profileSize = 40;
 
@@ -19,5 +19,9 @@ spindlePlateGap = 2;
 grateGap = 4;
 grateSize = 30;
 grateProfileThickness = 3;
+
+lineThickness = 1;
+lineGap = 80;
+textSize = 20;
 
 $fn = 120;
