@@ -61,5 +61,8 @@
 
 
 # Vorderansicht
-#flatpak run org.openscad.OpenSCAD --projection=ortho --camera=700,0,500,0,0,0,5500 --autocenter -o ./plans/frame.png view-frame.scad
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ./plans/frame-front.svg _projection-frame-front.scad
+# Seitenansicht
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ./plans/frame-side.svg _projection-frame-side.scad
+# Draufsicht
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ./plans/frame-top.svg _projection-frame-top.scad

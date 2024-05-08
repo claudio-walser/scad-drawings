@@ -1,6 +1,6 @@
 include <../../library/profiles.scad>
 include <./config.scad>
-include <./asado/grate.scad>
+include <./grate.scad>
 
 module grateFrame() {
 
@@ -35,6 +35,7 @@ module grateFrame() {
             grateWidth,
             0
         ])
+
 
         rotate([0, 0, 180])
         lShapeProfile(grateLength, grateSize, grateProfileThickness);
