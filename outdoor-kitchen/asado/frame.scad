@@ -195,7 +195,7 @@ module measuermentLinesWidth() {
             square([lineThickness, lineGap + 20]);
 
             translate([outerHeight - fireBasketGroundClearance - fireBasketHeight - profileSize * 2, 0, 0])
-            #square([lineThickness,lineGap + 20]);
+            square([lineThickness,lineGap + 20]);
 
             translate([outerHeight - fireBasketGroundClearance - profileSize, 0, 0])
             square([lineThickness,lineGap + 20]);
@@ -208,51 +208,45 @@ module measuermentLinesWidth() {
             square([lineThickness,lineGap * 3 + 20]);
 
 
+            // top line
             translate([-20, lineGap * 3, 0]) {
                 length = outerHeight + 40;
 
-                translate([outerWidth / 2 + 190, 15, 0])
-                text(size = textSize, str(outerWidth));
+                translate([outerHeight / 2, 15, 0])
+                text(size = textSize, str(outerHeight));
 
                 square([length, lineThickness]);
             }
 
+            // middle line
             translate([-20, lineGap * 2, 0]) {
                 length = outerHeight + 40;
 
-               translate([fireBasketWidth / 2, 15, 0])
-                text(size = textSize, str(fireBasketWidth + profileSize));
+                translate([outerHeight / 2, 15, 0])
+                text(size = textSize, str(outerHeight - fireBasketGroundClearance));
 
-                translate([outerWidth / 2 + 190, 15, 0])
-                text(size = textSize, str(outerWidth - fireBasketWidth - (profileSize * 2)));
-
-                translate([outerWidth - 15, 15, 0])
-                text(size = textSize, str(profileSize));
+                translate([outerHeight - 55, 15, 0])
+                text(size = textSize, str(fireBasketGroundClearance));
 
                 square([length, lineThickness]);
             }
 
+            // bottom line
             translate([-20, lineGap, 0]) {
                 length = outerHeight + 40;
 
                 translate([25, 15, 0])
                 text(size = textSize, str(profileSize));
 
-                translate([200, 15, 0])
-                text(size = textSize, str(fireBasketWidth - profileSize));
+                translate([250, 15, 0])
+                text(size = textSize, str(outerHeight - fireBasketGroundClearance - fireBasketHeight - (profileSize * 2)));
 
-                translate([fireBasketWidth + 25, 15, 0])
+                translate([outerHeight - fireBasketHeight - 30, 15, 0])
+                text(size = textSize, str(fireBasketHeight));
+
+
+                translate([outerHeight - fireBasketHeight + 135, 15, 0])
                 text(size = textSize, str(profileSize));
-
-                translate([fireBasketWidth + 65, 15, 0])
-                text(size = textSize, str(profileSize));
-
-
-                translate([outerWidth - 55, 15, 0])
-                text(size = textSize, str(profileSize));
-
-                translate([outerWidth / 2 + 200, 15, 0])
-                text(size = textSize, str(outerWidth - fireBasketWidth - (profileSize * 4)));
 
                 square([length, lineThickness]);
             }
@@ -261,7 +255,7 @@ module measuermentLinesWidth() {
     }
 }
 
-module measermentLinesWidth() {
+module measermentLinesHeight() {
 
     color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
 
