@@ -1,6 +1,6 @@
 outerWidth = 1500;
 outerDepth = 700;
-outerHeight = 700;
+outerHeight = 900;
 
 profileSize = 40;
 
