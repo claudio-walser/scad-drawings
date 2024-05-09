@@ -2,8 +2,8 @@ drawReferences = false;
 drawReferenceWall = true;
 
 outerWidth = 1500;
-outerDepth = 700;
-outerHeight = 900;
+outerDepth = 600;
+outerHeight = 700;
 
 profileSize = 40;
 

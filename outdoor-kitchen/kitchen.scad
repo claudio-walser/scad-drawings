@@ -1,4 +1,5 @@
 include <../library/modules.scad>
+include <./asado/assembly.scad>
 
 // Fläche
 cube(size = [3750, 5250, 10]);
@@ -25,12 +26,19 @@ cube(size = [800, 5250, 900]);
 cube(size = [3750, 1000, 100]);
 
 // Wand Fussballplatz
-cube(size = [3750, 250, 1800]);
+cube(size = [3750, 250, 1000]);
 
-// Küchenzeile Fussballplatz
-translate([0, 250, 100])
-cube(size = [3750, 800, 900]);
+difference() {
+	// Küchenzeile Fussballplatz
+	translate([0, 250, 100])
+	cube(size = [3750, 800, 900]);
 
+	translate([3750 - outerWidth - spindleWallExtension * 2 - 500, 100, 850])
+	cube(size = [outerWidth + spindleWallExtension * 2, 1000, 900]);
+}
+
+translate([3750 - outerWidth - spindleWallExtension - 500, outerDepth / 2 - spindleWallExtension, 850])
+asadoFull();
 
 
 // // Wand Rasen
@@ -49,15 +57,15 @@ cube(size = [3750, 800, 900]);
 
 
 
-// Fundament Strasse
-translate([0, 5250-1000, 0])
-cube(size = [3750, 1000, 100]);
+// // Fundament Strasse
+// translate([0, 5250-1000, 0])
+// cube(size = [3750, 1000, 100]);
 
-// Wand Strasse
-translate([0, 5250-250, 0])
-cube(size = [3750, 250, 1800]);
+// // Wand Strasse
+// translate([0, 5250-250, 0])
+// cube(size = [3750, 250, 1800]);
 
-// Küchenzeile Strasse
-translate([0, 5250-800-250, 100])
-cube(size = [3750, 800, 900]);
+// // Küchenzeile Strasse
+// translate([0, 5250-800-250, 100])
+// cube(size = [3750, 800, 900]);
 
