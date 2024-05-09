@@ -18,26 +18,37 @@ module reference() {
 }
 
 module wallReference() {
-	color([255/255, 255/255, 255/255], 0.5) translate([0, -200, 0]) cube(size = [spindleWallExtension, outerDepth + 200, outerHeight + 200]);
+	color([255/255, 255/255, 255/255], 0.5) translate([0, -spindleWallExtension, 0]) {
+		// right wall
+		translate([-spindleWallExtension, 0, 0]) cube(size = [spindleWallExtension, outerDepth + spindleWallExtension, outerHeight + spindleWallExtension]);
+
+		// left wall
+		translate([outerWidth, 0, 0]) cube(size = [spindleWallExtension, outerDepth + spindleWallExtension, outerHeight + spindleWallExtension]);
+
+
+		// left wall
+		translate([0, 0, 0]) cube(size = [outerWidth, spindleWallExtension, outerHeight + spindleWallExtension]);
+
+
+	}
 }
 
 module fireBasketReference() {
-	color([255/255, 255/255, 255/255], 0.5) cube(size = [fireBasketWidth, outerDepth, outerHeight]);
+	color([255/255, 255/255, 255/255], 0.5) translate([outerWidth - fireBasketWidth, 0, 0]) cube(size = [fireBasketWidth, outerDepth, outerHeight]);
 }
 
 if (drawReferences) {
 	reference();
-	translate([-spindleWallExtension, 0, 0])
-	wallReference();
-
-	translate([outerWidth - fireBasketWidth, 0, 0])
 	fireBasketReference();
+}
+
+if (drawReferenceWall) {
+	wallReference();
 }
 
 
 // start csv header
 echo(str("Nr;Beschreibung;Stück;Länge;Breite;Höhe"));
-
 framePartsList();
 
 color([65/255, 75/255, 95/255]) difference() {
@@ -47,13 +58,11 @@ color([65/255, 75/255, 95/255]) difference() {
     spindleHole();
 }
 
-
-
-	translate([-spindleWallExtension - (spindleOverlength * 2) - (spindlePlateThickness * 2) - (spindlePlateGap * 2), outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
-	rotate([0, 90, 0]) {
-		color([40/255, 255/255, 45/255]) spindle();
-		spindleHandle();
-	}
+translate([-spindleWallExtension - (spindleOverlength * 2) - (spindlePlateThickness * 2) - (spindlePlateGap * 2), outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
+rotate([0, 90, 0]) {
+	color([40/255, 255/255, 45/255]) spindle();
+	spindleHandle();
+}
 
 translate([- spindleWallExtension, outerDepth / 2, outerHeight - profileSize - spindleDiameter - 20])
 rotate([0, -90, 0])
@@ -73,10 +82,19 @@ color([85/255, 95/255, 55/255]) mirror([1,0,0]) {
 color([75/255, 70/255, 255/255]) translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
 fireBasket();
 
-color([78/255, 5/255, 1/255]) translate([(profileSize * 2) + grateGap, profileSize + grateGap + grateProfileThickness, fireBasketGroundClearance + 180]) {
-	grateFrame();
+translate([(profileSize * 2) + grateGap, profileSize + grateGap + grateProfileThickness, fireBasketGroundClearance + 180]) {
+	color([78/255, 5/255, 1/255]) grateFrame();
 
-    translate([grateProfileThickness * 2, grateProfileThickness * 2, 0])
-    grate();
+	color([200/255, 200/255, 100/255]) {
+		// translate([grateProfileThickness * 3 + 1, grateProfileThickness * 2, grateProfileThickness])
+	    // grate();
+
+	    translate([grateProfileThickness * 3 + 1, grateProfileThickness * 2, grateProfileThickness])
+	    halfGrate();
+
+	    halfGrateLength = (outerWidth - fireBasketWidth - (profileSize * 4) - (grateGap * 4) - ((5 * grateProfileThickness))) / 2;
+	    translate([grateProfileThickness * 4 + 1 + halfGrateLength, grateProfileThickness * 2, grateProfileThickness])
+	    halfGrate();
+	}
 }
 

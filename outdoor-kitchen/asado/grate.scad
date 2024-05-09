@@ -1,11 +1,7 @@
 include <../../library/profiles.scad>
 include <./config.scad>
 
-module grate() {
-
-    grateLength = outerWidth - fireBasketWidth - (profileSize * 4) - (grateGap * 4) - ((4 * grateProfileThickness));
-    grateWidth = outerDepth - profileSize - (6 * grateProfileThickness);
-
+module grateTemplate(grateLength = 600, grateWidth = 400) {
     module partsList() {
 
     }
@@ -21,7 +17,7 @@ module grate() {
     
 
     // rippen
-    amount = floor(grateLength / 35);
+    amount = round(grateLength / 35);
     startPos = 18;
     echo(str("anzahl ", amount))
     for ( i = [0 : amount - 1] ) {
@@ -31,5 +27,17 @@ module grate() {
     }
 }
 
+module grate() {
+    grateLength = outerWidth - fireBasketWidth - (profileSize * 4) - (grateGap * 4) - ((4 * grateProfileThickness));
+    grateWidth = outerDepth - profileSize - (6 * grateProfileThickness);
 
+    grateTemplate(grateLength, grateWidth);
+}
+
+module halfGrate() {
+    halfGrateLength = (outerWidth - fireBasketWidth - (profileSize * 4) - (grateGap * 4) - ((5 * grateProfileThickness))) / 2;
+    grateWidth = outerDepth - profileSize - (6 * grateProfileThickness);
+
+    grateTemplate(halfGrateLength, grateWidth);
+}
 

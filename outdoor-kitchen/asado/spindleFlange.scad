@@ -28,10 +28,13 @@ module spindleFlange(parts = false) {
 
         // Madenschraube und Aufnahme für Stahlseil
         translate([0, 0, spindleDiameter / 2]) {
-            rotate([0, 90, 0])
-            translate([-spindleDiameter * 2, 0, -spindleDiameter - (spindleDiameter / 4)])
-            cylinder(h = spindleDiameter*3, d = drillSize);
 
+            // Bohrloch Fixierung
+            rotate([0, 90, 0])
+            translate([-spindleDiameter, 0, -spindleDiameter - (spindleDiameter / 4)])
+            cylinder(h = spindleDiameter, d = drillSize);
+
+            // Aufnahme Stahlseil
             rotate([0, 90, 90])
             translate([-spindleDiameter * 2, 0, -spindleDiameter - (spindleDiameter / 5)])
             cylinder(h = spindleDiameter*3, d = drillSize);

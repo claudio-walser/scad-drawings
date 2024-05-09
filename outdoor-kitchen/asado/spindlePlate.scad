@@ -55,7 +55,7 @@ module spindlePlate() {
         translate([60, 0, -2]) {
             difference() {
                 union() {
-                    cylinder(d = 10, h = 2);
+                    cylinder(d = 10, h = spindlePlateGap);
                     cylinder(d = 6, h = spindleHandleThickness + spindlePlateGap + 0.2);
                 }
                  cylinder(d = 3.5, h = 30);
@@ -92,7 +92,7 @@ module spindlePlate() {
     translate([50, 20, spindlePlateThickness + spindlePlateGap]) {
     rotate([0, 0, 70]) {
         color([90/255, 50/255, 80/255]) lock();
-        translate([0, 0, -0]) pin();
+        translate([0, 0, -spindlePlateGap + 2]) pin();
     }}
 
     partsList();
