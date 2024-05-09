@@ -2,8 +2,8 @@ include <./config.scad>
 include <./spindleGear.scad>
 include <./spindleHandle.scad>
 module spindle() {
-
-    spindleLength = outerWidth - fireBasketWidth - (profileSize * 2) + spindleWallExtension + (spindleOverlength * 2);
+    // + spindlePlateThickness + spindleHandleThickness
+    spindleLength = outerWidth - fireBasketWidth  + spindleWallExtension + (spindleOverlength * 2) - profileSize + spindlePlateThickness + spindleHandleThickness + (spindlePlateGap * 2);
     // short length for prototype printing
     // spindleLength = 40;
 
@@ -15,12 +15,13 @@ module spindle() {
     // Spindel
     difference() {
         cylinder(d = spindleDiameter, h = spindleLength);
+        // handle fixation
         translate([spindleDiameter * 0.75, 0, 0]) translate([-spindleDiameter/2, -spindleDiameter/2, -1]) cube([spindleDiameter, spindleDiameter, spindleHandleThickness]);
 
         translate([0, 0, -10]) cylinder(d= 3.5, h = 40);
     }
 
-    translate([0, 0, spindleDiameter + 12])
+    translate([0, 0, spindleHandleThickness + spindlePlateGap - 1])
     spindleGear();
 
     partsList();

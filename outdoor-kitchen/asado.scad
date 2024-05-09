@@ -17,10 +17,23 @@ module reference() {
 	cube(size = [outerWidth, outerDepth, outerHeight]);
 }
 
+module wallReference() {
+	color([255/255, 255/255, 255/255], 0.5) cube(size = [spindleWallExtension, outerDepth, outerHeight]);
+}
+
+module fireBasketReference() {
+	color([255/255, 255/255, 255/255], 0.5) cube(size = [fireBasketWidth, outerDepth, outerHeight]);
+}
+
 
 //reference();
+//translate([-spindleWallExtension, 0, 0])
+//wallReference();
 
-// start csv shizzle
+//translate([outerWidth - fireBasketWidth, 0, 0])
+//fireBasketReference();
+
+// start csv header
 echo(str("Nr;Beschreibung;Stück;Länge;Breite;Höhe"));
 
 framePartsList();
@@ -34,14 +47,13 @@ color([65/255, 75/255, 95/255]) difference() {
 
 
 
-	translate([profileSize-spindleWallExtension-spindleOverlength, outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
-	//color([0.5,0.5,0,0.2])
+	translate([-spindleWallExtension - (spindleOverlength * 2) - (spindlePlateThickness * 2) - (spindlePlateGap * 2), outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
 	rotate([0, 90, 0]) {
 		color([40/255, 255/255, 45/255]) spindle();
 		spindleHandle();
 	}
 
-translate([profileSize-spindleWallExtension-spindleOverlength + (spindleDiameter*2) + (spindlePlateThickness+spindlePlateGap), outerDepth / 2, outerHeight - profileSize - spindleDiameter - 20])
+translate([- spindleWallExtension, outerDepth / 2, outerHeight - profileSize - spindleDiameter - 20])
 rotate([0, -90, 0])
 spindlePlate();
 
