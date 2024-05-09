@@ -28,7 +28,6 @@ module fireBasket() {
         echo(str("62;Fillets Vorne und Hinten - Vierkantrohr ;", (numFillet+1) * 2, ";", basketHeight - basketFlatIron - basketProfileSize, ";", basketProfileSize, ";", basketProfileSize));
         echo(str("63;Flachstahl lang ;", 4, ";", outerDepth, ";", basketProfileSize, ";", basketFlatIron));
         echo(str("64;Flachstahl kurz ;", 2, ";", basketWidth + (basketFlatIron * 2), ";", basketProfileSize, ";", basketFlatIron));
-
     }
 
     module basketFrame() {
@@ -83,6 +82,15 @@ module fireBasket() {
         translate([basketWidth, 0, fireBasketHeight - basketFlatIron - (basketProfileSize * 2)])
         cube(size = [basketFlatIron, outerDepth, basketProfileSize]);
 
+        // fixation
+        translate([basketWidth / 4, profileSize + 2, - basketFlatIron])
+        rotate([-90, 0, 0])
+        lShapeProfile(basketWidth / 2, 30, 3);
+
+        translate([basketWidth / 4, outerDepth - profileSize - 2, - basketFlatIron])
+        rotate([180, 0, 0])
+        lShapeProfile(basketWidth / 2, 30, 3);
+
 
 
         if (!fireBasketFrontOpen) {
@@ -93,9 +101,6 @@ module fireBasket() {
             translate([-basketFlatIron, outerDepth, fireBasketHeight - basketFlatIron - (basketProfileSize * 2)])
             cube(size = [basketWidth + (basketFlatIron * 2), basketFlatIron, basketProfileSize]);
         }
-
-
-
     }
 
     partsList();
