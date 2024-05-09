@@ -32,9 +32,14 @@ color([65/255, 75/255, 95/255]) difference() {
     spindleHole();
 }
 
-color([40/255, 255/255, 45/255]) translate([profileSize-spindleWallExtension-spindleOverlength, outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
-//color([0.5,0.5,0,0.2])
-spindle();
+
+
+	translate([profileSize-spindleWallExtension-spindleOverlength, outerDepth/2, outerHeight - profileSize - spindleDiameter - 20])
+	//color([0.5,0.5,0,0.2])
+	rotate([0, 90, 0]) {
+		color([40/255, 255/255, 45/255]) spindle();
+		spindleHandle();
+	}
 
 translate([profileSize-spindleWallExtension-spindleOverlength + (spindleDiameter*2) + (spindlePlateThickness+spindlePlateGap), outerDepth / 2, outerHeight - profileSize - spindleDiameter - 20])
 rotate([0, -90, 0])
