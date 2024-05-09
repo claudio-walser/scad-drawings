@@ -12,26 +12,28 @@ include <./asado/grate.scad>
 module reference() {
 	// Referenz
 	translate([0, 0 - outerDepth - 300, 0])
-	cube(size = [outerWidth, outerDepth, outerHeight]);
+	color([255/255, 255/255, 255/255], 0.5) cube(size = [outerWidth, outerDepth, outerHeight]);
 	translate([0 - outerWidth - 300, 0, 0])
-	cube(size = [outerWidth, outerDepth, outerHeight]);
+	color([255/255, 255/255, 255/255], 0.5) cube(size = [outerWidth, outerDepth, outerHeight]);
 }
 
 module wallReference() {
-	color([255/255, 255/255, 255/255], 0.5) cube(size = [spindleWallExtension, outerDepth, outerHeight]);
+	color([255/255, 255/255, 255/255], 0.5) translate([0, -200, 0]) cube(size = [spindleWallExtension, outerDepth + 200, outerHeight + 200]);
 }
 
 module fireBasketReference() {
 	color([255/255, 255/255, 255/255], 0.5) cube(size = [fireBasketWidth, outerDepth, outerHeight]);
 }
 
+if (drawReferences) {
+	reference();
+	translate([-spindleWallExtension, 0, 0])
+	wallReference();
 
-//reference();
-//translate([-spindleWallExtension, 0, 0])
-//wallReference();
+	translate([outerWidth - fireBasketWidth, 0, 0])
+	fireBasketReference();
+}
 
-//translate([outerWidth - fireBasketWidth, 0, 0])
-//fireBasketReference();
 
 // start csv header
 echo(str("Nr;Beschreibung;Stück;Länge;Breite;Höhe"));

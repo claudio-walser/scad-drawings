@@ -1,3 +1,5 @@
+drawReferences = false;
+
 outerWidth = 1500;
 outerDepth = 700;
 outerHeight = 900;
