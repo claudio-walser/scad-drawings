@@ -1,5 +1,6 @@
 include <../library/modules.scad>
 include <./asado/assembly.scad>
+include <../garden/pergola.scad>
 
 // Fläche
 cube(size = [3750, 5250, 10]);
@@ -14,7 +15,7 @@ cube(size = [3750, 5250, 10]);
 cube(size = [1000, 5250, 100]);
 
 // Wand Ott
-cube(size = [250, 5250, 1800]);
+cube(size = [250, 5250, 1000]);
 
 // Küchenzeile Ott
 translate([250, 0, 100])
@@ -25,21 +26,26 @@ cube(size = [800, 5250, 900]);
 // Fundament Fussballplatz
 cube(size = [3750, 1000, 100]);
 
-// Wand Fussballplatz
-cube(size = [3750, 250, 1000]);
+
 
 difference() {
+	union() {
 	// Küchenzeile Fussballplatz
-	translate([0, 250, 100])
-	cube(size = [3750, 800, 900]);
-
+		translate([0, 250, 100])
+		cube(size = [3750, 800, 900]);
+		// Wand Fussballplatz
+		cube(size = [3750, 250, 1000]);
+	}
 	translate([3750 - outerWidth - spindleWallExtension * 2 - 500, 100, 850])
 	cube(size = [outerWidth + spindleWallExtension * 2, 1000, 900]);
 }
 
-translate([3750 - outerWidth - spindleWallExtension - 500, outerDepth / 2 - spindleWallExtension, 850])
+translate([3750 - outerWidth - spindleWallExtension - 500, spindleWallExtension, 850])
 asadoFull();
 
+
+
+pergola();
 
 // // Wand Rasen
 // translate([3500, 0, 0])

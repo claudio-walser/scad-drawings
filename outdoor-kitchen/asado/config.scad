@@ -2,7 +2,7 @@ drawReferences = false;
 drawReferenceWall = true;
 
 outerWidth = 1500;
-outerDepth = 600;
+outerDepth = 700;
 outerHeight = 700;
 
 profileSize = 40;
