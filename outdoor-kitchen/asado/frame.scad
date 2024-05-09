@@ -1,4 +1,5 @@
 include <./config.scad>
+include <../../library/profiles.scad>
 
 module frame() {
     // Rahmen
@@ -71,6 +72,29 @@ module frame() {
     // Stütze Links
     translate([outerWidth - fireBasketWidth - (profileSize * 2), (outerDepth/2) - (profileSize/2), fireBasketGroundClearance])
     cube(size = [profileSize, profileSize, outerHeight - fireBasketGroundClearance]);
+
+    // Halter
+    distance = (outerWidth - fireBasketWidth - (profileSize * 2)) / 5 + 10;
+    translate([0, -30, 0])
+    rotate([-15, 0, 0])
+    translate([20, 0, fireBasketGroundClearance + profileSize]) {
+        translate([distance * 1, 0, 0])
+        rotate([0, -90, 0])
+        squareTubeProfile(profileSize, 20, 2);
+
+        translate([distance * 2, 0, 0])
+        rotate([0, -90, 0])
+        squareTubeProfile(profileSize, 20, 2);
+
+        translate([distance * 3, 0, 0])
+        rotate([0, -90, 0])
+        squareTubeProfile(profileSize, 20, 2);
+
+        translate([distance * 4, 0, 0])
+        rotate([0, -90, 0])
+        squareTubeProfile(profileSize, 20, 2);
+    }
+
 }
 
 module framePartsList() {
