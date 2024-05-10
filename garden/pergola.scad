@@ -39,24 +39,24 @@ module pergola() {
 
 
 			// 45 supports
-			translate([0, 100, height-707])
+			translate([0, 110, height-707])
 			rotate([45, 0, 0])
 			cube(size=[thickness, 1000, thickness]);
 
 
-			translate([pergolaLength-thickness, 100, height-707])
+			translate([pergolaLength-thickness, 110, height-707])
 			rotate([45, 0, 0])
 			cube(size=[thickness, 1000, thickness]);
 
 
 			translate([pergolaLength, pergolaWidth, 0])
 			rotate(180) {
-				translate([0, 100, height-707])
+				translate([0, 110, height-707])
 				rotate([45, 0, 0])
 				cube(size=[thickness, 1000, thickness]);
 
 
-				translate([pergolaLength-thickness, 100, height-707])
+				translate([pergolaLength-thickness, 110, height-707])
 				rotate([45, 0, 0])
 				cube(size=[thickness, 1000, thickness]);
 			}

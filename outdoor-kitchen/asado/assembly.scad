@@ -18,7 +18,7 @@ module asadoFull() {
 	}
 
 	module wallReference() {
-		color([255/255, 255/255, 255/255], 0.5) translate([0, -spindleWallExtension, 0]) {
+		color([255/255, 255/255, 255/255]) translate([0, -spindleWallExtension, 0]) {
 			// right wall
 			translate([-spindleWallExtension, 0, 0]) cube(size = [spindleWallExtension, outerDepth + spindleWallExtension, outerHeight + spindleWallExtension]);
 
