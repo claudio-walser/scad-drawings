@@ -41,11 +41,9 @@ difference() {
 }
 
 translate([3750 - outerWidth - spindleWallExtension - 500, spindleWallExtension, 850])
+
 asadoFull();
-
-
-
-pergola();
+color([204/255, 138/255, 63/255]) pergola();
 
 // // Wand Rasen
 // translate([3500, 0, 0])
