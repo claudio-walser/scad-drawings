@@ -2,18 +2,20 @@ module pergola() {
 	floorWidth = 5250;
 	floorLength = 3750;
 
-	floorToPergolaOverlap = 100;
+	floorToPergolaOverlap = 20;
 
 	pergolaWidth = floorWidth-floorToPergolaOverlap;
 	pergolaLength = floorLength-floorToPergolaOverlap;
 
-	thickness = 150;
+	thickness = 125;
+	beamThickness = 170;
+	roofThickness = 100;
 	height = 2300;
 	beamOverlap = 200;
 	roofOverlap = 200;
-	roofGap = 80;
+	roofGap = 200;
 	roofToBeamOverlap = 100;
-
+	outerWidth = pergolaWidth+beamOverlap+beamOverlap;
 
 	echo(str("Nr;Beschreibung;Stück;Länge;Breite;Höhe"));
 
@@ -66,20 +68,23 @@ module pergola() {
 
 			// beams
 			translate([0, -beamOverlap, height])
-			cube(size=[thickness, pergolaWidth+beamOverlap+beamOverlap, thickness]);
+			cube(size=[thickness, pergolaWidth+beamOverlap+beamOverlap, beamThickness]);
 
 			translate([pergolaLength-thickness, -beamOverlap, height])
-			cube(size=[thickness, pergolaWidth+beamOverlap+beamOverlap, thickness]);
+			cube(size=[thickness, pergolaWidth+beamOverlap+beamOverlap, beamThickness]);
 
 		   echo(str("3;Träger ;", 2, ";", pergolaWidth+beamOverlap+beamOverlap, ";", thickness, ";", thickness));
 
 			// roof
-			for ( i = [1 : 49] ){
-				currentOverlap = (i * roofGap) - beamOverlap + (i*30);
-				translate([-roofOverlap, currentOverlap, height+50])
-				cube(size=[pergolaLength+roofOverlap+roofOverlap, 30, thickness]);
+			amount = floor(outerWidth / (roofGap + 30)) - 1;
+			echo(str("Anzahl Dachbalken ;",amount));
+			realGap = (outerWidth - (amount * 30)) / (amount + 1);
+			for ( i = [1 : amount] ) {
+				currentOverlap = (i * realGap) - beamOverlap + (i * 30);
+				translate([-roofOverlap, currentOverlap, height+125])
+				cube(size=[pergolaLength+roofOverlap+roofOverlap, 30, roofThickness]);
 			}
-		   echo(str("4;Dach ;", 48, ";", pergolaLength+roofOverlap+roofOverlap, ";", thickness, ";", 30));
+		    echo(str("4;Dach ;", 48, ";", pergolaLength+roofOverlap+roofOverlap, ";", thickness, ";", 30));
 
 		}
 	}
