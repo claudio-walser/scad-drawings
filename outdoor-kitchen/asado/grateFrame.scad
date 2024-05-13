@@ -2,11 +2,17 @@ include <../../library/profiles.scad>
 include <./config.scad>
 include <./grate.scad>
 
+
+grateLength = outerWidth - fireBasketWidth - (profileSize * 4) - (grateGap * 4);
+grateWidth = outerDepth - profileSize - (2 * grateProfileThickness);
+
+trayThickness = 3;
+trayWidth = 60;
+
 module grateFrame() {
 
 
-    grateLength = outerWidth - fireBasketWidth - (profileSize * 4) - (grateGap * 4);
-    grateWidth = outerDepth - profileSize - (2 * grateProfileThickness);
+
 
     module partsList() {
 
@@ -35,11 +41,10 @@ module grateFrame() {
             grateWidth,
             0
         ])
-
-
         rotate([0, 0, 180])
         lShapeProfile(grateLength, grateSize, grateProfileThickness);
 
+        // Führungen seitlich
         translate([0, (grateWidth / 2) - ((profileSize + 10) - 1), 0])
         rotate([0, 270, 0])
         uShapeProfile(fireBasketGroundClearance - 20, profileSize + 10, 4);
@@ -51,5 +56,46 @@ module grateFrame() {
     }
 }
 
+module collectingTrayMount() {
+        translate([0, -trayThickness, 0])
+        cube([trayWidth / 3, trayWidth + trayThickness * 2, trayThickness]);
+
+        translate([0, -trayThickness, 0])
+        cube([trayWidth / 3,  trayThickness,  trayWidth + trayThickness * 2]);
+
+        translate([0, trayWidth, 0])
+        cube([trayWidth / 3,  trayThickness,  trayWidth  / 3]);
+
+        translate([0, -trayThickness * 3, trayWidth + trayThickness])
+        cube([trayWidth / 3,  trayThickness * 3,  trayThickness]);
+
+        translate([0, -trayThickness * 3, trayWidth - trayWidth / 3 + trayThickness * 2])
+        cube([trayWidth / 3,  trayThickness,  trayWidth / 3]);
+}
+
+module collectingTray() {
 
 
+    uShapeProfile(grateLength, trayWidth, trayThickness);
+
+    cube([trayThickness, trayWidth, trayWidth]);
+
+    translate([grateLength - trayThickness, 0, 0])
+    cube([trayThickness, trayWidth, trayWidth]);
+
+
+
+    translate([0, 0, -trayThickness]) {
+
+        translate([50, 0, 0])
+        collectingTrayMount();
+
+        translate([grateLength - (50 + trayWidth / 3), 0, 0])
+        collectingTrayMount();
+
+        translate([grateLength / 2 - ((trayWidth / 3) / 2), 0, 0])
+        collectingTrayMount();
+
+    }
+
+}
