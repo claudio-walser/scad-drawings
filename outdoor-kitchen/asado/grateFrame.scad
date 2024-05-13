@@ -75,18 +75,18 @@ module collectingTrayMount() {
 
 module collectingTray() {
 
+    color([144/255, 238/255, 144/255]) {
+        uShapeProfile(grateLength, trayWidth, trayThickness);
 
-    uShapeProfile(grateLength, trayWidth, trayThickness);
+        cube([trayThickness, trayWidth, trayWidth]);
 
-    cube([trayThickness, trayWidth, trayWidth]);
-
-    translate([grateLength - trayThickness, 0, 0])
-    cube([trayThickness, trayWidth, trayWidth]);
-
+        translate([grateLength - trayThickness, 0, 0])
+        cube([trayThickness, trayWidth, trayWidth]);
+    }
 
 
-    translate([0, 0, -trayThickness]) {
 
+    color([173/255, 216/255, 230/255]) translate([0, 0, -trayThickness]) {
         translate([50, 0, 0])
         collectingTrayMount();
 
@@ -95,7 +95,6 @@ module collectingTray() {
 
         translate([grateLength / 2 - ((trayWidth / 3) / 2), 0, 0])
         collectingTrayMount();
-
     }
 
 }
