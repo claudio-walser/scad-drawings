@@ -91,7 +91,7 @@ module asadoFull() {
 
 		color([200/255, 200/255, 100/255]) {
 			// translate([grateProfileThickness * 3 + 1, grateProfileThickness * 2, grateProfileThickness])
-		    // grate();
+			// grate();
 
 		    translate([grateProfileThickness * 3 + 1, grateProfileThickness * 2, grateProfileThickness])
 		    halfGrate();
@@ -101,6 +101,4 @@ module asadoFull() {
 		    halfGrate();
 		}
 	}
-
-
 }

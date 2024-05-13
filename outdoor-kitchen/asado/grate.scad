@@ -23,7 +23,7 @@ module grateTemplate(grateLength = 600, grateWidth = 400) {
     for ( i = [0 : amount - 1] ) {
         translate([(i * 35) + startPos, 0, 45])
         rotate([45, 0.5, 90])
-        lShapeProfile(grateWidth + 20, 20, 2);
+        lShapeProfile(grateWidth + 30, 20, 2);
     }
 }
 
