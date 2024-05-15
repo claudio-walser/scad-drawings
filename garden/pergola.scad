@@ -10,9 +10,10 @@ module pergola() {
 	thickness = 125;
 	beamThickness = 170;
 	roofThickness = 100;
-	height = 2300;
+	height = 2275;
 	beamOverlap = 200;
 	roofOverlap = 200;
+	roofLeftOverlap = 500;
 	roofGap = 200;
 	roofToBeamOverlap = 100;
 	outerWidth = pergolaWidth+beamOverlap+beamOverlap;
@@ -41,24 +42,24 @@ module pergola() {
 
 
 			// 45 supports
-			translate([0, 110, height-707])
+			translate([0, 110, height-685])
 			rotate([45, 0, 0])
 			cube(size=[thickness, 1000, thickness]);
 
 
-			translate([pergolaLength-thickness, 110, height-707])
+			translate([pergolaLength-thickness, 110, height-685])
 			rotate([45, 0, 0])
 			cube(size=[thickness, 1000, thickness]);
 
 
 			translate([pergolaLength, pergolaWidth, 0])
 			rotate(180) {
-				translate([0, 110, height-707])
+				translate([0, 110, height-685])
 				rotate([45, 0, 0])
 				cube(size=[thickness, 1000, thickness]);
 
 
-				translate([pergolaLength-thickness, 110, height-707])
+				translate([pergolaLength-thickness, 110, height-685])
 				rotate([45, 0, 0])
 				cube(size=[thickness, 1000, thickness]);
 			}
@@ -73,18 +74,17 @@ module pergola() {
 			translate([pergolaLength-thickness, -beamOverlap, height])
 			cube(size=[thickness, pergolaWidth+beamOverlap+beamOverlap, beamThickness]);
 
-		   echo(str("3;Träger ;", 2, ";", pergolaWidth+beamOverlap+beamOverlap, ";", thickness, ";", thickness));
+		   echo(str("3;Träger ;", 2, ";", pergolaWidth+beamOverlap+beamOverlap, ";", thickness, ";", beamThickness));
 
 			// roof
 			amount = floor(outerWidth / (roofGap + 30)) - 1;
-			echo(str("Anzahl Dachbalken ;",amount));
 			realGap = (outerWidth - (amount * 30)) / (amount + 1);
 			for ( i = [1 : amount] ) {
 				currentOverlap = (i * realGap) - beamOverlap + (i * 30);
 				translate([-roofOverlap, currentOverlap, height+125])
-				cube(size=[pergolaLength+roofOverlap+roofOverlap, 30, roofThickness]);
+				cube(size=[pergolaLength+roofOverlap+roofLeftOverlap, 30, roofThickness]);
 			}
-		    echo(str("4;Dach ;", 48, ";", pergolaLength+roofOverlap+roofOverlap, ";", thickness, ";", 30));
+		    echo(str("4;Dach ;", amount, ";", pergolaLength+roofOverlap+roofOverlap, ";", thickness, ";", 30));
 
 		}
 	}
