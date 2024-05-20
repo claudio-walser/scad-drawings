@@ -82,3 +82,8 @@ rotate([0, 0, -90]) {
 
 cube(size=[depth, depth, 2360]);
 echo(str("8.1;Stützpfosten ;", 1, ";", 2360, ";", depth, ";", depth));
+
+
+translate([50, 200, 161.5])
+rotate([0, -45, 0])
+#cube([100, 25, 28.5]);

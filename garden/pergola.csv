@@ -1,5 +1,6 @@
 Nr,Beschreibung,Stück,Länge,Breite,Höhe
 1,Stützen ,4,2400,125,125
-2,Verstärkungen ,4,1000,125,125
-3,Träger ,2,5630,125,170
-4,Dach ,24,4130,125,30
+2,Kopfbänder ,4,1000,125,125
+3,Träger ,2,4900,125,170
+3.1,Trägerverlängerung ,4,665,125,170
+4,Dach ,23,4130,125,30
