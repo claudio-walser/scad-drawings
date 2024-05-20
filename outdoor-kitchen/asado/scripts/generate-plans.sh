@@ -60,9 +60,28 @@
 
 
 
+# 3D Ansicht
+echo "Generate 3D View"
+flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,60,0,200,0 -o ../plans/frame.png ../_view-frame.scad
+
+echo ""
+echo "Generate Parts List"
+# Stückliste
+flatpak run org.openscad.OpenSCAD  --export-format echo --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,60,0,200,0 -o ../plans/frame-parts.csv ../_view-frame.scad
+sed -i 's/ECHO: "//g' ../plans/frame-parts.csv
+sed -i 's/"//g' ../plans/frame-parts.csv
+flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans ../plans/frame-parts.csv
+
+echo ""
+echo "Generate Front Plan"
 # Vorderansicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/frame-front.svg ../_projection-frame-front.scad
+
+echo ""
+echo "Generate Side Plan"
 # Seitenansicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/frame-side.svg ../_projection-frame-side.scad
-# Draufsicht
+
+echo ""
+echo "Generate Front Plan"# Draufsicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/frame-top.svg ../_projection-frame-top.scad

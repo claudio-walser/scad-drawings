@@ -101,32 +101,39 @@ module framePartsList() {
     // TODO: draw the parts as in the part list, its messy right now, the list is correct
     // TODO: Second drilling in the middle of the height for hog roast
     // TODO: backholder for chickens or other stuff
+    echo(str("Nr,Beschreibung,Stück,Länge,Breite,Höhe"));
+
     // Träger
-    echo(str("1;Träger - Gehrung beidseitig", ";", "1", ";", outerWidth - fireBasketWidth - (profileSize * 2), ";", profileSize, ";", profileSize));
+    echo(str("1,Träger - Gehrung beidseitig", ",", "1", ",", outerWidth - fireBasketWidth - (profileSize * 2), ",", profileSize, ",", profileSize));
     // Stützen
-    echo(str("2;Stützen - Gehrung einseitig / 22mm Bohrung für Spindel", ";", "2", ";", outerHeight, ";", profileSize, ";", profileSize));
+    echo(str("2,Stützen - Gehrung einseitig / 22mm Bohrung für Spindel", ",", "2", ",", outerHeight, ",", profileSize, ",", profileSize));
 
     // Füsse
-    echo(str("3;Fuss Rechts Hinten - Stumpf", ";", "1", ";", fireBasketGroundClearance, ";", profileSize, ";", profileSize));
-    echo(str("4;Fuss Rechts Vorne - Gehrung einseitig", ";", "1", ";", fireBasketGroundClearance + profileSize, ";", profileSize, ";", profileSize));
+    echo(str("3,Fuss Rechts Hinten - Stumpf", ",", "1", ",", fireBasketGroundClearance, ",", profileSize, ",", profileSize));
+    echo(str("4,Fuss Rechts Vorne - Gehrung einseitig", ",", "1", ",", fireBasketGroundClearance + profileSize, ",", profileSize, ",", profileSize));
 
     // Rahmen rechts
-    echo(str("6;Rahmen rechts - Gehrung beidseit / Gehrung einmal 90° gedreht für Fuss", ";", "1", ";", outerDepth, ";", profileSize, ";", profileSize));
+    echo(str("6,Rahmen rechts - Gehrung beidseit / Gehrung einmal 90° gedreht für Fuss", ",", "1", ",", outerDepth, ",", profileSize, ",", profileSize));
 
     // Rahmen hinten
-    echo(str("7;Rahmen hinten - Gehrung einseitig", ";", "1", ";", outerWidth - fireBasketWidth - profileSize, ";", profileSize, ";", profileSize));
+    echo(str("7,Rahmen hinten - Gehrung einseitig", ",", "1", ",", outerWidth - fireBasketWidth - profileSize, ",", profileSize, ",", profileSize));
 
     // Korbhalter
     // Füsse lang
-    echo(str("8;Füsse Links - Gehrung einseitig", ";", "2", ";", fireBasketGroundClearance + profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
+    echo(str("8,Füsse Links - Gehrung einseitig", ",", "2", ",", fireBasketGroundClearance + profileSize + profileSize + fireBasketHeight, ",", profileSize, ",", profileSize));
     // Füsse kurz
-    echo(str("9;Füsse Mitte - Gehrung beidseitig", ";", "2", ";", profileSize + profileSize + fireBasketHeight, ";", profileSize, ";", profileSize));
+    echo(str("9,Füsse Mitte - Gehrung beidseitig", ",", "2", ",", profileSize + profileSize + fireBasketHeight, ",", profileSize, ",", profileSize));
     // Querstreben Gehrung
-    echo(str("10;Querstreben lang - Gehrung beidseitig", ";", "3", ";", outerDepth, ";", profileSize, ";", profileSize));
+    echo(str("10,Querstreben lang - Gehrung beidseitig", ",", "3", ",", outerDepth, ",", profileSize, ",", profileSize));
     // Querstrebe Stumpf
-    echo(str("11;Querstrebe kurz - Stump", ";", "1", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
+    echo(str("11,Querstrebe kurz - Stumpf", ",", "1", ",", outerDepth - (profileSize * 2), ",", profileSize, ",", profileSize));
     // Stege
-    echo(str("12;Stege kurz - Stump", ";", "2", ";", outerDepth - (profileSize * 2), ";", profileSize, ";", profileSize));
+    echo(str("12,Stege kurz - Stumpf", ",", "2", ",", outerDepth - (profileSize * 2), ",", profileSize, ",", profileSize));
+
+
+    // Aufnahmen Grillstangen
+    echo(str("12,Aufnahmen Grillstangen / 15° schräg", ",", "4", ",", profileSize, ",", 20, ",", 20));
+
 }
 
 module measuermentLinesLength() {
@@ -213,10 +220,15 @@ module measermentLinesHeight() {
 
         color([0/255, 0/255, 0/255])  {
             translate([0, 100, 0]) {
-                square([lineThickness,lineGap * 3 + 20]);
+
+                translate([0, -lineGap, 0])
+                square([lineThickness,lineGap * 4 + 20]);
 
                 translate([profileSize, 0, 0])
                 square([lineThickness, lineGap + 20]);
+
+                translate([profileSize + spindleDiameter + 20, -lineGap -outerWidth + fireBasketWidth, 0])
+                #square([lineThickness, lineGap + 20 + outerWidth - fireBasketWidth - 20 * 2]);
 
                 translate([outerHeight - fireBasketGroundClearance - fireBasketHeight - profileSize * 2, 0, 0])
                 square([lineThickness,lineGap + 20]);
@@ -274,6 +286,22 @@ module measermentLinesHeight() {
 
                     square([length, lineThickness]);
                 }
+
+
+                // bore line
+                #translate([-20, -40, 0]) {
+                    length = profileSize + 40 + spindleDiameter + 20;
+
+                    translate([40, 15, 0])
+                    text(size = textSize, str(profileSize + spindleDiameter + 20));
+
+                    translate([profileSize * 2 + spindleDiameter + 40, -lineGap, 0])
+                    rotate([0, 0, 90])
+                    text(size = textSize, str("Bohrung Ø", spindleDiameter + 1));
+
+                    square([length, lineThickness]);
+                }
+
             }
         }
 }
