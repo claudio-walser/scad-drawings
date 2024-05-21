@@ -1,34 +1,41 @@
 include <./config.scad>
+include <../../library/profiles.scad>
+
+
+basketClearance = 5;
+basketFlatIron = 3;
+totalClearance = basketClearance + basketFlatIron;
+basketFrameGap = 60;
+basketProfileSize = profileSize / 2;
+basketWidth = fireBasketWidth - (profileSize) - (totalClearance * 2);
+basketHeight = fireBasketHeight + (profileSize);
+
+// calculations
+idealGap = basketFrameGap + basketProfileSize;
+numRips = floor(outerDepth / idealGap);
+ripGap = (outerDepth - basketProfileSize) / numRips;
+
+
+filletWidth = basketWidth - (basketProfileSize * 2) - (totalClearance * 2);
+numFillet = floor((filletWidth) / idealGap);
+filletGap = (filletWidth - basketProfileSize ) / numFillet;
+
+
+
+module fireBasketPartsList() {
+    // FireBasket
+    echo(str("Nr,Beschreibung,Stück,Länge,Breite,Höhe"));
+
+    echo(str("60,Feuerkorb Seitlich - Vierkantrohr,", numRips * 2, ",", basketHeight - basketFlatIron, ",", basketProfileSize, ",", basketProfileSize));
+    echo(str("61,Feuerkorb Unten - Vierkantrohr ,", numRips, ",", basketWidth, ",", basketProfileSize, ",", basketProfileSize));
+    echo(str("62,Fillets Vorne und Hinten - Vierkantrohr ,", (numFillet+1) * 2, ",", basketHeight - basketFlatIron - basketProfileSize, ",", basketProfileSize, ",", basketProfileSize));
+    echo(str("63,Flachstahl lang ,", 4, ",", outerDepth, ",", basketProfileSize, ",", basketFlatIron));
+    echo(str("64,Flachstahl kurz ,", 2, ",", basketWidth + (basketFlatIron * 2), ",", basketProfileSize, ",", basketFlatIron));
+    echo(str("64,Winkelprofil - Fixierung ,", 2, ",", basketWidth, ",", 30, ",", 30));
+}
 
 module fireBasket() {
 
-    basketClearance = 5;
-    basketFlatIron = 3;
-    totalClearance = basketClearance + basketFlatIron;
-    basketFrameGap = 60;
-    basketProfileSize = profileSize / 2;
-    basketWidth = fireBasketWidth - (profileSize) - (totalClearance * 2);
-    basketHeight = fireBasketHeight + (profileSize);
-
-    // calculations
-    idealGap = basketFrameGap + basketProfileSize;
-    numRips = floor(outerDepth / idealGap);
-    ripGap = (outerDepth - basketProfileSize) / numRips;
-
-
-    filletWidth = basketWidth - (basketProfileSize * 2) - (totalClearance * 2);
-    numFillet = floor((filletWidth) / idealGap);
-    filletGap = (filletWidth - basketProfileSize ) / numFillet;
-
-
-    module partsList() {
-        // Spindelplatte
-        echo(str("60;Feuerkorb Seitlich - Vierkantrohr;", numRips * 2, ";", basketHeight - basketFlatIron, ";", basketProfileSize, ";", basketProfileSize));
-        echo(str("61;Feuerkorb Unten - Vierkantrohr ;", numRips, ";", basketWidth, ";", basketProfileSize, ";", basketProfileSize));
-        echo(str("62;Fillets Vorne und Hinten - Vierkantrohr ;", (numFillet+1) * 2, ";", basketHeight - basketFlatIron - basketProfileSize, ";", basketProfileSize, ";", basketProfileSize));
-        echo(str("63;Flachstahl lang ;", 4, ";", outerDepth, ";", basketProfileSize, ";", basketFlatIron));
-        echo(str("64;Flachstahl kurz ;", 2, ";", basketWidth + (basketFlatIron * 2), ";", basketProfileSize, ";", basketFlatIron));
-    }
 
     module basketFrame() {
 
@@ -102,7 +109,5 @@ module fireBasket() {
             cube(size = [basketWidth + (basketFlatIron * 2), basketFlatIron, basketProfileSize]);
         }
     }
-
-    partsList();
 
 }

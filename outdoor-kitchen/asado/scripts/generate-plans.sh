@@ -60,17 +60,19 @@
 
 
 
+### Frame
+
 # 3D Ansicht
 echo "Generate 3D View"
 flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,80,0,200,0 -o ../plans/frame/frame.png ../_view-frame.scad
 
 echo ""
-echo "Generate Parts List"
+echo "Generate Frame Parts List"
 # Stückliste
 flatpak run org.openscad.OpenSCAD  --export-format echo --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,40,0,200,0 -o ../plans/frame/frame-parts.csv ../_view-frame.scad
 sed -i 's/ECHO: "//g' ../plans/frame/frame-parts.csv
 sed -i 's/"//g' ../plans/frame/frame-parts.csv
-flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans ../plans/frame/frame-parts.csv
+flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans/frame ../plans/frame/frame-parts.csv
 
 echo ""
 echo "Generate Front Plan"
@@ -85,3 +87,18 @@ flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewa
 echo ""
 echo "Generate Front Plan"# Draufsicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/frame/frame-top.svg ../_projection-frame-top.scad
+
+
+### Firebasket
+# 3D Ansicht
+
+echo "Generate 3D View"
+flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,70,0,210,0 -o ../plans/fireBasket/fireBasket.png ../_view-fireBasket.scad
+
+echo ""
+echo "Generate FireBasket Parts List"
+# Stückliste
+flatpak run org.openscad.OpenSCAD  --export-format echo --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,40,0,200,0 -o ../plans/fireBasket/fireBasket-parts.csv ../_view-fireBasket.scad
+sed -i 's/ECHO: "//g' ../plans/fireBasket/fireBasket-parts.csv
+sed -i 's/"//g' ../plans/fireBasket/fireBasket-parts.csv
+flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans/fireBasket ../plans/fireBasket/fireBasket-parts.csv
