@@ -84,8 +84,9 @@ echo "Generate Frame Side Plan"
 # Seitenansicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/frame/frame-side.svg ../_projection-frame-side.scad
 
+# Draufsicht
 echo ""
-echo "Generate Frame Top Plan"# Draufsicht
+echo "Generate Frame Top Plan"
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/frame/frame-top.svg ../_projection-frame-top.scad
 
 
@@ -112,3 +113,9 @@ echo ""
 echo "Generate FireBasket Side Plan"
 # Vorderansicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireBasket/fireBasket-side.svg ../_projection-fireBasket-side.scad
+
+# Draufsicht
+echo ""
+echo "Generate FireBasket Top Plan"
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireBasket/fireBasket-top.svg ../_projection-fireBasket-top.scad
+

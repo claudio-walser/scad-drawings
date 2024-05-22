@@ -15,7 +15,6 @@ idealGap = basketFrameGap + basketProfileSize;
 numRips = floor(outerDepth / idealGap);
 ripGap = (outerDepth - basketProfileSize) / numRips;
 
-
 filletWidth = basketWidth - (basketProfileSize * 2) - (totalClearance * 2);
 numFillet = floor((filletWidth) / idealGap);
 filletGap = (filletWidth - basketProfileSize ) / numFillet;
@@ -50,7 +49,6 @@ module fireBasket() {
         translate([0, 0, basketProfileSize])
         cube(size = [basketProfileSize, basketProfileSize, basketHeight - basketFlatIron - basketProfileSize]);
     }
-
 
     translate([totalClearance, 0, basketFlatIron]){
         // all frames
@@ -274,6 +272,118 @@ module fireBasketMeasermentLinesHeight() {
 }
 
 
+
+module fireBasketMeasuermentLinesWidth() {
+    color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
+        // ribs not rips 🙈
+        for ( i = [0 : numRips] ){
+            if (i == 0) {
+                // first line longer
+                stepMove = i * ripGap;
+                translate([stepMove, 0, 0])
+                square([lineThickness, lineGap * 2 + 20]);
+
+                translate([stepMove + basketProfileSize, 0, 0])
+                square([lineThickness, lineGap + 20]);
+            } else if(i == numRips) {
+                // last line longer
+                stepMove = i * ripGap;
+                translate([stepMove, 0, 0])
+                square([lineThickness, lineGap+ 20]);
+
+                translate([stepMove + basketProfileSize, 0, 0])
+                square([lineThickness, lineGap * 2 + 20]);
+            } else {
+                stepMove = i * ripGap;
+                translate([stepMove, 0, 0])
+                square([lineThickness, lineGap+ 20]);
+
+                translate([stepMove + basketProfileSize, 0, 0])
+                square([lineThickness, lineGap + 20]);
+            }
+        }
+
+        // below measurement lines
+        translate([0, -basketHeight - lineGap * 3 - 20, 0])
+        square([lineThickness, lineGap + 20]);
+
+
+        translate([profileSize + basketFlatIron, -basketHeight - lineGap * 3 - 20, 0])
+        square([lineThickness, lineGap + 20]);
+
+        translate([profileSize + basketFlatIron + 30, -basketHeight - lineGap * 3 - 20, 0])
+        square([lineThickness, lineGap + 20]);
+
+
+
+        translate([outerDepth - profileSize - basketFlatIron - 30, -basketHeight - lineGap * 3 - 20, 0])
+        square([lineThickness, lineGap + 20]);
+
+        translate([outerDepth - profileSize - basketFlatIron, -basketHeight - lineGap * 3 - 20, 0])
+        square([lineThickness, lineGap + 20]);
+
+
+
+
+        translate([outerDepth, -basketHeight - lineGap * 3 - 20, 0])
+        square([lineThickness, lineGap + 20]);
+
+
+
+        // top line
+        translate([-20, lineGap * 2, 0]) {
+            length = outerDepth + 40;
+
+            translate([outerDepth / 2, 15, 0])
+            text(size = textSize, str(outerDepth));
+
+            square([length, lineThickness]);
+        }
+
+        // bottom line
+        translate([-20, lineGap, 0]) {
+            length = outerDepth + 40;
+
+            for ( i = [0 : numRips] ){
+                stepMove = i * ripGap;
+                translate([stepMove + 15, 15, 0])
+                text(size = textSize, str(20));
+
+                if (i < numRips) {
+                    translate([stepMove + 55, 15, 0])
+                    text(size = textSize, str(ripGap-basketProfileSize));
+                }
+
+            }
+
+            square([length, lineThickness]);
+        }
+
+
+        // below line
+        translate([-20, -basketHeight - lineGap * 3, 0]) {
+            length = outerDepth + 40;
+
+            translate([(profileSize + basketFlatIron) / 2 + 5, 15, 0])
+            text(size = textSize, str(profileSize + basketFlatIron));
+
+            translate([(profileSize * 2) - 15, 15, 0])
+            text(size = textSize, str(30));
+
+            translate([(outerDepth - profileSize * 2) + 25, 15, 0])
+            text(size = textSize, str(30));
+
+            translate([outerDepth - 15, 15, 0])
+            text(size = textSize, str(profileSize + basketFlatIron));
+
+            square([length, lineThickness]);
+        }
+
+
+    }
+}
+
+
 module drawFireBasketFrontProjection() {
 
     // Vorne
@@ -287,10 +397,22 @@ module drawFireBasketFrontProjection() {
 module drawFireBasketSideProjection() {
     translate([outerDepth, - basketHeight, 0])
     // // Seite
-    rotate([0,0,90])
+    rotate([0, 0, 90])
     projection() {
         translate([0, 0, 0])
-        rotate([0,90,0])
+        rotate([0, 90, 0])
         fireBasket();
     }
+}
+
+module drawFireBasketTopProjection() {
+
+
+    // // Draufsicht
+    translate([fireBasketWidth - profileSize - basketFlatIron - 2, 0, 0])
+    projection() {
+        rotate([0,0,180])
+        fireBasket();
+    }
+
 }
