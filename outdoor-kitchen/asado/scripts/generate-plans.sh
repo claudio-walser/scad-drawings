@@ -75,17 +75,17 @@ sed -i 's/"//g' ../plans/frame/frame-parts.csv
 flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans/frame ../plans/frame/frame-parts.csv
 
 echo ""
-echo "Generate Front Plan"
+echo "Generate Frame Front Plan"
 # Vorderansicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/frame/frame-front.svg ../_projection-frame-front.scad
 
 echo ""
-echo "Generate Side Plan"
+echo "Generate Frame Side Plan"
 # Seitenansicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/frame/frame-side.svg ../_projection-frame-side.scad
 
 echo ""
-echo "Generate Front Plan"# Draufsicht
+echo "Generate Frame Top Plan"# Draufsicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/frame/frame-top.svg ../_projection-frame-top.scad
 
 
@@ -102,3 +102,8 @@ flatpak run org.openscad.OpenSCAD  --export-format echo --imgsize 1920,1080 --vi
 sed -i 's/ECHO: "//g' ../plans/fireBasket/fireBasket-parts.csv
 sed -i 's/"//g' ../plans/fireBasket/fireBasket-parts.csv
 flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans/fireBasket ../plans/fireBasket/fireBasket-parts.csv
+
+echo ""
+echo "Generate FireBasket Front Plan"
+# Vorderansicht
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireBasket/fireBasket-front.svg ../_projection-fireBasket-front.scad

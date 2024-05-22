@@ -34,8 +34,8 @@ module fireBasketPartsList() {
     echo(str("64,Winkelprofil - Fixierung ,", 2, ",", basketWidth, ",", 30, ",", 30));
 }
 
-module fireBasket() {
 
+module fireBasket() {
 
     module basketFrame() {
 
@@ -110,4 +110,99 @@ module fireBasket() {
         }
     }
 
+}
+
+module drawFireBasketFrontProjection() {
+
+    // Vorne
+    translate([fireBasketWidth - profileSize - totalClearance + basketFlatIron, -fireBasketHeight - 30 - totalClearance - basketFlatIron + 1, 0])
+    projection() {
+        rotate([90,0,180])
+        fireBasket();
+    }
+}
+
+module fireBasketMeasuermentLinesLength() {
+
+    color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
+
+        square([lineThickness,lineGap + 20]);
+
+        translate([basketFlatIron, 0, 0])
+        square([lineThickness,lineGap * 3 + 20]);
+
+        translate([basketProfileSize, 0, 0])
+        square([lineThickness,lineGap * 2 + 20]);
+
+        translate([basketWidth / 4, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+        translate([basketWidth / 4 + basketWidth / 2, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+        translate([basketWidth - basketProfileSize + basketFlatIron, 0, 0])
+        square([lineThickness,lineGap * 2 + 20]);
+
+        translate([basketWidth + basketFlatIron, 0, 0])
+        square([lineThickness,lineGap * 3 + 20]);
+
+        translate([basketWidth + basketFlatIron * 2, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+
+
+        translate([-20, lineGap * 3, 0]) {
+            length = fireBasketWidth - profileSize + basketFlatIron * 2 + 20;
+
+            translate([basketWidth / 2, 15, 0])
+            text(size = textSize, str(basketWidth));
+
+            square([length, lineThickness]);
+
+        }
+
+        translate([-20, lineGap * 2, 0]) {
+            length = fireBasketWidth - profileSize + basketFlatIron * 2 + 20;
+
+            translate([basketProfileSize + 5, 15, 0])
+            text(size = textSize, str(basketProfileSize));
+
+
+            translate([basketWidth / 2, 15, 0])
+            text(size = textSize, str(basketWidth - basketProfileSize * 2));
+
+
+            translate([basketWidth - 10, 15, 0])
+            text(size = textSize, str(basketProfileSize));
+
+            square([length, lineThickness]);
+
+        }
+
+        translate([-20, lineGap, 0]) {
+            length = fireBasketWidth - profileSize + basketFlatIron * 2 + 20;
+
+            translate([0, 15, 0])
+            text(size = textSize, str(basketFlatIron));
+
+
+
+            translate([basketWidth / 4 - 25, 15, 0])
+            text(size = textSize, str(basketWidth / 4 - basketProfileSize));
+
+            translate([basketWidth / 2, 15, 0])
+            text(size = textSize, str(basketWidth / 2));
+
+            translate([fireBasketWidth - fireBasketWidth / 4, 15, 0])
+            text(size = textSize, str(basketWidth / 4 - basketProfileSize));
+
+
+
+            translate([basketWidth + 30, 15, 0])
+            text(size = textSize, str(basketFlatIron));
+
+            square([length, lineThickness]);
+        }
+
+    }
 }

@@ -136,7 +136,7 @@ module framePartsList() {
 
 }
 
-module measuermentLinesLength() {
+module frameMeasuermentLinesLength() {
 
     color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
 
@@ -216,7 +216,7 @@ module measuermentLinesLength() {
     }
 }
 
-module measermentLinesHeight() {
+module frameMeasermentLinesHeight() {
 
         color([0/255, 0/255, 0/255])  {
             translate([0, 100, 0]) {
@@ -306,7 +306,7 @@ module measermentLinesHeight() {
         }
 }
 
-module measuermentLinesWidth() {
+module frameMeasuermentLinesWidth() {
     color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
 
         square([lineThickness,lineGap * 2 + 20]);
