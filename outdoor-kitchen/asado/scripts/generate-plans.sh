@@ -107,3 +107,8 @@ echo ""
 echo "Generate FireBasket Front Plan"
 # Vorderansicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireBasket/fireBasket-front.svg ../_projection-fireBasket-front.scad
+
+echo ""
+echo "Generate FireBasket Side Plan"
+# Vorderansicht
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireBasket/fireBasket-side.svg ../_projection-fireBasket-side.scad
