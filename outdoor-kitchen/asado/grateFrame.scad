@@ -11,15 +11,6 @@ trayWidth = 60;
 
 module grateFrame() {
 
-
-
-
-    module partsList() {
-
-    }
-    partsList();
-
-
     translate([grateGap, 0, 0]) {
         // x (profileSize * 2) + grateGap
         // y profileSize + grateGap + grateProfileThickness
@@ -55,6 +46,252 @@ module grateFrame() {
 
     }
 }
+
+
+
+module grateFramePartsList() {
+    // TODO: draw the parts as in the part list, its messy right now, the list is correct
+    // TODO: Second drilling in the middle of the height for hog roast
+    // TODO: backholder for chickens or other stuff
+    echo(str("Nr,Beschreibung,Stück,Länge,Breite,Höhe"));
+
+    // Träger
+    echo(str("1,Vorne/Hinten - Gehrung", ",", "2", ",", grateLength, ",", grateSize, ",", grateSize));
+    echo(str("2,Seitlich - Gehrung", ",", "2", ",", grateWidth, ",", grateSize, ",", grateSize));
+    echo(str("3,Führungen", ",", "2", ",", fireBasketGroundClearance - 20, ",", profileSize + 10, ",", profileSize + 10));
+
+}
+
+
+module grateFrameMeasuermentLinesLength() {
+
+    color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
+
+        square([lineThickness,lineGap * 3 + 20]);
+
+        translate([profileSize + 10, 0, 0])
+        square([lineThickness,lineGap * 2 + 20]);
+
+        translate([profileSize + 10 + grateSize, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+
+        translate([grateLength + profileSize + 10 - grateSize, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+        translate([grateLength + profileSize + 10, 0, 0])
+        square([lineThickness,lineGap * 2 + 20]);
+
+
+        translate([grateLength + (profileSize + 10) * 2, 0, 0])
+        square([lineThickness,lineGap * 3 + 20]);
+
+
+        translate([-20, lineGap * 3, 0]) {
+            length = grateLength + (profileSize + 10) * 2 + 40;
+
+            translate([length / 2, 15, 0])
+            text(size = textSize, str(grateLength + (profileSize + 10) * 2));
+
+            square([length, lineThickness]);
+        }
+
+        translate([-20, lineGap * 2, 0]) {
+            length = grateLength + (profileSize + 10) * 2 + 40;
+
+            translate([length / 2, 15, 0])
+            text(size = textSize, str(grateLength));
+
+            translate([(profileSize + 10) / 2, 15, 0])
+            text(size = textSize, str(profileSize + 10));
+
+            translate([grateLength + profileSize + profileSize, 15, 0])
+            text(size = textSize, str(profileSize + 10));
+
+            square([length, lineThickness]);
+        }
+
+        translate([-20, lineGap, 0]) {
+            length = grateLength + (profileSize + 10) * 2 + 40;
+
+
+            translate([(profileSize + 10) + grateSize - 10, 15, 0])
+            text(size = textSize, str(grateSize));
+
+            translate([length / 2, 15, 0])
+            text(size = textSize, str(grateLength - grateSize * 2));
+
+            translate([grateLength + profileSize, 15, 0])
+            text(size = textSize, str(grateSize));
+
+
+
+
+            square([length, lineThickness]);
+        }
+
+    }
+}
+
+module grateFrameMeasermentLinesHeight() {
+
+        color([0/255, 0/255, 0/255])  {
+            translate([0, 100, 0]) {
+
+                translate([0, -lineGap, 0])
+                square([lineThickness,lineGap * 4 + 20]);
+
+                translate([profileSize, 0, 0])
+                square([lineThickness, lineGap + 20]);
+
+                translate([outerHeight - fireBasketGroundClearance - fireBasketHeight - profileSize * 2, 0, 0])
+                square([lineThickness,lineGap + 20]);
+
+                translate([outerHeight - fireBasketGroundClearance - profileSize, 0, 0])
+                square([lineThickness,lineGap + 20]);
+
+
+                translate([outerHeight - fireBasketGroundClearance, 0, 0])
+                square([lineThickness,lineGap * 2 + 20]);
+
+                translate([outerHeight, 0, 0])
+                square([lineThickness,lineGap * 3 + 20]);
+
+
+                // top line
+                translate([-20, lineGap * 3, 0]) {
+                    length = outerHeight + 40;
+
+                    translate([outerHeight / 2, 15, 0])
+                    text(size = textSize, str(outerHeight));
+
+                    square([length, lineThickness]);
+                }
+
+                // middle line
+                translate([-20, lineGap * 2, 0]) {
+                    length = outerHeight + 40;
+
+                    translate([outerHeight / 2, 15, 0])
+                    text(size = textSize, str(outerHeight - fireBasketGroundClearance));
+
+                    translate([outerHeight - 55, 15, 0])
+                    text(size = textSize, str(fireBasketGroundClearance));
+
+                    square([length, lineThickness]);
+                }
+
+                // bottom line
+                translate([-20, lineGap, 0]) {
+                    length = outerHeight + 40;
+
+                    translate([25, 15, 0])
+                    text(size = textSize, str(profileSize));
+
+                    translate([250, 15, 0])
+                    text(size = textSize, str(outerHeight - fireBasketGroundClearance - fireBasketHeight - (profileSize * 2)));
+
+                    translate([outerHeight - fireBasketHeight - 30, 15, 0])
+                    text(size = textSize, str(fireBasketHeight));
+
+
+                    translate([outerHeight - fireBasketHeight + 135, 15, 0])
+                    text(size = textSize, str(profileSize));
+
+                    square([length, lineThickness]);
+                }
+            }
+        }
+}
+
+module grateFrameMeasuermentLinesWidth() {
+    color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
+
+        square([lineThickness,lineGap * 2 + 20]);
+
+        translate([profileSize, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+        translate([(outerDepth - profileSize) / 2 + profileSize, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+        translate([(outerDepth - profileSize) / 2, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+        translate([outerDepth - profileSize, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+        translate([outerDepth, 0, 0])
+        square([lineThickness,lineGap * 2 + 20]);
+
+
+        translate([-20, lineGap * 2, 0]) {
+            length = outerDepth + 40;
+
+            translate([outerDepth / 2, 15, 0])
+            text(size = textSize, str(outerDepth));
+
+            square([length, lineThickness]);
+        }
+
+        translate([-20, lineGap, 0]) {
+            length = outerDepth + 40;
+
+            translate([25, 15, 0])
+            text(size = textSize, str(profileSize));
+
+            translate([200, 15, 0])
+            text(size = textSize, str((outerDepth - profileSize * 3) / 2));
+
+            translate([outerDepth / 2 + 5, 15, 0])
+            text(size = textSize, str(profileSize));
+
+            translate([outerDepth - 15, 15, 0])
+            text(size = textSize, str(profileSize));
+
+            translate([outerDepth / 2 + 200, 15, 0])
+            text(size = textSize, str((outerDepth - profileSize * 3) / 2));
+
+            square([length, lineThickness]);
+        }
+    }
+}
+
+module drawGrateFrameFrontProjection() {
+
+    // Vorne
+    translate([grateLength + profileSize + 10, -fireBasketGroundClearance + 20, 0])
+    projection() {
+        rotate([90,0,180])
+        grateFrame();
+    }
+}
+
+module drawGrateFrameSideProjection() {
+    translate([outerDepth, - outerHeight, 0])
+    // // Seite
+    rotate([0,0,90])
+    projection() {
+        translate([0, 0, 0])
+        rotate([0,90,0])
+        grateFrame();
+    }
+}
+
+module drawGrateFrameTopProjection() {
+    // // Draufsicht
+    translate([outerWidth, 0, 0])
+    projection() {
+        rotate([0,0,180])
+        grateFrame();
+    }
+}
+
+
+
+
+
+
 
 module collectingTrayMount() {
         translate([0, -trayThickness, 0])
