@@ -176,52 +176,60 @@ module grateFrameMeasermentLinesHeight() {
 }
 
 module grateFrameMeasuermentLinesWidth() {
+    guidanceFrontDistance = (outerDepth - profileSize - 10 + 2) / 2;
+    guidanceBackDistance = grateWidth - profileSize - 10 - guidanceFrontDistance;
+
     color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
 
         square([lineThickness,lineGap * 2 + 20]);
 
-        translate([profileSize, 0, 0])
+        translate([grateSize, 0, 0])
         square([lineThickness,lineGap + 20]);
 
-        translate([(outerDepth - profileSize) / 2 + profileSize, 0, 0])
+        translate([guidanceFrontDistance + profileSize + 10, 0, 0])
         square([lineThickness,lineGap + 20]);
 
-        translate([(outerDepth - profileSize) / 2, 0, 0])
+        translate([guidanceFrontDistance, 0, 0])
         square([lineThickness,lineGap + 20]);
 
-        translate([outerDepth - profileSize, 0, 0])
+        translate([grateWidth - grateSize, 0, 0])
         square([lineThickness,lineGap + 20]);
 
-        translate([outerDepth, 0, 0])
+        translate([grateWidth, 0, 0])
         square([lineThickness,lineGap * 2 + 20]);
 
 
         translate([-20, lineGap * 2, 0]) {
-            length = outerDepth + 40;
+            length = grateWidth + 40;
 
             translate([outerDepth / 2, 15, 0])
-            text(size = textSize, str(outerDepth));
+            text(size = textSize, str(grateWidth));
 
             square([length, lineThickness]);
         }
 
         translate([-20, lineGap, 0]) {
-            length = outerDepth + 40;
+            length = grateWidth + 40;
 
-            translate([25, 15, 0])
-            text(size = textSize, str(profileSize));
+            translate([20, 15, 0])
+            text(size = textSize, str(grateSize));
 
             translate([200, 15, 0])
-            text(size = textSize, str((outerDepth - profileSize * 3) / 2));
+            text(size = textSize, str(guidanceFrontDistance - grateSize));
 
             translate([outerDepth / 2 + 5, 15, 0])
-            text(size = textSize, str(profileSize));
+            text(size = textSize, str(profileSize + 10));
 
-            translate([outerDepth - 15, 15, 0])
-            text(size = textSize, str(profileSize));
+            translate([grateWidth - 10, 15, 0])
+            text(size = textSize, str(grateSize));
 
             translate([outerDepth / 2 + 200, 15, 0])
-            text(size = textSize, str((outerDepth - profileSize * 3) / 2));
+            text(size = textSize, str(guidanceBackDistance - grateSize));
+
+            // translate([20, -200, 0])
+            // cube([guidanceFrontDistance, 10, 10]);
+            // translate([20 + grateWidth - guidanceBackDistance, -200, 0])
+            // cube([guidanceBackDistance, 10, 10]);
 
             square([length, lineThickness]);
         }
@@ -249,11 +257,22 @@ module drawGrateFrameSideProjection() {
     }
 }
 
+module drawGrateFrameSideProjection() {
+    translate([grateWidth, -fireBasketGroundClearance + 20 , 0])
+    // // Seite
+    rotate([0,0,90])
+    projection() {
+        translate([0, 0, 0])
+        rotate([0,90,0])
+        grateFrame();
+    }
+}
+
 module drawGrateFrameTopProjection() {
     // // Draufsicht
-    translate([outerWidth, 0, 0])
+    translate([grateLength + profileSize + 10, -grateWidth, 0])
     projection() {
-        rotate([0,0,180])
+        rotate([180,0,180])
         grateFrame();
     }
 }

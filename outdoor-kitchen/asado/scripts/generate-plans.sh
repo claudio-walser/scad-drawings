@@ -141,17 +141,14 @@ echo "Generate GrateFrame Front Plan"
 # Vorderansicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/grateFrame/grateFrame-front.svg ../_projection-grateFrame-front.scad
 
-exit 0
-
-
 
 echo ""
-echo "Generate FireBasket Side Plan"
+echo "Generate GrateFrame Side Plan"
 # Vorderansicht
-flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireBasket/fireBasket-side.svg ../_projection-fireBasket-side.scad
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/grateFrame/grateFrame-side.svg ../_projection-grateFrame-side.scad
 
 # Draufsicht
 echo ""
-echo "Generate FireBasket Top Plan"
-flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireBasket/fireBasket-top.svg ../_projection-fireBasket-top.scad
+echo "Generate GrateFrame Top Plan"
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/grateFrame/grateFrame-top.svg ../_projection-grateFrame-top.scad
 
