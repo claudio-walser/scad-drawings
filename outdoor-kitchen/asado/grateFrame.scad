@@ -138,68 +138,39 @@ module grateFrameMeasermentLinesHeight() {
         color([0/255, 0/255, 0/255])  {
             translate([0, 100, 0]) {
 
-                translate([0, -lineGap, 0])
-                square([lineThickness,lineGap * 4 + 20]);
+                translate([0, 0, 0])
+                square([lineThickness, lineGap * 2 + 20]);
 
-                translate([profileSize, 0, 0])
+                translate([fireBasketGroundClearance - 20 -grateSize, 0, 0])
                 square([lineThickness, lineGap + 20]);
 
-                translate([outerHeight - fireBasketGroundClearance - fireBasketHeight - profileSize * 2, 0, 0])
-                square([lineThickness,lineGap + 20]);
-
-                translate([outerHeight - fireBasketGroundClearance - profileSize, 0, 0])
-                square([lineThickness,lineGap + 20]);
-
-
-                translate([outerHeight - fireBasketGroundClearance, 0, 0])
-                square([lineThickness,lineGap * 2 + 20]);
-
-                translate([outerHeight, 0, 0])
-                square([lineThickness,lineGap * 3 + 20]);
+                translate([fireBasketGroundClearance - 20, 0, 0])
+                square([lineThickness, lineGap * 2 + 20]);
 
 
                 // top line
-                translate([-20, lineGap * 3, 0]) {
-                    length = outerHeight + 40;
+                translate([-20, lineGap * 2, 0]) {
+                    length = fireBasketGroundClearance - 20 + 40;
 
-                    translate([outerHeight / 2, 15, 0])
-                    text(size = textSize, str(outerHeight));
+                    translate([(fireBasketGroundClearance - 20) / 2, 15, 0])
+                    text(size = textSize, str(fireBasketGroundClearance - 20));
 
                     square([length, lineThickness]);
                 }
 
                 // middle line
-                translate([-20, lineGap * 2, 0]) {
-                    length = outerHeight + 40;
-
-                    translate([outerHeight / 2, 15, 0])
-                    text(size = textSize, str(outerHeight - fireBasketGroundClearance));
-
-                    translate([outerHeight - 55, 15, 0])
-                    text(size = textSize, str(fireBasketGroundClearance));
-
-                    square([length, lineThickness]);
-                }
-
-                // bottom line
                 translate([-20, lineGap, 0]) {
-                    length = outerHeight + 40;
+                    length = fireBasketGroundClearance - 20 + 40;
 
-                    translate([25, 15, 0])
-                    text(size = textSize, str(profileSize));
+                    translate([(fireBasketGroundClearance - 40) / 2, 15, 0])
+                    text(size = textSize, str(fireBasketGroundClearance - 20 - grateSize));
 
-                    translate([250, 15, 0])
-                    text(size = textSize, str(outerHeight - fireBasketGroundClearance - fireBasketHeight - (profileSize * 2)));
-
-                    translate([outerHeight - fireBasketHeight - 30, 15, 0])
-                    text(size = textSize, str(fireBasketHeight));
-
-
-                    translate([outerHeight - fireBasketHeight + 135, 15, 0])
-                    text(size = textSize, str(profileSize));
+                    translate([fireBasketGroundClearance - grateSize, 15, 0])
+                    text(size = textSize, str(grateSize));
 
                     square([length, lineThickness]);
                 }
+
             }
         }
 }
