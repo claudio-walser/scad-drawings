@@ -181,8 +181,6 @@ echo "Generate Grate Front Plan"
 # Vorderansicht
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/grate/grate-front.svg ../_projection-grate-front.scad
 
-exit 1
-
 echo ""
 echo "Generate Grate Side Plan"
 # Vorderansicht

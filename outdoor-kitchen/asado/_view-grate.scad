@@ -3,7 +3,7 @@ include <./config.scad>
 include <./grate.scad>
 
 
-color([255/255, 127/255, 127/255])
+color([200/255, 200/255, 100/255])
 halfGrate();
 
 
