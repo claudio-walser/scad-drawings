@@ -246,16 +246,6 @@ module drawGrateFrameFrontProjection() {
     }
 }
 
-module drawGrateFrameSideProjection() {
-    translate([outerDepth, - outerHeight, 0])
-    // // Seite
-    rotate([0,0,90])
-    projection() {
-        translate([0, 0, 0])
-        rotate([0,90,0])
-        grateFrame();
-    }
-}
 
 module drawGrateFrameSideProjection() {
     translate([grateWidth, -fireBasketGroundClearance + 20 , 0])
@@ -282,6 +272,134 @@ module drawGrateFrameTopProjection() {
 
 
 
+module collectingTray() {
+
+        uShapeProfile(grateLength, trayWidth, trayThickness);
+
+        cube([trayThickness, trayWidth, trayWidth]);
+
+        translate([grateLength - trayThickness, 0, 0])
+        cube([trayThickness, trayWidth, trayWidth]);
+}
+
+module collectingTrayPartsList() {
+    echo(str("Nr,Beschreibung,Stück,Länge,Breite,Höhe"));
+
+    // Träger
+    echo(str("1,Vorne/Hinten", ",", "2", ",", grateLength, ",", trayWidth, ",", trayThickness));
+    echo(str("2,Unten", ",", "1", ",", grateLength, ",", trayWidth, ",", trayThickness));
+    echo(str("3,Seiten", ",", "2", ",", trayWidth, ",", trayWidth, ",", trayThickness));
+}
+
+module collectingTrayMeasuermentLinesLength() {
+
+    color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
+
+        square([lineThickness,lineGap + 20]);
+
+        translate([grateLength, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+
+        translate([-20, lineGap, 0]) {
+            length = grateLength + 40;
+
+            translate([grateLength / 2, 15, 0])
+            text(size = textSize, str(grateLength));
+
+            square([length, lineThickness]);
+        }
+    }
+}
+
+module collectingTrayMeasermentLinesHeight() {
+
+    color([0/255, 0/255, 0/255])  {
+        translate([0, 50, 0]) {
+
+            translate([0, 0, 0])
+            square([lineThickness, lineGap + 20]);
+
+            translate([trayWidth, 0, 0])
+            square([lineThickness, lineGap + 20]);
+
+            // top line
+            translate([-20, lineGap, 0]) {
+                length = trayWidth + 40;
+
+                translate([(trayWidth + 10) / 2, 15, 0])
+                text(size = textSize, str(trayWidth));
+
+                square([length, lineThickness]);
+            }
+        }
+    }
+}
+
+module collectingTrayMeasuermentLinesWidth() {
+    color([0/255, 0/255, 0/255])  {
+        translate([0, 50, 0]) {
+
+            translate([0, 0, 0])
+            square([lineThickness, lineGap + 20]);
+
+            translate([trayWidth, 0, 0])
+            square([lineThickness, lineGap + 20]);
+
+            // top line
+            translate([-20, lineGap, 0]) {
+                length = trayWidth + 40;
+
+                translate([(trayWidth + 10) / 2, 15, 0])
+                text(size = textSize, str(trayWidth));
+
+                square([length, lineThickness]);
+            }
+        }
+    }
+}
+
+module drawCollectingTrayFrontProjection() {
+
+    // Vorne
+    translate([grateLength, -trayWidth, 0])
+    projection() {
+        rotate([90,0,180])
+        collectingTray();
+    }
+}
+
+module drawCollectingTraySideProjection() {
+    translate([trayWidth, - trayWidth, 0])
+    // // Seite
+    rotate([0,0,90])
+    projection() {
+        translate([0, 0, 0])
+        rotate([0,90,0])
+        collectingTray();
+    }
+}
+
+
+module drawCollectingTrayTopProjection() {
+    // // Draufsicht
+    translate([grateLength, -trayWidth, 0])
+    projection() {
+        rotate([180,0,180])
+        collectingTray();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 module collectingTrayMount() {
         translate([0, -trayThickness, 0])
@@ -298,30 +416,4 @@ module collectingTrayMount() {
 
         translate([0, -trayThickness * 3, trayWidth - trayWidth / 3 + trayThickness * 2])
         cube([trayWidth / 3,  trayThickness,  trayWidth / 3]);
-}
-
-module collectingTray() {
-
-    color([144/255, 238/255, 144/255]) {
-        uShapeProfile(grateLength, trayWidth, trayThickness);
-
-        cube([trayThickness, trayWidth, trayWidth]);
-
-        translate([grateLength - trayThickness, 0, 0])
-        cube([trayThickness, trayWidth, trayWidth]);
-    }
-
-
-
-    color([173/255, 216/255, 230/255]) translate([0, 0, -trayThickness]) {
-        translate([50, 0, 0])
-        collectingTrayMount();
-
-        translate([grateLength - (50 + trayWidth / 3), 0, 0])
-        collectingTrayMount();
-
-        translate([grateLength / 2 - ((trayWidth / 3) / 2), 0, 0])
-        collectingTrayMount();
-    }
-
 }

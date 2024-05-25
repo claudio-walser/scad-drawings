@@ -97,32 +97,30 @@ flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewa
 # 3D Ansicht
 
 echo "Generate CollectingTray 3D View"
-#flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,70,0,210,0 -o ../plans/collectingTray/collectingTray.png ../_view-collectingTray.scad
-flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,70,0,210,0 -o ../plans/collectingTray/collectingTray.png ../_view-grateFrame.scad
-exit 1
+flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,70,0,210,0 -o ../plans/collectingTray/collectingTray.png ../_view-collectingTray.scad
 
 echo ""
 echo "Generate GrateFrame Parts List"
 # Stückliste
-flatpak run org.openscad.OpenSCAD  --export-format echo --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,40,0,200,0 -o ../plans/grateFrame/grateFrame-parts.csv ../_view-grateFrame.scad
-sed -i 's/ECHO: "//g' ../plans/grateFrame/grateFrame-parts.csv
-sed -i 's/"//g' ../plans/grateFrame/grateFrame-parts.csv
-flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans/grateFrame ../plans/grateFrame/grateFrame-parts.csv
+flatpak run org.openscad.OpenSCAD  --export-format echo --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,40,0,200,0 -o ../plans/collectingTray/collectingTray-parts.csv ../_view-collectingTray.scad
+sed -i 's/ECHO: "//g' ../plans/collectingTray/collectingTray-parts.csv
+sed -i 's/"//g' ../plans/collectingTray/collectingTray-parts.csv
+flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans/collectingTray ../plans/collectingTray/collectingTray-parts.csv
+
 
 echo ""
 echo "Generate GrateFrame Front Plan"
 # Vorderansicht
-flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/grateFrame/grateFrame-front.svg ../_projection-grateFrame-front.scad
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/collectingTray/collectingTray-front.svg ../_projection-collectingTray-front.scad
 
 
 echo ""
 echo "Generate GrateFrame Side Plan"
 # Vorderansicht
-flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/grateFrame/grateFrame-side.svg ../_projection-grateFrame-side.scad
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/collectingTray/collectingTray-side.svg ../_projection-collectingTray-side.scad
 
 # Draufsicht
 echo ""
 echo "Generate GrateFrame Top Plan"
-flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/grateFrame/grateFrame-top.svg ../_projection-grateFrame-top.scad
-
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/collectingTray/collectingTray-top.svg ../_projection-collectingTray-top.scad
 
