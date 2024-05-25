@@ -8,4 +8,4 @@ halfGrate();
 
 
 // start csv header
-//grateFramePartsList();
+halfGratePartsList();
