@@ -133,13 +133,13 @@ flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewa
 echo "Generate CollectingTray 3D View"
 flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,70,0,240,0 -o ../plans/collectingTrayMount/collectingTrayMount.png ../_view-collectingTrayMount.scad
 
-# echo ""
-# echo "Generate GrateFrame Parts List"
-# # Stückliste
-# flatpak run org.openscad.OpenSCAD  --export-format echo --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,40,0,200,0 -o ../plans/collectingTray/collectingTray-parts.csv ../_view-collectingTray.scad
-# sed -i 's/ECHO: "//g' ../plans/collectingTray/collectingTray-parts.csv
-# sed -i 's/"//g' ../plans/collectingTray/collectingTray-parts.csv
-# flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans/collectingTray ../plans/collectingTray/collectingTray-parts.csv
+echo ""
+echo "Generate GrateFrame Parts List"
+# Stückliste
+flatpak run org.openscad.OpenSCAD  --export-format echo --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,40,0,200,0 -o ../plans/collectingTrayMount/collectingTrayMount-parts.csv ../_view-collectingTrayMount.scad
+sed -i 's/ECHO: "//g' ../plans/collectingTrayMount/collectingTrayMount-parts.csv
+sed -i 's/"//g' ../plans/collectingTrayMount/collectingTrayMount-parts.csv
+flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans/collectingTrayMount ../plans/collectingTrayMount/collectingTrayMount-parts.csv
 
 
 echo ""
