@@ -158,3 +158,10 @@ echo ""
 echo "Generate GrateFrame Top Plan"
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/collectingTrayMount/collectingTrayMount-top.svg ../_projection-collectingTrayMount-top.scad
 
+
+
+### Grate
+# 3D Ansicht
+
+echo "Generate CollectingTray 3D View"
+flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,70,0,240,0 -o ../plans/grate/grate.png ../_view-grate.scad
