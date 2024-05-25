@@ -417,10 +417,8 @@ module collectingTrayMount() {
 module collectingTrayMountPartsList() {
     echo(str("Nr,Beschreibung,Stück,Länge,Breite,Höhe"));
 
-    // Träger
-    echo(str("1,Vorne/Hinten", ",", "2", ",", grateLength, ",", trayWidth, ",", trayThickness));
-    echo(str("2,Unten", ",", "1", ",", grateLength, ",", trayWidth, ",", trayThickness));
-    echo(str("3,Seiten", ",", "2", ",", trayWidth, ",", trayWidth, ",", trayThickness));
+    // Halterung
+    echo(str("1,Halterungen - Abwicklung", ",", "3", ",", trayWidth * 2 + trayWidth / 3 * 2 + trayThickness * 4 + 18, ",", trayWidth / 3, ",", trayThickness));
 }
 
 module collectingTrayMountMeasuermentLinesLength() {
