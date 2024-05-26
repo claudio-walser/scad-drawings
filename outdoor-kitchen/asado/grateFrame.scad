@@ -59,7 +59,7 @@ module grateFramePartsList() {
     // Träger
     echo(str("1,Vorne/Hinten - Gehrung", ",", "2", ",", grateFrameLength, ",", grateSize, ",", grateSize));
     echo(str("2,Seitlich - Gehrung", ",", "2", ",", grateFrameWidth, ",", grateSize, ",", grateSize));
-    echo(str("3,Führungen", ",", "2", ",", fireBasketGroundClearance - 20, ",", profileSize + 10, ",", profileSize + 10));
+    echo(str("3,Führungen - U-Profil", ",", "2", ",", fireBasketGroundClearance - 20, ",", profileSize + 10, ",", profileSize));
 }
 
 module grateFrameMeasuermentLinesLength() {
