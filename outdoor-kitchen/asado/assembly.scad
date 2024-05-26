@@ -82,6 +82,12 @@ module asadoFull() {
 	color([75/255, 70/255, 255/255]) translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
 	fireBasket();
 
+
+	color([173/255, 216/255, 230/255])
+	translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
+	rotate([90, 0, 90])
+	fireProtection();
+
 	translate([(profileSize * 2) + grateGap, profileSize + grateGap + grateProfileThickness, fireBasketGroundClearance + 20]) {
 		color([78/255, 5/255, 1/255]) grateFrame();
 

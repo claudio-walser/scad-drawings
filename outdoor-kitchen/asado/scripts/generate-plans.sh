@@ -60,6 +60,39 @@ echo "Generate FireBasket Top Plan"
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireBasket/fireBasket-top.svg ../_projection-fireBasket-top.scad
 
 
+### FireProtection
+# 3D Ansicht
+
+echo "Generate FireProtection 3D View"
+flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,50,0,30,0 -o ../plans/fireProtection/fireProtection.png ../_view-fireProtection.scad
+
+echo ""
+echo "Generate FireBasket Parts List"
+# Stückliste
+flatpak run org.openscad.OpenSCAD  --export-format echo --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,40,0,200,0 -o ../plans/fireProtection/fireProtection-parts.csv ../_view-fireProtection.scad
+sed -i 's/ECHO: "//g' ../plans/fireProtection/fireProtection-parts.csv
+sed -i 's/"//g' ../plans/fireProtection/fireProtection-parts.csv
+flatpak run org.libreoffice.LibreOffice --headless --infilter=text --convert-to pdf --outdir ../plans/fireProtection ../plans/fireProtection/fireProtection-parts.csv
+
+# echo ""
+# echo "Generate FireBasket Front Plan"
+# # Vorderansicht
+# flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireProtection/fireProtection-front.svg ../_projection-fireProtection-front.scad
+
+# echo ""
+# echo "Generate FireBasket Side Plan"
+# # Vorderansicht
+# flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireProtection/fireProtection-side.svg ../_projection-fireProtection-side.scad
+
+# Draufsicht
+echo ""
+echo "Generate FireBasket Top Plan"
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/fireProtection/fireProtection-top.svg ../_projection-fireProtection-top.scad
+
+
+
+
+
 
 ### Grateframe
 # 3D Ansicht
