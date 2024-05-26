@@ -272,7 +272,7 @@ module drawGrateFrameTopProjection() {
 
 module collectingTray() {
 
-        uShapeProfile(grateFrameLength, trayWidth, profileSize, trayThickness);
+        uShapeProfile(grateFrameLength, trayWidth, trayWidth, trayThickness);
 
         cube([trayThickness, trayWidth, trayWidth]);
 
