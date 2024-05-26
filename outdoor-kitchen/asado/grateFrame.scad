@@ -41,11 +41,11 @@ module grateFrame() {
         // Führungen seitlich
         translate([0, (grateFrameWidth / 2) - ((profileSize + 10) - 1), 0])
         rotate([0, 270, 0])
-        uShapeProfile(fireBasketGroundClearance - 20, profileSize + 10, 4);
+        uShapeProfile(fireBasketGroundClearance - 20, profileSize + 10, profileSize, 4);
 
         translate([grateFrameLength, (grateFrameWidth / 2) - ((profileSize + 10) - 1), fireBasketGroundClearance - 20])
         rotate([0, 90, 0])
-        uShapeProfile(fireBasketGroundClearance - 20, profileSize + 10, 4);
+        uShapeProfile(fireBasketGroundClearance - 20, profileSize + 10, profileSize, 4);
 
     }
 }
@@ -68,21 +68,21 @@ module grateFrameMeasuermentLinesLength() {
 
         square([lineThickness,lineGap * 3 + 20]);
 
-        translate([profileSize + 10, 0, 0])
+        translate([profileSize, 0, 0])
         square([lineThickness,lineGap * 2 + 20]);
 
-        translate([profileSize + 10 + grateSize, 0, 0])
+        translate([profileSize+ grateSize, 0, 0])
         square([lineThickness,lineGap + 20]);
 
 
-        translate([grateFrameLength + profileSize + 10 - grateSize, 0, 0])
+        translate([grateFrameLength + profileSize - grateSize, 0, 0])
         square([lineThickness,lineGap + 20]);
 
-        translate([grateFrameLength + profileSize + 10, 0, 0])
+        translate([grateFrameLength + profileSize, 0, 0])
         square([lineThickness,lineGap * 2 + 20]);
 
 
-        translate([grateFrameLength + (profileSize + 10) * 2, 0, 0])
+        translate([grateFrameLength + (profileSize) * 2, 0, 0])
         square([lineThickness,lineGap * 3 + 20]);
 
 
@@ -90,7 +90,7 @@ module grateFrameMeasuermentLinesLength() {
             length = grateFrameLength + (profileSize + 10) * 2 + 40;
 
             translate([length / 2, 15, 0])
-            text(size = textSize, str(grateFrameLength + (profileSize + 10) * 2));
+            text(size = textSize, str(grateFrameLength + (profileSize) * 2));
 
             square([length, lineThickness]);
         }
@@ -102,10 +102,10 @@ module grateFrameMeasuermentLinesLength() {
             text(size = textSize, str(grateFrameLength));
 
             translate([(profileSize + 10) / 2, 15, 0])
-            text(size = textSize, str(profileSize + 10));
+            text(size = textSize, str(profileSize));
 
-            translate([grateFrameLength + profileSize + profileSize, 15, 0])
-            text(size = textSize, str(profileSize + 10));
+            translate([grateFrameLength + profileSize + profileSize - 15, 15, 0])
+            text(size = textSize, str(profileSize));
 
             square([length, lineThickness]);
         }
@@ -114,13 +114,13 @@ module grateFrameMeasuermentLinesLength() {
             length = grateFrameLength + (profileSize + 10) * 2 + 40;
 
 
-            translate([(profileSize + 10) + grateSize - 10, 15, 0])
+            translate([(profileSize) + grateSize - 10, 15, 0])
             text(size = textSize, str(grateSize));
 
             translate([length / 2, 15, 0])
             text(size = textSize, str(grateFrameLength - grateSize * 2));
 
-            translate([grateFrameLength + profileSize, 15, 0])
+            translate([grateFrameLength + profileSize - 10, 15, 0])
             text(size = textSize, str(grateSize));
 
 
@@ -237,7 +237,7 @@ module grateFrameMeasuermentLinesWidth() {
 module drawGrateFrameFrontProjection() {
 
     // Vorne
-    translate([grateFrameLength + profileSize + 10, -fireBasketGroundClearance + 20, 0])
+    translate([grateFrameLength + profileSize, -fireBasketGroundClearance + 20, 0])
     projection() {
         rotate([90,0,180])
         grateFrame();
@@ -258,7 +258,7 @@ module drawGrateFrameSideProjection() {
 
 module drawGrateFrameTopProjection() {
     // // Draufsicht
-    translate([grateFrameLength + profileSize + 10, -grateFrameWidth, 0])
+    translate([grateFrameLength + profileSize + 4, -grateFrameWidth, 0])
     projection() {
         rotate([180,0,180])
         grateFrame();
@@ -272,7 +272,7 @@ module drawGrateFrameTopProjection() {
 
 module collectingTray() {
 
-        uShapeProfile(grateFrameLength, trayWidth, trayThickness);
+        uShapeProfile(grateFrameLength, trayWidth, profileSize, trayThickness);
 
         cube([trayThickness, trayWidth, trayWidth]);
 

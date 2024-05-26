@@ -274,11 +274,11 @@ module frameMeasermentLinesHeight() {
                     translate([25, 15, 0])
                     text(size = textSize, str(profileSize));
 
-                    translate([250, 15, 0])
-                    text(size = textSize, str(outerHeight - fireBasketGroundClearance - fireBasketHeight - (profileSize * 2)));
+                    translate([150, 15, 0])
+                    #text(size = textSize, str(outerHeight - fireBasketGroundClearance - fireBasketHeight - (profileSize * 3)));
 
                     translate([outerHeight - fireBasketHeight - 30, 15, 0])
-                    text(size = textSize, str(fireBasketHeight));
+                    text(size = textSize, str(fireBasketHeight + profileSize));
 
 
                     translate([outerHeight - fireBasketHeight + 135, 15, 0])
@@ -302,8 +302,17 @@ module frameMeasermentLinesHeight() {
                     square([length, lineThickness]);
                 }
 
+
+
             }
         }
+        // translate([270, -1300, 0])
+        // cube([290, 290, 290]);
+
+
+        // translate([40, -1200, 0])
+        // cube([230, 230 , 230]);
+
 }
 
 module frameMeasuermentLinesWidth() {

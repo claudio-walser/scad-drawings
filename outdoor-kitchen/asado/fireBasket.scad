@@ -104,6 +104,7 @@ module fireBasket() {
             translate([-basketFlatIron, outerDepth, fireBasketHeight - basketFlatIron - (basketProfileSize * 2)])
             cube(size = [basketWidth + (basketFlatIron * 2), basketFlatIron, basketProfileSize]);
         }
+
     }
 }
 
@@ -392,6 +393,7 @@ module drawFireBasketFrontProjection() {
         rotate([90,0,180])
         fireBasket();
     }
+
 }
 
 module drawFireBasketSideProjection() {
