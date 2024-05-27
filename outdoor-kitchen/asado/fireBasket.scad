@@ -238,7 +238,7 @@ module fireBasketMeasermentLinesHeight() {
                     length = basketHeight + basketFlatIron + 30 + 40;
 
                     translate([basketHeight / 2, 15, 0])
-                    text(size = textSize, str(basketHeight));
+                    text(size = textSize, str(basketHeight - basketFlatIron));
 
                     square([length, lineThickness]);
                 }
@@ -254,7 +254,7 @@ module fireBasketMeasermentLinesHeight() {
                     text(size = textSize, str(basketProfileSize));
 
                     translate([basketHeight / 2, 15, 0])
-                    text(size = textSize, str(basketHeight - basketProfileSize * 2 - (basketHeight - (fireBasketHeight - basketProfileSize))));
+                    text(size = textSize, str(basketHeight - basketProfileSize * 2 - (basketHeight +  basketFlatIron- (fireBasketHeight - basketProfileSize))));
 
                     translate([basketHeight - basketProfileSize/2 - 10, 15, 0])
                     text(size = textSize, str(basketProfileSize));

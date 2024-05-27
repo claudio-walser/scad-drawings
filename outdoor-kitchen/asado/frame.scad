@@ -106,7 +106,7 @@ module framePartsList() {
     // Träger
     echo(str("1,Träger - Gehrung beidseitig", ",", "1", ",", outerWidth - fireBasketWidth - (profileSize * 2), ",", profileSize, ",", profileSize));
     // Stützen
-    echo(str("2,Stützen - Gehrung einseitig / 22mm Bohrung für Spindel", ",", "2", ",", outerHeight, ",", profileSize, ",", profileSize));
+    echo(str("2,Stützen - Gehrung einseitig / 21mm Bohrung für Spindel", ",", "2", ",", outerHeight, ",", profileSize, ",", profileSize));
 
     // Füsse
     echo(str("3,Fuss Rechts Hinten - Stumpf", ",", "1", ",", fireBasketGroundClearance, ",", profileSize, ",", profileSize));
