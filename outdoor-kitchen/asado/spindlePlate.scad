@@ -156,16 +156,16 @@ module pinHole() {
 
 module screwHoles(gap = 20) {
     translate([gap, gap, - spindlePlateThickness / 2])
-    cylinder(h=spindlePlateThickness*2, d=8.2);
+    cylinder(h=spindlePlateThickness*2, d=8);
 
     translate([gap, plateWidth - gap, - spindlePlateThickness / 2])
-    cylinder(h=spindlePlateThickness*2, d=8.2);
+    cylinder(h=spindlePlateThickness*2, d=8);
 
     translate([plateWidth - gap, plateWidth - gap, - spindlePlateThickness / 2])
-    cylinder(h=spindlePlateThickness*2, d=8.2);
+    cylinder(h=spindlePlateThickness*2, d=8);
 
     translate([plateWidth - gap, gap, - spindlePlateThickness / 2])
-    cylinder(h=spindlePlateThickness*2, d=8.2);
+    cylinder(h=spindlePlateThickness*2, d=8);
 }
 
 module spindleHole(gap = 20) {
@@ -181,14 +181,11 @@ module onlySpindlePlate() {
             screwHoles(15);
             spindleHole();
 
-
-
-
         }
-     translate([50, 20, spindlePlateThickness + spindlePlateGap]) {
-     rotate([0, 0, 70]) {
-         translate([0, 0, -10]) pinHole();
-     }}
+        translate([50, 20, spindlePlateThickness + spindlePlateGap]) {
+        rotate([0, 0, 70]) {
+            translate([0, 0, -10]) pinHole();
+        }}
     }
 }
 
@@ -201,5 +198,175 @@ module spindlePlate() {
             color([90/255, 50/255, 80/255]) lock();
             translate([0, 0, -spindlePlateGap + 2]) pin();
         }
+    }
+}
+
+
+module drawSpindlePlateTopProjection() {
+    // // Draufsicht
+    translate([plateWidth/2, -plateWidth/2, 0])
+    projection() {
+        rotate([0,0,90])
+        onlySpindlePlate();
+    }
+}
+
+
+
+module spindlePlateMeasuermentLinesLength() {
+    color([0/255, 0/255, 0/255]) translate([0, lineGap, 0]) {
+
+        square([lineThickness,lineGap * 2 + 20]);
+
+
+        translate([15, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+
+
+        translate([plateWidth-15, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+
+        translate([plateWidth, 0, 0])
+        square([lineThickness,lineGap * 2 + 20]);
+
+        //50, 20
+        translate([23, -lineGap-30, 2])
+        square([lineThickness,lineGap]);
+
+        translate([0, -lineGap+10, 2])
+        square([lineThickness,lineGap-40]);
+
+
+        translate([plateWidth/2, -plateWidth - lineGap*2, 2])
+        square([lineThickness,lineGap * 2 + 20]);
+
+
+        translate([-20, -50, 0]) {
+            length = 23 + 40;
+
+            translate([15, 15, 0])
+            text(size = textSize, str(23));
+
+
+            translate([45, -20, 2])
+            text(size = textSize, str("Bohrung 10.1mm"));
+
+            square([length, lineThickness]);
+        }
+
+
+
+        translate([-20, lineGap * 2, 0]) {
+            length = plateWidth + 40;
+
+            translate([plateWidth/2, 15, 0])
+            text(size = textSize, str(plateWidth));
+
+
+            square([length, lineThickness]);
+
+
+
+            translate([plateWidth/2, -plateWidth - lineGap*3 - plateWidth/2, 0])
+            text(size = textSize, str("Mittige Bohrung 22mm"));
+
+        }
+
+
+
+        translate([-20, lineGap, 0]) {
+            length = plateWidth + 40;
+
+            translate([plateWidth/2, 15, 0])
+            text(size = textSize, str(plateWidth - 15*2));
+
+
+            translate([10, 15, 0])
+            text(size = textSize, str(15));
+
+            translate([plateWidth, 15, 0])
+            text(size = textSize, str(15));
+
+            translate([plateWidth + 40, 15, 0])
+            text(size = textSize, str("Bohrungen Ecke 8mm"));
+
+
+            square([length, lineThickness]);
+        }
+
+
+    }
+}
+
+
+module spindlePlateMeasuermentLinesWidth() {
+    color([0/255, 0/255, 0/255]) translate([0, lineGap, 0]) {
+
+        translate([0, 0, 0])
+        square([lineThickness,lineGap * 2 + 20]);
+
+        translate([15, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+        translate([plateWidth - 15, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+
+
+        translate([plateWidth, 0, 0])
+        square([lineThickness,lineGap * 2 + 20]);
+
+
+        translate([-20, lineGap * 2, 0]) {
+            length = plateWidth + 40;
+
+            translate([plateWidth/2, 15, 0])
+            text(size = textSize, str(plateWidth));
+
+            square([length, lineThickness]);
+        }
+
+
+        translate([-20, lineGap, 0]) {
+            length = plateWidth + 40;
+
+            translate([plateWidth/2, 15, 0])
+            text(size = textSize, str(plateWidth - 15 * 2));
+
+
+            translate([10, 15, 0])
+            text(size = textSize, str(15));
+
+            translate([plateWidth, 15, 0])
+            text(size = textSize, str(15));
+
+            square([length, lineThickness]);
+        }
+
+
+
+
+        //50, 20
+        translate([29, -plateWidth-lineGap*2-20, 2])
+        square([lineThickness,lineGap + 40]);
+
+        translate([0, -plateWidth-lineGap*2-20, 2])
+        square([lineThickness,lineGap]);
+
+        translate([-20, -plateWidth-lineGap*2, 0]) {
+            length = 23 + 40;
+
+            translate([15, 15, 0])
+            text(size = textSize, str(29));
+
+
+
+
+            square([length, lineThickness]);
+        }
+
+
     }
 }

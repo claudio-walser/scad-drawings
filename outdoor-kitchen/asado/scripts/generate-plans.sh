@@ -270,10 +270,10 @@
 # 3D Ansicht
 
 echo "Generate SpindleHandle 3D View"
-flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,60,0,-120,0 -o ../plans/spindlePlate/spindlePlate.png ../_view-spindlePlate.scad
+flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,40,0,120,0 -o ../plans/spindlePlate/spindlePlate.png ../_view-spindlePlate.scad
 
 
-# Spindelzahnrad
+# Spindelplatte
 echo ""
 echo "Generate SpindleHandle Top Plan"
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/spindlePlate/spindlePlate-top.svg ../_projection-spindlePlate-top.scad
