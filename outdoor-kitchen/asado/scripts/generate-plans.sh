@@ -277,3 +277,13 @@ flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --
 echo ""
 echo "Generate SpindleHandle Top Plan"
 flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/spindlePlate/spindlePlate-top.svg ../_projection-spindlePlate-top.scad
+
+
+### SpindlePlate Pin
+# 3D Ansicht
+
+echo "Generate SpindleHandlePin 3D View"
+flatpak run org.openscad.OpenSCAD  --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,40,0,120,0 -o ../plans/spindlePlate/spindlePlatePin.png ../_view-spindlePlatePin.scad
+echo ""
+echo "Generate SpindleHandle Top Plan"
+flatpak run org.openscad.OpenSCAD --projection=ortho --imgsize 1920,1080 --viewall --autocenter --camera=0,0,0,0,0,0,0 -o ../plans/spindlePlate/spindlePlatePin-side.svg ../_projection-spindlePlatePin-side.scad

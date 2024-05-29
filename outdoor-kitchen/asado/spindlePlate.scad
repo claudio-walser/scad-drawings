@@ -136,7 +136,7 @@ module pin() {
     translate([60, 0, -2]) {
         difference() {
             union() {
-                cylinder(d = 10, h = spindlePlateGap);
+                translate([0, 0, -spindlePlateThickness]) cylinder(d = 10, h = spindlePlateGap + spindlePlateThickness);
                 cylinder(d = 6, h = spindleHandleThickness + spindlePlateGap + 0.2);
             }
              cylinder(d = 3.5, h = 30);
@@ -196,7 +196,7 @@ module spindlePlate() {
     translate([50, 20, spindlePlateThickness + spindlePlateGap]) {
         rotate([0, 0, 70]) {
             color([90/255, 50/255, 80/255]) lock();
-            translate([0, 0, -spindlePlateGap + 2]) pin();
+            translate([0, 0, ]) pin();
         }
     }
 }
@@ -211,6 +211,136 @@ module drawSpindlePlateTopProjection() {
     }
 }
 
+
+module drawSpindlePlatePinSideProjection() {
+    // // Draufsicht
+    translate([-55, -8.2, 0])
+    projection() {
+        rotate([270,0,0])
+        pin();
+    }
+}
+
+
+
+module spindlePlatePinMeasuermentLinesWidth() {
+    color([0/255, 0/255, 0/255]) translate([0, lineGap/4, 0]) {
+
+        square([lineThickness,lineGap + 10]);
+
+
+
+        translate([2, 0, 0])
+        square([lineThickness,lineGap/2 + 10]);
+        translate([8, 0, 0])
+        square([lineThickness,lineGap/2 + 10]);
+
+
+        translate([10, 0, 0])
+        square([lineThickness,lineGap + 10]);
+
+
+
+
+
+
+        translate([5, -lineGap - 35, 2])
+        square([lineThickness,lineGap + 10]);
+
+
+
+
+        translate([-10, -lineGap, 0]) {
+
+
+            translate([11, -45, 0])
+            text(size = textSize/2, str("Mittige Gewindebohrung M4"));
+
+
+        }
+
+
+
+
+        translate([-10, lineGap/2, 0]) {
+            length = 10 + 20;
+
+            translate([11, 15, 0])
+            text(size = textSize/2, str(6));
+
+            translate([-2, 15, 0])
+            text(size = textSize/2, str(2));
+
+            translate([24, 15, 0])
+            text(size = textSize/2, str(2));
+
+
+            square([length, lineThickness]);
+        }
+
+
+
+        translate([-10, lineGap, 0]) {
+            length = 10 + 20;
+
+            translate([6, 15, 0])
+            text(size = textSize/2, str(10));
+
+
+            square([length, lineThickness]);
+        }
+
+
+    }
+}
+
+
+module spindlePlatePinMeasuermentLinesHeight() {
+    color([0/255, 0/255, 0/255]) translate([0, -lineGap*2.2, 0]) {
+
+        square([lineThickness,lineGap + 10]);
+
+
+
+        translate([spindleHandleThickness + 0.2, 0, 0])
+        square([lineThickness,lineGap/2 + 10]);
+
+
+
+        translate([spindlePlateThickness + spindlePlateGap + spindleHandleThickness + 0.2, 0, 0])
+        square([lineThickness,lineGap + 10]);
+
+
+
+        translate([-10, lineGap/2, 0]) {
+            length = 10 + 20;
+
+            translate([18, 15, 0])
+            text(size = textSize/2, str(spindlePlateThickness + spindlePlateGap));
+
+            translate([-10, 15, 0])
+            text(size = textSize/2, str(spindleHandleThickness + 0.2));
+
+
+
+            square([length, lineThickness]);
+        }
+
+
+
+        translate([-10, lineGap, 0]) {
+            length = 10 + 20;
+
+            translate([6, 15, 0])
+            text(size = textSize/2, str(spindlePlateThickness + spindlePlateGap + spindleHandleThickness + 0.2));
+
+
+            square([length, lineThickness]);
+        }
+
+
+    }
+}
 
 
 module spindlePlateMeasuermentLinesLength() {
