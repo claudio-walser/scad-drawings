@@ -2,7 +2,7 @@ module pergola() {
 	floorWidth = 5250;
 	floorLength = 3750;
 
-	floorToPergolaOverlap = 20;
+	floorToPergolaOverlap = 250;
 
 	pergolaWidth = floorWidth-floorToPergolaOverlap;
 	pergolaLength = floorLength-floorToPergolaOverlap;
@@ -11,7 +11,7 @@ module pergola() {
 	beamThickness = 170;
 	roofThickness = 100;
 	height = 2275;
-	beamOverlap = 200;
+	beamOverlap = 300;
 	roofOverlap = 200;
 	roofLeftOverlap = 500;
 	roofGap = 200;
