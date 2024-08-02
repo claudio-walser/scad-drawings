@@ -86,8 +86,10 @@ module asadoFull() {
 		color([78/255, 5/255, 1/255]) grateFrame();
 
 		// Aufangbehälter
-		translate([grateProfileThickness + 1, grateWidth + grateProfileThickness, -trayWidth + grateSize])
-		collectingTray();
+		translate([grateProfileThickness + 1, grateWidth + grateProfileThickness, -trayWidth + grateSize]) {
+			collectingTray();
+			collectingTrayHolder();
+		}
 
 		color([200/255, 200/255, 100/255]) {
 			// translate([grateProfileThickness * 3 + 1, grateProfileThickness * 2, grateProfileThickness])

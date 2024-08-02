@@ -1,5 +1,5 @@
 drawReferences = false;
-drawReferenceWall = true;
+drawReferenceWall = false;
 
 outerWidth = 1500;
 outerDepth = 700;

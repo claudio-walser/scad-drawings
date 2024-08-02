@@ -237,7 +237,6 @@ module grateFrameMeasuermentLinesWidth() {
 }
 
 module drawGrateFrameFrontProjection() {
-
     // Vorne
     translate([grateLength + profileSize + 10, -fireBasketGroundClearance + 20, 0])
     projection() {
@@ -279,10 +278,6 @@ module drawGrateFrameTopProjection() {
 
 
 
-
-
-
-
 module collectingTrayMount() {
         translate([0, -trayThickness, 0])
         cube([trayWidth / 3, trayWidth + trayThickness * 2, trayThickness]);
@@ -311,6 +306,10 @@ module collectingTray() {
         cube([trayThickness, trayWidth, trayWidth]);
     }
 
+
+}
+
+module collectingTrayHolder() {
 
 
     color([173/255, 216/255, 230/255]) translate([0, 0, -trayThickness]) {
