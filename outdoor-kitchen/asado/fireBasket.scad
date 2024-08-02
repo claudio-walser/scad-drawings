@@ -104,6 +104,7 @@ module fireBasket() {
             translate([-basketFlatIron, outerDepth, fireBasketHeight - basketFlatIron - (basketProfileSize * 2)])
             cube(size = [basketWidth + (basketFlatIron * 2), basketFlatIron, basketProfileSize]);
         }
+
     }
 }
 
@@ -237,7 +238,7 @@ module fireBasketMeasermentLinesHeight() {
                     length = basketHeight + basketFlatIron + 30 + 40;
 
                     translate([basketHeight / 2, 15, 0])
-                    text(size = textSize, str(basketHeight));
+                    text(size = textSize, str(basketHeight - basketFlatIron));
 
                     square([length, lineThickness]);
                 }
@@ -253,7 +254,7 @@ module fireBasketMeasermentLinesHeight() {
                     text(size = textSize, str(basketProfileSize));
 
                     translate([basketHeight / 2, 15, 0])
-                    text(size = textSize, str(basketHeight - basketProfileSize * 2 - (basketHeight - (fireBasketHeight - basketProfileSize))));
+                    text(size = textSize, str(basketHeight - basketProfileSize * 2 - (basketHeight +  basketFlatIron- (fireBasketHeight - basketProfileSize))));
 
                     translate([basketHeight - basketProfileSize/2 - 10, 15, 0])
                     text(size = textSize, str(basketProfileSize));
@@ -392,6 +393,7 @@ module drawFireBasketFrontProjection() {
         rotate([90,0,180])
         fireBasket();
     }
+
 }
 
 module drawFireBasketSideProjection() {
@@ -415,4 +417,147 @@ module drawFireBasketTopProjection() {
         fireBasket();
     }
 
+}
+
+
+
+module fireProtection() {
+
+    difference() {
+        cube([outerDepth, outerHeight - fireBasketHeight, 1]);
+
+        translate([0, outerHeight - fireBasketHeight - 70.7, -5])
+        rotate([0, 0, 45])
+        cube([100, 100, 10]);
+
+
+        translate([outerDepth, outerHeight - fireBasketHeight - 70.7, -5])
+        rotate([0, 0, 45])
+        cube([100, 100, 10]);
+        //a = √(d² / 2)
+    }
+
+}
+
+
+module fireProtectionPartsList() {
+    // FireProtection
+    echo(str("Nr,Beschreibung,Stück,Länge,Breite,Höhe"));
+
+    echo(str("1,Feuerschutz,1,", outerDepth, ",", outerHeight - fireBasketHeight, ",1"));
+}
+
+module fireProtectionMeasuermentLinesLength() {
+    color([0/255, 0/255, 0/255]) translate([0, 60, 0]) {
+        // corner length //a = √(d² / 2)
+
+        cornerLength = sqrt(pow(100, 2) / 2);
+        roundedCornerLegnth = round(cornerLength);
+
+        translate([0, 0, 0])
+        square([lineThickness, lineGap * 2 + 20]);
+
+
+        translate([cornerLength, 0, 0])
+        square([lineThickness, lineGap + 20]);
+
+        translate([outerDepth - cornerLength, 0, 0])
+        square([lineThickness, lineGap + 20]);
+
+
+        translate([outerDepth, 0, 0])
+        square([lineThickness, lineGap * 2 + 20]);
+
+
+
+
+
+        // top line
+        translate([-20, lineGap * 2, 0]) {
+            length = outerDepth + 40;
+
+            translate([outerDepth / 2, 15, 0])
+            text(size = textSize, str(outerDepth));
+
+            square([length, lineThickness]);
+        }
+
+
+        // bottom line
+        translate([-20, lineGap, 0]) {
+            length = outerDepth + 40;
+
+            translate([outerDepth / 2, 15, 0])
+            text(size = textSize, str(outerDepth - roundedCornerLegnth * 2));
+
+
+            translate([45, 15, 0])
+            text(size = textSize, str(roundedCornerLegnth));
+
+            translate([outerDepth - 35, 15, 0])
+            text(size = textSize, str(roundedCornerLegnth));
+
+            square([length, lineThickness]);
+        }
+
+    }
+}
+
+
+module fireProtectionMeasuermentLinesWidth() {
+    color([0/255, 0/255, 0/255]) translate([0, 60, 0]) {
+        // corner length //a = √(d² / 2)
+
+        cornerLength = sqrt(pow(100, 2) / 2);
+        roundedCornerLegnth = round(cornerLength);
+
+        translate([0, 0, 0])
+        square([lineThickness, lineGap * 2 + 20]);
+
+
+        translate([cornerLength, 0, 0])
+        square([lineThickness, lineGap + 20]);
+
+
+        translate([outerHeight - fireBasketHeight, 0, 0])
+        square([lineThickness, lineGap * 2 + 20]);
+
+
+        // top line
+        translate([-20, lineGap * 2, 0]) {
+            length = outerHeight - fireBasketHeight + 40;
+
+            translate([length / 2, 15, 0])
+            text(size = textSize, str(outerHeight - fireBasketHeight));
+
+            square([length, lineThickness]);
+        }
+
+
+        // bottom line
+        translate([-20, lineGap, 0]) {
+            length = outerHeight - fireBasketHeight + 40;
+
+            translate([length / 2, 15, 0])
+            text(size = textSize, str(outerHeight - fireBasketHeight - roundedCornerLegnth));
+
+
+            translate([45, 15, 0])
+            text(size = textSize, str(roundedCornerLegnth));
+
+
+            square([length, lineThickness]);
+        }
+
+    }
+}
+
+module drawFireProtectionTopProjection() {
+
+
+    // // Draufsicht
+    translate([0, -outerHeight + fireBasketHeight, 0])
+    projection() {
+        fireProtection();
+    }
 }

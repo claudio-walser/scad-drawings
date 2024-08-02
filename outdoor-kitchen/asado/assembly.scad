@@ -82,12 +82,30 @@ module asadoFull() {
 	color([75/255, 70/255, 255/255]) translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
 	fireBasket();
 
-	translate([(profileSize * 2) + grateGap, profileSize + grateGap + grateProfileThickness, fireBasketGroundClearance + 180]) {
+
+	color([173/255, 216/255, 230/255])
+	translate([outerWidth - fireBasketWidth, 0, fireBasketGroundClearance + profileSize])
+	rotate([90, 0, 90])
+	fireProtection();
+
+	translate([(profileSize * 2) + grateGap, profileSize + grateGap + grateProfileThickness, fireBasketGroundClearance + 20]) {
 		color([78/255, 5/255, 1/255]) grateFrame();
 
 		// Aufangbehälter
-		translate([grateProfileThickness + 1, grateWidth + grateProfileThickness, -trayWidth + grateSize])
-		collectingTray();
+		translate([grateProfileThickness + 1, grateFrameWidth + grateProfileThickness, -trayWidth + grateSize]) {
+			color([144/255, 238/255, 144/255])
+			collectingTray();
+		    color([173/255, 216/255, 230/255]) translate([0, 0, -trayThickness]) {
+		        translate([50, 0, 0])
+		        collectingTrayMount();
+
+		        translate([grateLength - (50 + trayWidth / 3), 0, 0])
+		        collectingTrayMount();
+
+		        translate([grateLength / 2 - ((trayWidth / 3) / 2), 0, 0])
+		        collectingTrayMount();
+		    }
+	    }
 
 		color([200/255, 200/255, 100/255]) {
 			// translate([grateProfileThickness * 3 + 1, grateProfileThickness * 2, grateProfileThickness])

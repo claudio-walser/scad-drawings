@@ -37,24 +37,27 @@ module kitchen() {
 
 
 
-// Küchenzeile Ott
-difference() {
+// // Küchenzeile Ott
+// difference() {
 
-	color([169/255, 169/255, 169/255]) kitchen();
-	scale( [1.15, 1.15, 1.15])
-	translate([315, 315, 500])
-	largeEgg();
+// 	color([169/255, 169/255, 169/255]) kitchen();
+// 	scale( [1.15, 1.15, 1.15])
+// 	translate([315, 315, 500])
+// 	largeEgg();
 
 
-	translate([3750 - outerWidth - spindleWallExtension * 2 - 500, 100, 850])
-	cube(size = [outerWidth + spindleWallExtension * 2, 1000, 900]);
+// 	translate([3750 - outerWidth - spindleWallExtension * 2 - 500, 100, 850])
+// 	cube(size = [outerWidth + spindleWallExtension * 2, 1000, 900]);
 
-}
+// }
 
 
 translate([3750 - outerWidth - spindleWallExtension - 500, spindleWallExtension, 850])
 asadoFull();
 
+
+translate([floorLength, floorWidth, 0])
+rotate([0, 0, 180])
 pergola();
 
 translate([400, 400, 500])
