@@ -3,7 +3,7 @@ include <./spindleGear.scad>
 include <./spindleHandle.scad>
 module spindle() {
     // + spindlePlateThickness + spindleHandleThickness
-    spindleLength = outerWidth - fireBasketWidth  + spindleWallExtension + (spindleOverlength * 2) - profileSize + spindlePlateThickness + spindleHandleThickness + (spindlePlateGap * 2);
+    spindleLength = outerWidth - fireBasketWidth + spindleWallExtension + frameToWallGap + fireclayThickness + (spindleOverlength * 2) - profileSize + spindlePlateThickness + spindleHandleThickness + (spindlePlateGap * 2);
     // short length for prototype printing
     // spindleLength = 40;
 

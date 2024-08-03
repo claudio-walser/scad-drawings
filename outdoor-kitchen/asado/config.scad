@@ -1,5 +1,9 @@
 drawReferences = false;
-drawReferenceWall = false;
+drawReferenceWall = true;
+fireclayThickness = 40;
+lintelThickness = 65;
+frameToWallGap = 30;
+
 
 outerWidth = 1500;
 outerDepth = 700;
@@ -14,7 +18,7 @@ fireBasketFrontOpen = true;
 
 spindleDiameter  = 20;
 spindleOverlength = 5;
-spindleWallExtension = 140;
+spindleWallExtension = 100;
 spindleWheelDiameter = 200;
 spindlePlateThickness = 5;
 spindlePlateGap = 2;
