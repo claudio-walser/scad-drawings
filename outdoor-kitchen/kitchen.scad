@@ -38,15 +38,19 @@ asadoFull();
 //rotate([0, 0, 180])
 //pergola();
 
-translate([400, 400, 500])
+translate([400, 1200, 500])
 largeEgg();
 
 difference() {
 	color([169/255, 169/255, 169/255]) kitchen();
 	
-	scale( [1.15, 1.15, 1.15])
-	translate([315, 315, 500])
-	largeEgg();
+	//scale( [1.15, 1.15, 1.15])
+	//translate([315, 315, 500])
+	//largeEgg();
+	
+	translate([315, 1185, 500])
+	cube([850, 550, 550]);
+
 
 	translate([3750 - outerWidth - (spindleWallExtension * 2) - (fireclayThickness) - (frameToWallGap) - 500, 100, 850])
 	cube(size = [outerWidth + spindleWallExtension * 2 + (fireclayThickness * 2) + (frameToWallGap * 2), 1000, 900]);
