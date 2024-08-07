@@ -6,28 +6,31 @@ include <../garden/pergola.scad>
 // Fläche
 cube(size = [3750, 5250, 10]);
 
+// Abfluss 3230mm
+// Waschbecken 450mm * 400mm
+
 module kitchen() {
 
 	// Fundament Ott
-	cube(size = [1000, 5250, 100]);
+	color([255/255, 123/255, 69/255]) cube(size = [1000, 5250, 100]);
 
 	// Wand Ott
-	cube(size = [250, 5250, 1000]);
+	color([169/255, 169/255, 169/255]) cube(size = [125, 5250, 1200]);
 
 	// Korpus Ott
-	translate([250, 0, 100])
-	cube(size = [800, 5250, 900]);
+	translate([125, 0, 100])
+	color([169/255, 169/255, 169/255]) cube(size = [925, 5250, 900]);
 
 
 
 	// Fundament Fussballplatz
-	cube(size = [3750, 1000, 100]);
+	color([255/255, 123/255, 69/255]) cube(size = [3750, 1000, 100]);
 
 	// Küchenzeile Fussballplatz
-	translate([0, 250, 100])
-	cube(size = [3750, 800, 900]);
+	translate([0, 125, 100])
+	color([169/255, 169/255, 169/255]) cube(size = [3750, 925, 900]);
 	// Wand Fussballplatz
-	cube(size = [3750, 250, 1000]);
+	color([169/255, 169/255, 169/255]) cube(size = [3750, 125, 1200]);
 }
 
 translate([3750 - outerWidth - spindleWallExtension - 500, spindleWallExtension, 850])
@@ -42,23 +45,47 @@ translate([400, 1200, 500])
 largeEgg();
 
 difference() {
-	color([169/255, 169/255, 169/255]) kitchen();
+	kitchen();
 	
 	//scale( [1.15, 1.15, 1.15])
 	//translate([315, 315, 500])
 	//largeEgg();
 	
-	translate([315, 1185, 500])
-	cube([850, 550, 550]);
+	// Egg
+	translate([125, 1185, 500])
+	cube([950, 550, 550]);
+
+	// Egg mitte
+	translate([125, 1185, 225])
+	cube([950, 550, 335 - 125 - 60]);
+	
+	// Egg rechts
+	translate([125, 1735 + 125, 225])
+	cube([950, 550, 835 - 185]);
 
 
+
+
+	// Feuerstelle
 	translate([3750 - outerWidth - (spindleWallExtension * 2) - (fireclayThickness) - (frameToWallGap) - 500, 100, 850])
 	cube(size = [outerWidth + spindleWallExtension * 2 + (fireclayThickness * 2) + (frameToWallGap * 2), 1000, 900]);
 
-	translate([3750 - outerWidth - (spindleWallExtension) - 500, 100, 850 - lintelThickness - 80 - fireclayThickness])
-	cube(size = [outerWidth, 1000, 80]);
+	// Feuerstelle links
+	translate([3750 - 425, 100, 225]) {
+		cube(size = [300, 1000, 835 - 185]);
+	}
 
+	// Feuerstelle mitte inkl, Ascheschublade
+	translate([3750 - outerWidth - (spindleWallExtension) - 500 + profileSize, 100, 850 - lintelThickness - 80 - fireclayThickness]) {
+		cube(size = [outerWidth - (profileSize * 2), 1000, 80]);
+		
+		translate([0, 0, -440])
+		cube(size = [outerWidth - (profileSize * 2), 1000, 375]);
+	}
 
-
+	// Feuerstelle rechts
+	translate([3750 - outerWidth - spindleWallExtension - fireclayThickness - frameToWallGap - 125 - 500 - 300, 100, 225]) {
+		cube(size = [300, 1000, 835 - 185]);
+	}
 
 }

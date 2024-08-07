@@ -18,16 +18,16 @@ module asadoFull() {
 	}
 
 	module wallReference() {
-		color([255/255, 255/255, 255/255]) translate([0, -spindleWallExtension, 0]) {
+		color([169/255, 169/255, 169/255]) translate([0, -spindleWallExtension, 0]) {
 			
 			// right wall
-			translate([-spindleWallExtension - fireclayThickness - frameToWallGap, -frameToWallGap, 0]) cube(size = [spindleWallExtension, 900 + spindleWallExtension + frameToWallGap + fireclayThickness - 20, outerHeight + spindleWallExtension]);
+			translate([-spindleWallExtension - fireclayThickness - frameToWallGap, -frameToWallGap, 0]) cube(size = [spindleWallExtension, 900 + spindleWallExtension + frameToWallGap + fireclayThickness - 45, outerHeight + spindleWallExtension]);
 
 			// left wall
-			translate([outerWidth + fireclayThickness + frameToWallGap, -frameToWallGap, 0]) cube(size = [spindleWallExtension, 900 + spindleWallExtension + frameToWallGap + fireclayThickness - 20, outerHeight + spindleWallExtension]);
+			translate([outerWidth + fireclayThickness + frameToWallGap, -frameToWallGap, 0]) cube(size = [spindleWallExtension, 900 + spindleWallExtension + frameToWallGap + fireclayThickness - 45, outerHeight + spindleWallExtension]);
 
 
-			// left wall
+			// back wall
 			translate([-fireclayThickness - frameToWallGap, -frameToWallGap, 0]) cube(size = [outerWidth + (fireclayThickness * 2) + (frameToWallGap * 2), spindleWallExtension, outerHeight + spindleWallExtension]);
 
 
