@@ -22,6 +22,7 @@ module spindleGear() {
     }
 }
 
+
 module spindleGearMeasuermentLinesLength() {
     color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
 
@@ -70,11 +71,45 @@ module spindleGearMeasuermentLinesWidth() {
 }
 
 
+module spindleGearMeasuermentLinesCutting() {
+    color([0/255, 0/255, 0/255]) translate([0, -200, 0]) {
+
+        square([lineThickness,lineGap + 20]);
+
+        translate([100, 0, 0])
+        square([lineThickness,lineGap + 20]);
+
+
+        translate([-20, lineGap, 0]) {
+            length = 100 + 40;
+
+            translate([50, 15, 0])
+            text(size = textSize, str(100));
+
+            square([length, lineThickness]);
+        }
+    }
+}
+
+
 module drawSpindleGearTopProjection() {
     // // Draufsicht
     translate([100/2, -100/2, 0])
     projection() {
         rotate([0,0,180])
+
+
+        color([0/255, 0/255, 0/255])
+        translate([1, 0, 0])
+        hull() {
+            rotate([0, 0, 0]) translate([48, 0, -0.01])
+            cylinder(d = 10, h = 20);
+
+            rotate([0, 0, 0]) translate([60, 0, -0.01])
+            cylinder(d = 20, h = 20);
+        }
+
+
         spindleGear();
     }
 }
