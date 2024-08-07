@@ -31,6 +31,10 @@ module kitchen() {
 	color([169/255, 169/255, 169/255]) cube(size = [3750, 925, 900]);
 	// Wand Fussballplatz
 	color([169/255, 169/255, 169/255]) cube(size = [3750, 125, 1200]);
+
+	// Abfluss Rohr
+	translate([625, 3230, 0])
+	color("green") cylinder(h=2000, r=80);
 }
 
 translate([3750 - outerWidth - spindleWallExtension - 500, spindleWallExtension, 850])
