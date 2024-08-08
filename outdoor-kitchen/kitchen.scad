@@ -2,6 +2,7 @@ include <../library/modules.scad>
 include <./asado/assembly.scad>
 include <./big-green-egg/large.scad>
 include <./sink/sink.scad>
+include <./roaring-dragon/burner.scad>
 include <../garden/pergola.scad>
 
 // Fläche
@@ -9,6 +10,12 @@ cube(size = [3750, 5250, 10]);
 
 // Abfluss 3230mm
 // Waschbecken 450mm * 400mm
+
+// Durchmesser 360
+// Überstand 35
+// Höhe 157
+// Mitte -> Ventil 390
+
 
 module kitchen() {
 
@@ -56,8 +63,6 @@ difference() {
 	//translate([315, 315, 500])
 	//largeEgg();
 
-
-
 	// Egg
 	translate([125, 1185 + 550 + 125, 500])
 	cube([950, 550, 550]);
@@ -71,9 +76,6 @@ difference() {
 	cube([950, 550, 835 - 185]);
 
 
-
-
-
 	// Waschbecken
 	translate([400, 3230-(450/2), 710])
 	sink();
@@ -84,6 +86,11 @@ difference() {
 	translate([125, 1735 + 550 + 125 + 125, 225])
 	cube([950, 1400, 835 - 185]);
 
+	// Wok-Brenner
+	translate([905 - (390 - ((360 - 70) / 2)), 4000 + ((1190) / 2), 845])
+	burner();
+
+	// Wok Brenner Mitte
 	translate([125, 1735 + 550 + 1400 + (125 * 3), 225])
 	cube([950, 1190 - 125, 835 - 185]);
 
