@@ -4,7 +4,7 @@ include <./big-green-egg/large.scad>
 include <./sink/sink.scad>
 include <./roaring-dragon/burner.scad>
 include <../garden/pergola.scad>
-
+include <./models/gas-bottle.scad>
 // Fläche
 cube(size = [3750, 5250, 10]);
 
@@ -16,9 +16,11 @@ cube(size = [3750, 5250, 10]);
 // Höhe 157
 // Mitte -> Ventil 390
 color([176/255,196/255,222/255])
-translate([380, 5020, 225])
-rotate([0, 0, 90])
-scale(5) import("models/gas-bottle.stl");
+
+
+translate([430, 4960, 225]) {
+	gasBottle();
+}
 
 module kitchen() {
 
