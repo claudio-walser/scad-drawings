@@ -1,6 +1,7 @@
 include <../library/modules.scad>
 include <./asado/assembly.scad>
 include <./big-green-egg/large.scad>
+include <./sink/sink.scad>
 include <../garden/pergola.scad>
 
 // Fläche
@@ -31,10 +32,6 @@ module kitchen() {
 	color([169/255, 169/255, 169/255]) cube(size = [3750, 925, 900]);
 	// Wand Fussballplatz
 	color([169/255, 169/255, 169/255]) cube(size = [3750, 125, 1200]);
-
-	// Abfluss Rohr
-	translate([625, 3230, 0])
-	color("green") cylinder(h=2000, r=80);
 }
 
 translate([3750 - outerWidth - spindleWallExtension - 500, spindleWallExtension, 850])
@@ -45,30 +42,50 @@ asadoFull();
 //rotate([0, 0, 180])
 //pergola();
 
-translate([400, 1200, 500])
+translate([400, 1210 + 550 + 125, 500])
 largeEgg();
+
+// Abfluss Rohr
+translate([625, 3230, 0])
+color("green") cylinder(h=700, r=80);
 
 difference() {
 	kitchen();
-	
+
 	//scale( [1.15, 1.15, 1.15])
 	//translate([315, 315, 500])
 	//largeEgg();
-	
+
+
+
 	// Egg
-	translate([125, 1185, 500])
+	translate([125, 1185 + 550 + 125, 500])
 	cube([950, 550, 550]);
 
 	// Egg mitte
-	translate([125, 1185, 225])
+	translate([125, 1185 + 550 + 125, 225])
 	cube([950, 550, 335 - 125 - 60]);
-	
+
 	// Egg rechts
-	translate([125, 1735 + 125, 225])
+	translate([125, 1185, 225])
 	cube([950, 550, 835 - 185]);
 
 
 
+
+
+	// Waschbecken
+	translate([400, 3230-(450/2), 710])
+	sink();
+
+
+
+	// Waschbecken mitte
+	translate([125, 1735 + 550 + 125 + 125, 225])
+	cube([950, 1400, 835 - 185]);
+
+	translate([125, 1735 + 550 + 1400 + (125 * 3), 225])
+	cube([950, 1190 - 125, 835 - 185]);
 
 	// Feuerstelle
 	translate([3750 - outerWidth - (spindleWallExtension * 2) - (fireclayThickness) - (frameToWallGap) - 500, 100, 850])
@@ -88,8 +105,8 @@ difference() {
 	}
 
 	// Feuerstelle rechts
-	translate([3750 - outerWidth - spindleWallExtension - fireclayThickness - frameToWallGap - 125 - 500 - 300, 100, 225]) {
-		cube(size = [300, 1000, 835 - 185]);
+	translate([3750 - outerWidth - spindleWallExtension - fireclayThickness - frameToWallGap - 125 - 500 - 380 + 125, 100, 225]) {
+		cube(size = [380 - 125, 1000, 835 - 185]);
 	}
 
 }
