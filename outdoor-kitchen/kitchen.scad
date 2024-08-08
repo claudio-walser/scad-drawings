@@ -15,7 +15,10 @@ cube(size = [3750, 5250, 10]);
 // Überstand 35
 // Höhe 157
 // Mitte -> Ventil 390
-
+color([176/255,196/255,222/255])
+translate([380, 5020, 225])
+rotate([0, 0, 90])
+scale(5) import("models/gas-bottle.stl");
 
 module kitchen() {
 
