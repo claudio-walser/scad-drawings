@@ -20,7 +20,7 @@ cube(size = [3750, 5250, 10]);
 module kitchen() {
 
 	// Fundament Ott
-	color([255/255, 123/255, 69/255]) cube(size = [1000, 5250, 100]);
+	color([140/255, 140/255, 140/255]) cube(size = [1000, 5250, 100]);
 
 	// Wand Ott
 	color([169/255, 169/255, 169/255]) cube(size = [125, 5250, 1200]);
@@ -32,7 +32,7 @@ module kitchen() {
 
 
 	// Fundament Fussballplatz
-	color([255/255, 123/255, 69/255]) cube(size = [3750, 1000, 100]);
+	color([140/255, 140/255, 140/255]) cube(size = [3750, 1000, 100]);
 
 	// Küchenzeile Fussballplatz
 	translate([0, 125, 100])
@@ -45,9 +45,11 @@ translate([3750 - outerWidth - spindleWallExtension - 500, spindleWallExtension,
 asadoFull();
 
 
-//translate([floorLength, floorWidth, 0])
-//rotate([0, 0, 180])
-//pergola();
+translate([floorLength, floorWidth, 0])
+rotate([0, 0, 180])
+
+// 205;102;29
+color([205/255, 102/255, 29/255]) pergola();
 
 translate([400, 1210 + 550 + 125, 500])
 largeEgg();
