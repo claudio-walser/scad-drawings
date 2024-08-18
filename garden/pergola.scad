@@ -1,5 +1,5 @@
-floorWidth = 5250;
-floorLength = 3750;
+//floorWidth = 5250;
+//floorLength = 3750;
 
 floorLength = 3615 + (2 * 125);
 floorWidth = 4985 + (2 * 125);
@@ -17,9 +17,11 @@ roofOverlap = 200;
 roofLeftOverlap = 625;
 roofGap = 200;
 
+pergolaWidth = floorWidth - floorToPergolaOverlap * 2;
+pergolaLength = floorLength - floorToPergolaOverlap * 2;
+
 module pergola() {
-	pergolaWidth = floorWidth - floorToPergolaOverlap * 2;
-	pergolaLength = floorLength - floorToPergolaOverlap * 2;
+
 	beamLength = pergolaWidth + beamOverlap * 2;
 
 
@@ -33,8 +35,8 @@ module pergola() {
 	cube(size=[floorLength, floorWidth, 10]);
 
 	// supports
-	translate([floorToPergolaOverlap, floorToPergolaOverlap, 0])
-	cube(size=[thickness, thickness, height+thickness]);
+	// translate([floorToPergolaOverlap, floorToPergolaOverlap, 0])
+	// cube(size=[thickness, thickness, height+thickness]);
 
 	translate([floorLength - thickness - floorToPergolaOverlap, floorToPergolaOverlap, 0])
 	cube(size=[thickness, thickness, height+thickness]);
@@ -45,7 +47,7 @@ module pergola() {
 	translate([floorLength - thickness - floorToPergolaOverlap, floorWidth - thickness - floorToPergolaOverlap, 0])
 	cube(size=[thickness, thickness, height+thickness]);
 
-
+/*
 	// beams
 	translate([floorToPergolaOverlap, -beamOverlap + floorToPergolaOverlap, height])
 	cube(size=[thickness, beamLength, beamThickness]);
@@ -78,7 +80,7 @@ module pergola() {
 	}
 
 
-
+	/*
 	// roof
 	translate([0, floorToPergolaOverlap, 0]) {
 		amount = floor(beamLength / (roofGap + 30)) - 1;
@@ -88,6 +90,6 @@ module pergola() {
 			translate([-roofLeftOverlap + floorToPergolaOverlap, currentOverlap, height+125])
 			cube(size=[pergolaLength+roofOverlap+roofLeftOverlap, 30, roofThickness]);
 		}
-	}
+	}*/
 }
 

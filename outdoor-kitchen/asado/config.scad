@@ -1,5 +1,5 @@
 drawReferences = false;
-drawReferenceWall = true;
+drawReferenceWall = false;
 fireclayThickness = 40;
 lintelThickness = 65;
 frameToWallGap = 30;
