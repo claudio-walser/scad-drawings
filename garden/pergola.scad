@@ -1,5 +1,9 @@
 floorWidth = 5250;
 floorLength = 3750;
+
+floorLength = 3615 + (2 * 125);
+floorWidth = 4985 + (2 * 125);
+
 floorToPergolaOverlap = 125;
 
 height = 2275;
@@ -17,6 +21,13 @@ module pergola() {
 	pergolaWidth = floorWidth - floorToPergolaOverlap * 2;
 	pergolaLength = floorLength - floorToPergolaOverlap * 2;
 	beamLength = pergolaWidth + beamOverlap * 2;
+
+
+
+	echo(str("Pergola Länge: ", pergolaWidth));
+	echo(str("Pergola Breite: ", pergolaLength));
+
+
 	// floor
 	translate([0, 0, -10])
 	cube(size=[floorLength, floorWidth, 10]);

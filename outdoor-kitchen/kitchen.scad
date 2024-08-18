@@ -52,7 +52,6 @@ asadoFull();
 
 translate([floorLength, floorWidth, 0])
 rotate([0, 0, 180])
-
 // 205;102;29
 color([205/255, 102/255, 29/255]) pergola();
 
