@@ -185,6 +185,35 @@ module counterTopsLong() {
 		// outside right
 		translate([0, pergolaWidth - 880 - 120, 0])
 		color([255/255, 255/255, 255/255]) cube(size = [880, 880 + 120 + 120, 120]);
+
+
+		// roaring dragon
+		translate([0, pergolaWidth - 880 - 500 - 120 - 120, -250])
+		color([255/255, 255/255, 255/255]) cube(size = [880, 500 + 120, 120]);
+
+
+		// sink
+		difference() {
+			translate([0, pergolaWidth - 880 - 500 - 520 - 415 - 120 - 120 - 120 - 120, 0])
+			color([255/255, 255/255, 255/255]) cube(size = [880, 520 + 120 + 120 + 415 + 120, 120]);
+
+			translate([0, -120, -800])
+			unifiedSink();
+		}
+
+
+		// egg left
+		translate([0, 0, 0])
+		color([255/255, 255/255, 255/255]) cube(size = [880, 1540, 120]);
+
+
+
+		// egg
+		translate([0, 1540, -500])
+		color([255/255, 255/255, 255/255]) cube(size = [880, 650, 120]);
+
+
+
 	}
 }
 
@@ -249,8 +278,12 @@ counterTopsShort();
 // step 6c - counter tops long
 counterTopsLong();
 
-translate([pergolaLength - outerWidth - spindleWallExtension - 367.5 - 5 + 70, spindleWallExtension, 810])
-asadoFull();
+//translate([pergolaLength - outerWidth - spindleWallExtension - 367.5 - 5 + 70, spindleWallExtension, 810])
+//asadoFull();
+
+
+//translate([400, 1210 + 410 + 125, 500])
+//largeEgg();
 
 
 /*
