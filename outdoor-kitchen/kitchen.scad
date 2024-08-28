@@ -79,7 +79,7 @@ module kitchenWallsShort() {
 
 		// outside left
 		translate([pergolaLength, 0, 0])
-		color([255/255, 255/255, 255/255]) cube(size = [120, 880, 640]);
+		color([255/255, 255/255, 255/255]) cube(size = [120, 880, 640 + 120]);
 
 		// inside right
 		translate([880, 0, 0])
@@ -94,11 +94,17 @@ module kitchenWallsShort() {
 		// grill
 		translate([880 + 120 + 367.5, 0, 0])
 			union() {
-				// outer grill
+				// right grill wall
 				color([255/255, 255/255, 255/255]) cube(size = [120, 880, 640 + 840]);
 
+				// left grill wall
 				translate([1640 + 120, 0, 0])
 				color([255/255, 255/255, 255/255]) cube(size = [120, 880, 640 + 840]);
+
+				// back grill wall
+				translate([0, -120, 840 - 120 - 120])
+				color([255/255, 255/255, 255/255]) cube(size = [1640 + 120 + 120, 120, 640 + 120 + 120]);
+
 
 				// inner grill
 				translate([120, 0, 0])
@@ -121,12 +127,12 @@ module kitchenWallsShort() {
 module wallsRoaringDragon() {
 
 		translate([0, 0, 0])
-		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640]);
+		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640 + 120]);
 
 
 		// roaring dragon
 		translate([0, 500 + 120, 0])
-		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640]);
+		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640 + 120]);
 
 		// reference
 		//translate([0, 120, 0]) color("black") cube(size = [880, 500, 640 - 200]);
@@ -136,17 +142,15 @@ module wallsRoaringDragon() {
 		//translate([0, 900-120-40, 0]) color("red") cube(size = [880, 880, 640 - 200]);
 }
 
-
-
 module wallsEgg() {
 
 		translate([0, 0, 0])
-		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640]);
+		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640 + 120]);
 
 
 		// roaring dragon
 		translate([0, 650 + 120, 0])
-		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640]);
+		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640 + 120]);
 
 		// reference
 		//translate([0, 120, 0]) color("green") cube(size = [880, 650, 640 - 200]);
@@ -157,7 +161,7 @@ module kitchenWallsLong() {
 	translate([125, 125, 80 + 120]) {
 		// outside right
 		translate([0, pergolaWidth, 0])
-		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640]);
+		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640 + 120]);
 
 
 		translate([0, pergolaWidth - 120 - 480 - 900 - 120, 0]) wallsRoaringDragon();
@@ -168,10 +172,6 @@ module kitchenWallsLong() {
 		color([255/255, 255/255, 255/255]) cube(size = [880, 120, 640]);
 
 
-
-
-
-
 		// egg left
 
 
@@ -180,17 +180,21 @@ module kitchenWallsLong() {
 	}
 }
 
-module counterTopsLong() {
+module lintelLong() {
 	translate([125, 125, 80 + 120 + 640]) {
 		// outside right
 		translate([0, pergolaWidth - 880 - 120, 0])
 		color([255/255, 255/255, 255/255]) cube(size = [880, 880 + 120 + 120, 120]);
 
-
 		// roaring dragon
 		translate([0, pergolaWidth - 880 - 500 - 120 - 120, -250])
 		color([255/255, 255/255, 255/255]) cube(size = [880, 500 + 120, 120]);
+		//color("blue") cube(size = [880, 500 + 120, 120]);
 
+		// egg
+		translate([0, 1540, -500])
+		color([255/255, 255/255, 255/255]) cube(size = [880, 650, 120]);
+		//color("blue") cube(size = [880, 650, 120]);
 
 		// sink
 		difference() {
@@ -198,32 +202,23 @@ module counterTopsLong() {
 			color([255/255, 255/255, 255/255]) cube(size = [880, 520 + 120 + 120 + 415 + 120, 120]);
 
 			translate([0, -120, -800])
-			unifiedSink();
+			translate([300, 3230-(450/2), 710])
+			sinkOuter();
 		}
-
 
 		// egg left
 		translate([0, 0, 0])
 		color([255/255, 255/255, 255/255]) cube(size = [880, 1540, 120]);
 
-
-
-		// egg
-		translate([0, 1540, -500])
-		color([255/255, 255/255, 255/255]) cube(size = [880, 650, 120]);
-
-
-
 	}
 }
 
 
-module counterTopsShort() {
+module lintelShort() {
 	translate([125, 125, 80 + 120 + 640]) {
 		// left
 		translate([pergolaLength - 367.5, 0, 0])
 		color([255/255, 255/255, 255/255]) cube(size = [120 + 367.5, 880, 120]);
-
 
 		// right
 		translate([pergolaLength - (367.5 * 2) - 1640 - 120 - 120 - 120 - 880, 0, 0])
@@ -235,11 +230,63 @@ module counterTopsShort() {
 
 			translate([0, 0, -120 - 80])
 			color([255/255, 255/255, 255/255]) cube(size = [1640, 880, 120]);
+			//color("blue") cube(size = [1640, 880, 120]);
+		}
+	}
+}
+
+
+
+
+
+module counterTopLong() {
+	translate([125, 125, 80 + 120 + 640 + 120]) {
+		// outside right
+		translate([0, pergolaWidth - 880 - 120, 0])
+		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 880 + 120 + 120 + 20, 40]);
+
+		// roaring dragon
+		translate([0, pergolaWidth - 880 - 500 - 120, -250])
+		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 500, 40]);
+		//color("blue") cube(size = [880, 500 + 120, 120]);
+
+		// egg
+		translate([0, 1540, -500])
+		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 650, 40]);
+		//color("blue") cube(size = [880, 650, 120]);
+
+		// sink
+		difference() {
+			translate([0, pergolaWidth - 880 - 500 - 520 - 415 - 120 - 120 - 120 - 120, 0])
+			color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 520 + 120 + 120 + 415 + 120, 40]);
+
+			translate([0, -120, -800])
+			translate([300, 3230-(450/2), 710])
+			sinkOuter();
 		}
 
+		// egg left
+		translate([0, 0, 0])
+		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 1540, 40]);
 
 	}
 }
+
+
+module counterTopShort() {
+	translate([125, 125, 80 + 120 + 640 + 120]) {
+		// left
+		translate([pergolaLength - 367.5, 0, 0])
+		color([0/255, 0/255, 0/255]) cube(size = [120 + 367.5 + 20, 880 + 20, 40]);
+
+		// right
+		translate([pergolaLength - (367.5 * 2) - 1640 - 120 - 120 - 120 - 880, 0, 0])
+		color([0/255, 0/255, 0/255]) cube(size = [120 + 367.5 + 880, 880 + 20, 40]);
+	}
+}
+
+
+
 
 
 // step 1 - pergola supports only
@@ -248,6 +295,7 @@ rotate([0, 0, 180])
 color([205/255, 102/255, 29/255]) pergola();
 
 // unified sink
+//translate([125, 5, -50])
 //unifiedSink();
 
 // step 2 - socket
@@ -272,16 +320,28 @@ kitchenWallsShort();
 // step 6a - kitchen walls long
 kitchenWallsLong();
 
-// step 6b - counter tops short
-counterTopsShort();
+difference() {
+	// step 6b - counter tops short
+	lintelShort();
 
-// step 6c - counter tops long
-counterTopsLong();
+	translate([220, 120 + 100, 810])
+	cube([3800, 700, 180]);
+}
 
+difference() {
+	// step 6c - counter tops long
+	lintelLong();
+
+	translate([220, 120 + 100, 810])
+	cube([700, 5700, 180]);
+}
+
+
+//counterTopLong();
+//counterTopShort();
 //translate([pergolaLength - outerWidth - spindleWallExtension - 367.5 - 5 + 70, spindleWallExtension, 810])
 //asadoFull();
-
-
+//
 //translate([400, 1210 + 410 + 125, 500])
 //largeEgg();
 

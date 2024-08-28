@@ -24,11 +24,8 @@ module pergola() {
 
 	beamLength = pergolaWidth + beamOverlap * 2;
 
-
-
 	echo(str("Pergola Länge: ", pergolaWidth));
 	echo(str("Pergola Breite: ", pergolaLength));
-
 
 	// floor
 	translate([0, 0, -10])
