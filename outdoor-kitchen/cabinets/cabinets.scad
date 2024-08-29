@@ -62,6 +62,26 @@ module cabinetFrame(length = 400, width = 880, height = 870 ) {
 }
 
 
-module firePitFrame() {
+module firePitFrame(length = 400, width = 880, height = 870) {
+	grillFrameWidth = 1500 + 140;
+	grillFrameHeight = 960 + 700;
+	// backward
+	translate([0, 0, frameBeamWidth]) {
+		cube([frameBeamWidth, frameBeamWidth, grillFrameHeight - (frameBeamWidth * 2)]);
 
+		translate([grillFrameWidth - frameBeamWidth, 0, 0])
+		cube([frameBeamWidth, frameBeamWidth, grillFrameHeight - (frameBeamWidth * 2)]);
+
+
+
+
+
+		// frontward
+		translate([0, width - frameBeamThickness, 0]) {
+			cube([frameBeamWidth, frameBeamWidth, grillFrameHeight - (frameBeamWidth * 2)]);
+
+			translate([grillFrameWidth - frameBeamWidth, 0, 0])
+			cube([frameBeamWidth, frameBeamWidth, grillFrameHeight - (frameBeamWidth * 2)]);
+		}
+	}
 }

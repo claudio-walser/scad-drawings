@@ -20,7 +20,55 @@ module unifiedSink() {
 	color("lightblue") sink();
 }
 
+module kitchenWallsShort() {
 
+	translate([125, 125, 80 + 120]) {
+
+		// outside left
+		translate([pergolaLength, 0, 0])
+		color([255/255, 255/255, 255/255]) cube(size = [120, 880, 640 + 120]);
+
+		// inside right
+		translate([880, 0, 0])
+		color([255/255, 255/255, 255/255]) cube(size = [120, 880, 640]);
+
+		// inside most right
+		translate([880 - 120, 0, 0])
+		color([255/255, 255/255, 255/255]) cube(size = [120, 880 + 120, 640]);
+
+
+
+		// grill
+		translate([880 + 120 + 367.5, 0, 0])
+			union() {
+				// right grill wall
+				color([255/255, 255/255, 255/255]) cube(size = [120, 880, 640 + 840]);
+
+				// left grill wall
+				translate([1640 + 120, 0, 0])
+				color([255/255, 255/255, 255/255]) cube(size = [120, 880, 640 + 840]);
+
+				// back grill wall
+				translate([0, -120, 840 - 120 - 120])
+				color([255/255, 255/255, 255/255]) cube(size = [1640 + 120 + 120, 120, 640 + 120 + 120]);
+
+
+				// inner grill
+				translate([120, 0, 0])
+				color([255/255, 255/255, 255/255]) cube(size = [120, 880, 600]);
+
+				translate([1640, 0, 0])
+				color([255/255, 255/255, 255/255]) cube(size = [120, 880, 600]);
+
+
+				// reference block
+				//ranslate([120, 0, 0])
+				//color("blue") cube(size = [1880, 880, 640]);
+			}
+
+
+	}
+}
 
 module socket() {
 
@@ -96,8 +144,10 @@ module counterTopShort() {
 
 
 
-translate([3855 - 522, 125, 80])
-cabinetFrame(length = 527);
+translate([3855, 125, 80])
+firePitFrame();
+
+//cabinetFrame(length = 527);
 
 
 
