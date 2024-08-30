@@ -86,35 +86,35 @@ module socket() {
 module backWalls() {
 	translate([5, 5, 80]) {
 		// Fundament Ott
-		color([205/255, 205/255, 205/255]) cube(size = [120, pergolaWidth + 120 + 120, 1200]);
+		color("darksalmon") cube(size = [120, pergolaWidth + 120 + 120, 1200]);
 
 
 		// Fundament Fussballplatz
-		color([205/255, 205/255, 205/255]) cube(size = [pergolaLength + 120 + 120, 120, 1200]);
+		color("darksalmon") cube(size = [pergolaLength + 120 + 120, 120, 1200]);
 	}
 }
 
 
 module counterTopLong() {
-	translate([125, 125, 80 + 120 + 640 + 120]) {
+	translate([125, 125, 950]) {
 		// outside right
-		translate([0, pergolaWidth - 880 - 120, 0])
-		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 880 + 120 + 120 + 20, 40]);
+		translate([0, pergolaWidth - 945 - 20, 0])
+		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 1070 + 35, 40]);
 
 		// roaring dragon
-		translate([0, pergolaWidth - 880 - 500 - 120, -250])
+		translate([0, 1450 + 650 + 880 + 575 - 15, -250])
 		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 500, 40]);
 		//color("blue") cube(size = [880, 500 + 120, 120]);
 
 		// egg
-		translate([0, 1540, -500])
+		translate([0, 1450, -500])
 		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 650, 40]);
 		//color("blue") cube(size = [880, 650, 120]);
 
 		// sink
 		difference() {
-			translate([0, pergolaWidth - 880 - 500 - 520 - 415 - 120 - 120 - 120 - 120, 0])
-			color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 520 + 120 + 120 + 415 + 120, 40]);
+			translate([0, 1450 + 650 - 15, 0])
+			color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 880 + 575 + 15, 40]);
 
 			translate([0, -120, -800])
 			translate([300, 3230-(450/2), 710])
@@ -123,33 +123,61 @@ module counterTopLong() {
 
 		// egg left
 		translate([0, 0, 0])
-		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 1540, 40]);
+		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 1450 + 15, 40]);
 
 	}
 }
 
 
 module counterTopShort() {
-	translate([125, 125, 80 + 120 + 640 + 120]) {
+	translate([125, 125, 950]) {
 		// left
-		translate([pergolaLength - 367.5, 0, 0])
-		color([0/255, 0/255, 0/255]) cube(size = [120 + 367.5 + 20, 880 + 20, 40]);
+		translate([pergolaLength - 412.5, 0, 0])
+		color([0/255, 0/255, 0/255]) cube(size = [120 + 367.5 + 60, 880 + 20, 40]);
 
 		// right
-		translate([pergolaLength - (367.5 * 2) - 1640 - 120 - 120 - 120 - 880, 0, 0])
-		color([0/255, 0/255, 0/255]) cube(size = [120 + 367.5 + 880, 880 + 20, 40]);
+		translate([0, 0, 0])
+		color([0/255, 0/255, 0/255]) cube(size = [120 + 367.5 + 880 + 35, 880 + 20, 40]);
 	}
 }
 
 
+grillSideCabinetWidth = 527.5;
+
+module cabinetsShortSide() {
+
+	firePitFrame();
+
+	translate([grillFrameWidth, 0, 0])
+	cabinetFrame(length = grillSideCabinetWidth);
+
+	translate([-grillSideCabinetWidth, 0, 0])
+	cabinetFrame(length = grillSideCabinetWidth);
+
+}
+
+module cabinetsLongSide() {
+	cabinetFrame(length = 880);
+
+	translate([880, 0, 0])
+	cabinetFrame(length = 570);
 
 
-translate([3855, 125, 80])
-firePitFrame();
+	translate([880 + 570, 0, 0])
+	cabinetFrame(length = 650, height = 880 - 500);
 
-//cabinetFrame(length = 527);
+	translate([880 + 570 + 650, 0, 0])
+	cabinetFrame(length = 570);
 
+	translate([880 + 570 + 650 + 570, 0, 0])
+	cabinetFrame(length = 870);
 
+	translate([880 + 570 + 650 + 570 + 870, 0, 0])
+	cabinetFrame(length = 500, height = 880 - 250);
+
+	translate([880 + 570 + 650 + 570 + 870 + 500, 0, 0])
+	cabinetFrame(length = 1070);
+}
 
 
 
@@ -159,42 +187,46 @@ translate([floorLength, floorWidth, 0])
 rotate([0, 0, 180])
 color([205/255, 102/255, 29/255]) pergola();
 
-// unified sink
-//translate([125, 5, -50])
-//unifiedSink();
-
 // step 2 - socket
 socket();
-
 
 // step 3 - back walls
 backWalls();
 
 
-//// step 4 - kitchen floor
-//kitchenFloor();
+
+// unified sink
+translate([125, 5, -50])
+unifiedSink();
+
+translate([3855 - grillFrameWidth - grillSideCabinetWidth + 80 + 70, 150, 850])
+asadoFull();
+
+translate([400, 1210 + 435 , 880 - 420 + 15])
+largeEgg();
+
+translate([430, 4960, 175]) {
+	gasBottle();
+}
 
 
 
-//// step 5 - kitchen walls
-//kitchenWallsShort();
-//
-//// step 5a - kitchen walls long
-//kitchenWallsLong();
-//
-//difference() {
-//	// step 5b - counter tops short
-//	lintelShort();
-//
-//	translate([220, 120 + 100, 810])
-//	cube([3800, 700, 180]);
-//}
-//
-//difference() {
-//	// step 5c - counter tops long
-//	lintelLong();
-//
-//	translate([220, 120 + 100, 810])
-//	cube([700, 5700, 180]);
-//}
-//
+translate([3855 - grillFrameWidth - grillSideCabinetWidth, 125, 80]) {
+	cabinetsShortSide();
+}
+
+translate([1000, 125, 80]) {
+	rotate([0, 0, 90]){
+		cabinetsLongSide();
+	}
+}
+
+
+counterTopShort();
+counterTopLong();
+
+// Material Lärche 80*80
+// 32lm Aufrecht
+// 20lm Lange Seite
+// 12lm Kurze Seite
+// insgesamt 65 Laufmeter Lärche 80*80

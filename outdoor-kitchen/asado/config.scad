@@ -18,7 +18,7 @@ fireBasketFrontOpen = true;
 
 spindleDiameter  = 20;
 spindleOverlength = 5;
-spindleWallExtension = 125;
+spindleWallExtension = 80 + 15;
 spindleWheelDiameter = 200;
 spindlePlateThickness = 5;
 spindlePlateGap = 2;
