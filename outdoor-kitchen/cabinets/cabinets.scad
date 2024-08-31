@@ -67,6 +67,10 @@ module cabinetFrame(length = 400, width = 880, height = 870 ) {
 
 module firePitFrame(length = 400, width = 880, height = 870) {
 
+	fireclay = true;
+	fermacell = true;
+	asado = true;
+
 	color("lightgray") {
 		// backward
 		translate([0, 0, frameBeamWidth]) {
@@ -124,8 +128,16 @@ module firePitFrame(length = 400, width = 880, height = 870) {
 
 
 			// middle
-			translate([(grillFrameWidth - frameBeamWidth) / 2, frameBeamWidth, 0])
-			cube([frameBeamWidth, width - (frameBeamWidth * 2), frameBeamWidth]);
+			translate([(grillFrameWidth - frameBeamWidth) / 2, frameBeamWidth, frameBeamWidth / 2])
+			cube([frameBeamWidth / 2, width - (frameBeamWidth * 2), frameBeamWidth / 2]);
+
+			translate([frameBeamWidth * 1.5, frameBeamWidth, frameBeamWidth / 2])
+			cube([frameBeamWidth / 2, width - (frameBeamWidth * 2), frameBeamWidth / 2]);
+
+			translate([grillFrameWidth - frameBeamWidth * 2, frameBeamWidth, frameBeamWidth / 2])
+			cube([frameBeamWidth / 2, width - (frameBeamWidth * 2), frameBeamWidth / 2]);
+
+
 		}
 
 
@@ -146,27 +158,170 @@ module firePitFrame(length = 400, width = 880, height = 870) {
 			// right
 			translate([grillFrameWidth - frameBeamWidth, frameBeamWidth, 0])
 			cube([frameBeamWidth, width - (frameBeamWidth * 2), frameBeamWidth]);
+
+
+			translate([0, 0, -15]) {
+				// middle
+				translate([(grillFrameWidth - frameBeamWidth) / 2, frameBeamWidth, frameBeamWidth / 2])
+				cube([frameBeamWidth / 2, width - (frameBeamWidth * 2), frameBeamWidth / 2]);
+
+
+
+				// right
+				translate([frameBeamWidth * 1.5, frameBeamWidth, frameBeamWidth / 2])
+				cube([frameBeamWidth / 2, width - (frameBeamWidth * 2), frameBeamWidth / 2]);
+
+
+				// right middle
+				translate([grillFrameWidth / 4, frameBeamWidth, frameBeamWidth / 2])
+				cube([frameBeamWidth / 2, width - (frameBeamWidth * 2), frameBeamWidth / 2]);
+
+				// left middle
+				translate([grillFrameWidth - grillFrameWidth / 4 - frameBeamWidth, frameBeamWidth, frameBeamWidth / 2])
+				cube([frameBeamWidth / 2, width - (frameBeamWidth * 2), frameBeamWidth / 2]);
+
+
+				// left
+				translate([grillFrameWidth - frameBeamWidth * 2, frameBeamWidth, frameBeamWidth / 2])
+				cube([frameBeamWidth / 2, width - (frameBeamWidth * 2), frameBeamWidth / 2]);
+			}
+
+
+
 		}
 
 
 		// top
 		translate([0, 0, grillFrameHeight - 2 * frameBeamWidth]) {
-			// back
-			translate([frameBeamWidth, 0, 0])
-			cube([grillFrameWidth - (frameBeamWidth * 2), frameBeamThickness, frameBeamWidth]);
 
-			// front
-			//translate([frameBeamWidth, width - frameBeamWidth, 0])
-			//cube([grillFrameWidth - (frameBeamWidth * 2), frameBeamWidth, frameBeamWidth]);
+			// back
+			translate([frameBeamWidth, 0, 60])
+			cube([grillFrameWidth - (frameBeamWidth * 2), frameBeamThickness / 4, frameBeamWidth / 4]);
+
+
+			translate([frameBeamWidth, 0, -200])
+			cube([grillFrameWidth - (frameBeamWidth * 2), frameBeamThickness / 4, frameBeamWidth / 4]);
+
+
+			translate([frameBeamWidth, 0, -460])
+			cube([grillFrameWidth - (frameBeamWidth * 2), frameBeamThickness / 4, frameBeamWidth / 4]);
+
+			translate([frameBeamWidth, 0, -720])
+			cube([grillFrameWidth - (frameBeamWidth * 2), frameBeamThickness / 4, frameBeamWidth / 4]);
 
 			// left
 			translate([0, frameBeamWidth, 0])
 			cube([frameBeamWidth, width - (frameBeamWidth * 2), frameBeamWidth]);
 
+			// left top
+			translate([frameBeamWidth - frameBeamWidth / 4 - 15, frameBeamWidth, -frameBeamWidth / 4])
+			cube([frameBeamWidth / 4, width - (frameBeamWidth * 2), frameBeamWidth / 4]);
+
+			translate([frameBeamWidth - frameBeamWidth / 4 - 15, frameBeamWidth, -200])
+			cube([frameBeamWidth / 4, width - (frameBeamWidth * 2), frameBeamWidth / 4]);
+
+			translate([frameBeamWidth - frameBeamWidth / 4 - 15, frameBeamWidth, -460])
+			cube([frameBeamWidth / 4, width - (frameBeamWidth * 2), frameBeamWidth / 4]);
+
+			// left bottom
+			translate([frameBeamWidth - frameBeamWidth / 4 - 15, frameBeamWidth, -720])
+			cube([frameBeamWidth / 4, width - (frameBeamWidth * 2), frameBeamWidth / 4]);
+
+
+
+
+
 			// right
 			translate([grillFrameWidth - frameBeamWidth, frameBeamWidth, 0])
 			cube([frameBeamWidth, width - (frameBeamWidth * 2), frameBeamWidth]);
+
+			// left top
+			translate([grillFrameWidth - frameBeamWidth + 15, frameBeamWidth, -frameBeamWidth / 4])
+			cube([frameBeamWidth / 4, width - (frameBeamWidth * 2), frameBeamWidth / 4]);
+
+			translate([grillFrameWidth - frameBeamWidth + 15, frameBeamWidth, -200])
+			cube([frameBeamWidth / 4, width - (frameBeamWidth * 2), frameBeamWidth / 4]);
+
+			translate([grillFrameWidth - frameBeamWidth + 15, frameBeamWidth, -460])
+			cube([frameBeamWidth / 4, width - (frameBeamWidth * 2), frameBeamWidth / 4]);
+
+			// left bottom
+			translate([grillFrameWidth - frameBeamWidth + 15, frameBeamWidth, -720])
+			cube([frameBeamWidth / 4, width - (frameBeamWidth * 2), frameBeamWidth / 4]);
+
+
+
+
+
+
+
+		}
+
+	}
+
+	if (fermacell) {
+
+		// fermacell
+		color("green") {
+			// back plate
+			translate([frameBeamWidth, frameBeamWidth / 4, 660 + frameBeamWidth])
+			cube([grillFrameWidth - (frameBeamWidth * 2), 15, 840]);
+
+
+			// bottom plate
+			translate([frameBeamWidth, frameBeamWidth, 660 + frameBeamWidth - 15])
+			cube([grillFrameWidth - (frameBeamWidth * 2), width - (frameBeamWidth * 2), 15]);
+
+
+			// right plate
+			translate([frameBeamWidth-15, frameBeamWidth, 660 + frameBeamWidth])
+			cube([15, width - (frameBeamWidth * 2), 840 - frameBeamWidth]);
+
+
+			// left plate
+			translate([grillFrameWidth-frameBeamWidth, frameBeamWidth, 660 + frameBeamWidth])
+			cube([15, width - (frameBeamWidth * 2), 840 - frameBeamWidth]);
+
+
+			// outer right
+			translate([-15, 0, 660 + frameBeamWidth * 3])
+			cube([15, width, 840 - frameBeamWidth * 2]);
+
+			// outer left
+			translate([grillFrameWidth, 0, 660 + frameBeamWidth * 3])
+			cube([15, width, 840 - frameBeamWidth * 2]);
+
+
 		}
 	}
 
+	if (fireclay) {
+		// fireclay
+		color("lightyellow") {
+			// back plate
+			translate([frameBeamWidth, frameBeamWidth / 4 + 15, 660 + frameBeamWidth])
+			cube([grillFrameWidth - (frameBeamWidth * 2), 30, 840]);
+
+
+			// bottom plate
+			translate([frameBeamWidth, frameBeamWidth-15, 660 + frameBeamWidth])
+			cube([grillFrameWidth - (frameBeamWidth * 2), width - frameBeamWidth + 15, 30]);
+
+
+			// right plate
+			translate([frameBeamWidth, frameBeamWidth - 15, 660 + frameBeamWidth+30])
+			cube([30, width - (frameBeamWidth) + 15, 840 - frameBeamWidth+50]);
+
+
+			//// left plate
+			//translate([grillFrameWidth-frameBeamWidth, frameBeamWidth, 660 + frameBeamWidth])
+			translate([grillFrameWidth-frameBeamWidth-30, frameBeamWidth - 15, 660 + frameBeamWidth+30])
+			cube([30, width - (frameBeamWidth) + 15, 840 - frameBeamWidth+50]);
+
+		}
+	}
+	if (asado) {
+		translate([80 + 30 + 40, 30, 770])
+		asadoFull();
+	}
 }

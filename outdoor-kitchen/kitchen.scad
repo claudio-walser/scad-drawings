@@ -199,8 +199,7 @@ backWalls();
 translate([125, 5, -50])
 unifiedSink();
 
-translate([3855 - grillFrameWidth - grillSideCabinetWidth + 80 + 70, 150, 850])
-asadoFull();
+
 
 translate([400, 1210 + 435 , 880 - 420 + 15])
 largeEgg();
