@@ -65,11 +65,9 @@ module cabinetFrame(length = 400, width = 880, height = 870 ) {
 }
 
 
-module firePitFrame(length = 400, width = 880, height = 870) {
+module firePitFrame(fireclay, fermacell, asado) {
 
-	fireclay = true;
-	fermacell = true;
-	asado = true;
+	width = 880;
 
 	color("lightgray") {
 		// backward
@@ -77,7 +75,7 @@ module firePitFrame(length = 400, width = 880, height = 870) {
 			cube([frameBeamWidth, frameBeamWidth, grillFrameHeight - (frameBeamWidth * 2)]);
 
 			translate([grillFrameWidth - frameBeamWidth, 0, 0])
-			cube([frameBeamWidth, frameBeamWidth, grillFrameHeight - (frameBeamWidth * 2)]);
+			#cube([frameBeamWidth, frameBeamWidth, grillFrameHeight - (frameBeamWidth * 2)]);
 
 
 			// frontward
@@ -324,4 +322,66 @@ module firePitFrame(length = 400, width = 880, height = 870) {
 		translate([80 + 30 + 40, 30, 770])
 		asadoFull();
 	}
+}
+
+module firePitMeasurementsFront() {
+
+    color([0/255, 0/255, 0/255]) translate([0, 100, 0]) {
+
+        #square([lineThickness,lineGap * 3 + 20]);
+
+        translate([grillFrameHeight - frameBeamWidth, 0, 0])
+        square([lineThickness,lineGap * 3 + 20]);
+
+
+        translate([-20, lineGap * 3, 0]) {
+            length = outerWidth + 40;
+
+            translate([outerWidth / 2 + 190, 15, 0])
+            text(size = textSize, str(outerWidth));
+
+            square([length, lineThickness]);
+        }
+
+        translate([-20, lineGap * 2, 0]) {
+            length = outerWidth + 40;
+
+           translate([fireBasketWidth / 2, 15, 0])
+            text(size = textSize, str(fireBasketWidth + profileSize));
+
+            translate([outerWidth / 2 + 190, 15, 0])
+            text(size = textSize, str(outerWidth - fireBasketWidth - (profileSize * 2)));
+
+            translate([outerWidth - 15, 15, 0])
+            text(size = textSize, str(profileSize));
+
+            square([length, lineThickness]);
+        }
+
+        translate([-20, lineGap, 0]) {
+            length = outerWidth + 40;
+
+            translate([25, 15, 0])
+            text(size = textSize, str(profileSize));
+
+            translate([200, 15, 0])
+            text(size = textSize, str(fireBasketWidth - profileSize));
+
+            translate([fireBasketWidth + 25, 15, 0])
+            text(size = textSize, str(profileSize));
+
+            translate([fireBasketWidth + 65, 15, 0])
+            text(size = textSize, str(profileSize));
+
+
+            translate([outerWidth - 55, 15, 0])
+            text(size = textSize, str(profileSize));
+
+            translate([outerWidth / 2 + 200, 15, 0])
+            text(size = textSize, str(outerWidth - fireBasketWidth - (profileSize * 4)));
+
+            square([length, lineThickness]);
+        }
+
+    }
 }

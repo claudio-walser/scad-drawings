@@ -146,7 +146,11 @@ grillSideCabinetWidth = 527.5;
 
 module cabinetsShortSide() {
 
-	firePitFrame();
+	fireclay = true;
+	fermacell = true;
+	asado = true;
+
+	firePitFrame(fireclay, fermacell, asado);
 
 	translate([grillFrameWidth, 0, 0])
 	cabinetFrame(length = grillSideCabinetWidth);
