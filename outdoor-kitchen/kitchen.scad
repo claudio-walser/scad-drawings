@@ -84,13 +84,13 @@ module socket() {
 }
 
 module backWalls() {
-	translate([5, 5, 80]) {
+	translate([5, 5, 00]) {
 		// Fundament Ott
-		color("darksalmon") cube(size = [120, pergolaWidth + 120 + 120, 1200]);
+		color("grey") cube(size = [120, pergolaWidth + 120 + 120, 1600]);
 
 
 		// Fundament Fussballplatz
-		color("darksalmon") cube(size = [pergolaLength + 120 + 120, 120, 1200]);
+		color("grey") cube(size = [pergolaLength + 120 + 120, 120, 1600]);
 	}
 }
 
@@ -146,12 +146,6 @@ grillSideCabinetWidth = 527.5;
 
 module cabinetsShortSide() {
 
-	fireclay = true;
-	fermacell = true;
-	asado = true;
-
-	firePitFrame(fireclay, fermacell, asado);
-
 	translate([grillFrameWidth, 0, 0])
 	cabinetFrame(length = grillSideCabinetWidth);
 
@@ -184,6 +178,53 @@ module cabinetsLongSide() {
 }
 
 
+module grillWalls() {
+
+	translate([-40, 0, 0]) {
+		// grill
+		//translate([880 + 120 + 367.5, 0, 0])
+		translate([0, 0, 0])
+			union() {
+				// right grill wall
+				color("darksalmon") cube(size = [120, 880, 640 + 960]);
+
+				// left grill wall
+				translate([1640 + 120, 0, 0])
+				color("darksalmon") cube(size = [120, 880, 640 + 960]);
+
+				// back grill wall
+				//translate([0, -120, 840 - 120 - 120])
+				//color([255/255, 255/255, 255/255]) cube(size = [1640 + 120 + 120, 120, 640 + 120 + 120]);
+
+
+				//// inner grill
+				//translate([120, 0, 0])
+				//color([155/255, 155/255, 155/255]) cube(size = [120, 880, 600 + 140]);
+
+				//translate([1640, 0, 0])
+				//color([155/255, 155/255, 155/255]) cube(size = [120, 880, 600 + 140]);
+
+
+				// reference block
+				//translate([120, 0, 0])
+				//color("blue") cube(size = [1880, 880, 640]);
+			}
+
+		translate([0, 0, 640 + 140 + 80]) {
+			// grill top
+			translate([0, 0, -120]) {
+				color([255/255, 255/255, 255/255]) cube(size = [1880, 880, 80]);
+
+				//translate([0, 0, -120 - 40])
+				//color([255/255, 255/255, 255/255]) cube(size = [1880, 880, 80]);
+				//color("blue") cube(size = [1640, 880, 120]);
+			}
+		}
+	}
+
+}
+
+
 
 
 // step 1 - pergola supports only
@@ -192,7 +233,7 @@ rotate([0, 0, 180])
 color([205/255, 102/255, 29/255]) pergola();
 
 // step 2 - socket
-socket();
+//socket();
 
 // step 3 - back walls
 backWalls();
@@ -200,33 +241,48 @@ backWalls();
 
 
 // unified sink
-translate([125, 5, -50])
-unifiedSink();
+//translate([125, 5, -50])
+//unifiedSink();
 
 
 
-translate([400, 1210 + 435 , 880 - 420 + 15])
-largeEgg();
+//translate([400, 1210 + 435 , 880 - 420 + 15])
+//largeEgg();
 
-translate([430, 4960, 175]) {
-	gasBottle();
-}
+//translate([430, 4960, 175]) {
+	//gasBottle();
+//}
 
 
 
-translate([3855 - grillFrameWidth - grillSideCabinetWidth, 125, 80]) {
-	cabinetsShortSide();
+translate([3855 - grillFrameWidth - grillSideCabinetWidth - 100, 125, 0]) {
+	//cabinetsShortSide();
+
+
+	fireclay = true;
+	fermacell = true;
+	asado = false;
+
+	//firePitFrame(fireclay, fermacell, asado);
+
+	grillWalls();
+
+
+	translate([80 + 30 + 40, 30, 850])
+	asadoFull();
+
+
 }
 
 translate([1000, 125, 80]) {
 	rotate([0, 0, 90]){
-		cabinetsLongSide();
+		//cabinetsLongSide();
 	}
 }
 
 
-counterTopShort();
-counterTopLong();
+//counterTopShort();
+//counterTopLong();
 
 // Material Lärche 80*80
 // 32lm Aufrecht
