@@ -3,6 +3,7 @@ use <BOSL/threading.scad>
 
 $fn = 256;
 
+// lower
 difference() {
   cylinder(d=45, h=6);
 
@@ -12,9 +13,8 @@ difference() {
 }
 
 
-
-
-!translate([60, 0, 0]) {
+// upper
+translate([60, 0, 0]) {
   
   difference() {
     union() {
@@ -25,3 +25,6 @@ difference() {
     translate([0, 0, -2.5]) cylinder(d=38, h=6);
   }
 }
+
+// inner
+translate([120, 0, 0]) cylinder(d=37, h=4.5);

@@ -98,12 +98,12 @@ module backWalls() {
 module counterTopLong() {
 	translate([125, 125, 950]) {
 		// outside right
-		translate([0, pergolaWidth - 945 - 20, 0])
-		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 1070 + 35, 40]);
+		translate([0, pergolaWidth - 545 - 20, 0])
+		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 670 + 35, 40]);
 
 		// roaring dragon
 		translate([0, 1450 + 650 + 880 + 575 - 15, -250])
-		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 500, 40]);
+		color([0/255, 0/255, 0/255]) cube(size = [880 + 20, 900, 40]);
 		//color("blue") cube(size = [880, 500 + 120, 120]);
 
 		// egg
@@ -177,10 +177,10 @@ module cabinetsLongSide() {
 	cabinetFrame(length = 870);
 
 	translate([880 + 570 + 650 + 570 + 870, 0, 0])
-	cabinetFrame(length = 500, height = 880 - 250);
+	cabinetFrame(length = 900, height = 880 - 250);
 
-	translate([880 + 570 + 650 + 570 + 870 + 500, 0, 0])
-	cabinetFrame(length = 1070);
+	translate([880 + 570 + 650 + 570 + 870 + 900, 0, 0])
+	cabinetFrame(length = 670);
 }
 
 
