@@ -84,11 +84,11 @@ module socket() {
 module backWalls() {
 	translate([5, 5, 0]) {
 		// Fundament Ott
-		color("grey") cube(size = [120, pergolaWidth + 120 + 120, 1620]);
+		color("grey") cube(size = [backWallThickness, pergolaWidth + backWallThickness + backWallThickness, 1620]);
 
 
 		// Fundament Fussballplatz
-		color("grey") cube(size = [pergolaLength + 120 + 120, 120, 1620]);
+		color("grey") cube(size = [pergolaLength + backWallThickness + backWallThickness, backWallThickness, 1620]);
 	}
 }
 
@@ -142,10 +142,10 @@ module counterTopShort() {
 
 module cabinetsShortSide() {
 
-	translate([grillFrameWidth, 0, 0])
+	translate([backWallFullLength - grillSideCabinetWidth, 0, 0])
 	cabinetFrame(length = grillSideCabinetWidth);
 
-	translate([-grillSideCabinetWidth, 0, 0])
+	translate([backWallFullLength - grillSideCabinetWidth - grillWallDistance - 2 * grillWallThickness - grillSideCabinetWidth, 0, 0])
 	cabinetFrame(length = grillSideCabinetWidth);
 
 }
@@ -155,7 +155,6 @@ module cabinetsLongSide() {
 
 	translate([880, 0, 0])
 	cabinetFrame(length = 570);
-
 
 	translate([880 + 570, 0, 0])
 	cabinetFrame(length = 650, height = 880 - 500);
@@ -173,25 +172,23 @@ module cabinetsLongSide() {
 	cabinetFrame(length = 670);
 }
 
-
 module grillWalls(fireclay = true, asado = true) {
 	width = 880;
 	translate([0, 0, 0]) {
 		// grill
 		//translate([880 + 120 + 367.5, 0, 0])
-		translate([0, 0, 0])
+		translate([0, 0, 0]) {
 			union() {
 				// right grill wall
-				color("darksalmon") cube(size = [120, 880, 640 + 980]);
+				color("darksalmon") cube(size = [grillWallThickness, 880, 640 + 980]);
 
 				// left grill wall
-				translate([1640 + 120, 0, 0])
-				color("darksalmon") cube(size = [120, 880, 640 + 980]);
+				translate([grillWallDistance + grillWallThickness, 0, 0])
+				color("darksalmon") cube(size = [grillWallThickness, 880, 640 + 980]);
 
 				// back grill wall
 				//translate([0, -120, 840 - 120 - 120])
 				//color([255/255, 255/255, 255/255]) cube(size = [1640 + 120 + 120, 120, 640 + 120 + 120]);
-
 
 				//// inner grill
 				//translate([120, 0, 0])
@@ -200,11 +197,11 @@ module grillWalls(fireclay = true, asado = true) {
 				//translate([1640, 0, 0])
 				//color([155/255, 155/255, 155/255]) cube(size = [120, 880, 600 + 140]);
 
-
 				// reference block
 				//translate([120, 0, 0])
 				//color("blue") cube(size = [1880, 880, 640]);
 			}
+		}
 
 		translate([0, 0, 640 + 140 + 80]) {
 			// grill top
@@ -218,14 +215,10 @@ module grillWalls(fireclay = true, asado = true) {
 		}
 	}
 
-
 	if (asado) {
 		translate([160 + 30, 30, 850])
 		asadoFull();
 	}
-
-
-
 
 	if (fireclay) {
 		// fireclay
@@ -235,29 +228,32 @@ module grillWalls(fireclay = true, asado = true) {
 			translate([frameBeamWidth, frameBeamWidth / 4 + 15, 660 + frameBeamWidth])
 			cube([grillFrameWidth - (frameBeamWidth * 2), 30, 840]);
 
-
 			// bottom plate
 			translate([frameBeamWidth, frameBeamWidth-15, 700 + frameBeamWidth])
-			#cube([grillFrameWidth - (frameBeamWidth * 2), width - frameBeamWidth + 50, 30]);
-
+			cube([grillFrameWidth - (frameBeamWidth * 2), width - frameBeamWidth + 50, 30]);
 
 			// right plate
 			translate([frameBeamWidth, frameBeamWidth - 15, 660 + frameBeamWidth+30])
 			cube([30, width - (frameBeamWidth) + 50, 840 - frameBeamWidth+50]);
 
-
 			//// left plate
 			//translate([grillFrameWidth-frameBeamWidth, frameBeamWidth, 660 + frameBeamWidth])
 			translate([grillFrameWidth-frameBeamWidth-30, frameBeamWidth - 15, 660 + frameBeamWidth+30])
 			cube([30, width - (frameBeamWidth) + 50, 840 - frameBeamWidth+50]);
-
 		}
 	}
-
 }
+
+showWalls = true;
+showLongSide = true;
+showShortSide = true;
+showCounterTops = false;
+
+grillWallDistance = outerWidth + 2 * 40 + 2 * 30;
 
 // configs
 backWallThickness = 120;
+grillWallThickness = 120;
 grillSideCabinetWidth = 527.5;
 backWallFullWidth = pergolaWidth + 2 * backWallThickness;
 backWallFullLength = pergolaLength + 2 * backWallThickness;
@@ -273,50 +269,50 @@ color([205/255, 102/255, 29/255]) pergola();
 // step 2 - socket
 //socket();
 
-// step 3 - back walls
-backWalls();
+if (showWalls) {
+	// step 3 - back walls
+	backWalls();
 
-translate([backWallFullLength - grillFrameWidth - grillSideCabinetWidth - 75, 125, 0]) {
-	//cabinetsShortSide();
-	fireclay = true;
-	fermacell = true;
-	asado = true;
+	translate([backWallFullLength - grillFrameWidth - grillSideCabinetWidth - 75, 125, 0]) {
+		fireclay = true;
+		fermacell = true;
+		asado = true;
 
-	//firePitFrame(fireclay, fermacell, asado);
-
-	grillWalls(fireclay, asado);
-
-}
-
-
-// unified sink
-//translate([125, 5, -50])
-//unifiedSink();
-
-
-
-//translate([400, 1210 + 435 , 880 - 420 + 15])
-//largeEgg();
-
-//translate([430, 4960, 175]) {
-	//gasBottle();
-//}
-
-
-
-
-translate([1000, 125, 80]) {
-	rotate([0, 0, 90]){
-		//cabinetsLongSide();
+		grillWalls(fireclay, asado);
 	}
 }
 
+if (showLongSide) {
+	// unified sink
+	translate([125, 5, -50])
+	unifiedSink();
 
-//counterTopShort();
-//counterTopLong();
+	translate([400, 1210 + 435 , 880 - 420 + 15])
+	largeEgg();
 
-// Material Lärche 80*80
-// 32lm Aufrecht
-// 20lm Lange Seite
-// 12lm Kurze Seite
-// insgesamt 65 Laufmeter Lärche 80*80
+	translate([430, 4960, 175]) {
+		gasBottle();
+	}
+
+	translate([1000, 125, 80]) {
+		rotate([0, 0, 90]){
+			cabinetsLongSide();
+		}
+	}
+	if (showCounterTops) {
+		counterTopLong();
+	}
+}
+
+if (showShortSide) {
+	cabinetsShortSide();
+
+	if (showCounterTops) {
+		counterTopShort();
+	}
+	// Material Lärche 80*80
+	// 32lm Aufrecht
+	// 20lm Lange Seite
+	// 12lm Kurze Seite
+	// insgesamt 65 Laufmeter Lärche 80*80
+}
