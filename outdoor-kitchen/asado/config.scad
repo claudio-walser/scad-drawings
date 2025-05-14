@@ -4,7 +4,6 @@ fireclayThickness = 40;
 lintelThickness = 65;
 frameToWallGap = 30;
 
-
 outerWidth = 1500;
 outerDepth = 700;
 outerHeight = 700;

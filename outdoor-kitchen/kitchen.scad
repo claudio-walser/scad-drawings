@@ -6,8 +6,6 @@ include <./cabinets/cabinets.scad>
 include <./roaring-dragon/burner.scad>
 include <../garden/pergola.scad>
 include <./models/gas-bottle.scad>
-// Fläche
-cube(size = [floorLength, floorWidth, 10]);
 
 
 module unifiedSink() {
@@ -84,13 +82,13 @@ module socket() {
 }
 
 module backWalls() {
-	translate([5, 5, 00]) {
+	translate([5, 5, 0]) {
 		// Fundament Ott
-		color("grey") cube(size = [120, pergolaWidth + 120 + 120, 1600]);
+		color("grey") cube(size = [120, pergolaWidth + 120 + 120, 1620]);
 
 
 		// Fundament Fussballplatz
-		color("grey") cube(size = [pergolaLength + 120 + 120, 120, 1600]);
+		color("grey") cube(size = [pergolaLength + 120 + 120, 120, 1620]);
 	}
 }
 
@@ -142,8 +140,6 @@ module counterTopShort() {
 }
 
 
-grillSideCabinetWidth = 527.5;
-
 module cabinetsShortSide() {
 
 	translate([grillFrameWidth, 0, 0])
@@ -178,19 +174,19 @@ module cabinetsLongSide() {
 }
 
 
-module grillWalls() {
-
-	translate([-40, 0, 0]) {
+module grillWalls(fireclay = true, asado = true) {
+	width = 880;
+	translate([0, 0, 0]) {
 		// grill
 		//translate([880 + 120 + 367.5, 0, 0])
 		translate([0, 0, 0])
 			union() {
 				// right grill wall
-				color("darksalmon") cube(size = [120, 880, 640 + 960]);
+				color("darksalmon") cube(size = [120, 880, 640 + 980]);
 
 				// left grill wall
 				translate([1640 + 120, 0, 0])
-				color("darksalmon") cube(size = [120, 880, 640 + 960]);
+				color("darksalmon") cube(size = [120, 880, 640 + 980]);
 
 				// back grill wall
 				//translate([0, -120, 840 - 120 - 120])
@@ -222,10 +218,52 @@ module grillWalls() {
 		}
 	}
 
+
+	if (asado) {
+		translate([160 + 30, 30, 850])
+		asadoFull();
+	}
+
+
+
+
+	if (fireclay) {
+		// fireclay
+		translate([40, -35, 40])
+		color("lightyellow") {
+			// back plate
+			translate([frameBeamWidth, frameBeamWidth / 4 + 15, 660 + frameBeamWidth])
+			cube([grillFrameWidth - (frameBeamWidth * 2), 30, 840]);
+
+
+			// bottom plate
+			translate([frameBeamWidth, frameBeamWidth-15, 700 + frameBeamWidth])
+			#cube([grillFrameWidth - (frameBeamWidth * 2), width - frameBeamWidth + 50, 30]);
+
+
+			// right plate
+			translate([frameBeamWidth, frameBeamWidth - 15, 660 + frameBeamWidth+30])
+			cube([30, width - (frameBeamWidth) + 50, 840 - frameBeamWidth+50]);
+
+
+			//// left plate
+			//translate([grillFrameWidth-frameBeamWidth, frameBeamWidth, 660 + frameBeamWidth])
+			translate([grillFrameWidth-frameBeamWidth-30, frameBeamWidth - 15, 660 + frameBeamWidth+30])
+			cube([30, width - (frameBeamWidth) + 50, 840 - frameBeamWidth+50]);
+
+		}
+	}
+
 }
 
+// configs
+backWallThickness = 120;
+grillSideCabinetWidth = 527.5;
+backWallFullWidth = pergolaWidth + 2 * backWallThickness;
+backWallFullLength = pergolaLength + 2 * backWallThickness;
 
-
+// Fläche
+cube(size = [floorLength, floorWidth, 10]);
 
 // step 1 - pergola supports only
 translate([floorLength, floorWidth, 0])
@@ -238,6 +276,17 @@ color([205/255, 102/255, 29/255]) pergola();
 // step 3 - back walls
 backWalls();
 
+translate([backWallFullLength - grillFrameWidth - grillSideCabinetWidth - 75, 125, 0]) {
+	//cabinetsShortSide();
+	fireclay = true;
+	fermacell = true;
+	asado = true;
+
+	//firePitFrame(fireclay, fermacell, asado);
+
+	grillWalls(fireclay, asado);
+
+}
 
 
 // unified sink
@@ -255,24 +304,6 @@ backWalls();
 
 
 
-translate([3855 - grillFrameWidth - grillSideCabinetWidth - 100, 125, 0]) {
-	//cabinetsShortSide();
-
-
-	fireclay = true;
-	fermacell = true;
-	asado = false;
-
-	//firePitFrame(fireclay, fermacell, asado);
-
-	grillWalls();
-
-
-	translate([80 + 30 + 40, 30, 850])
-	asadoFull();
-
-
-}
 
 translate([1000, 125, 80]) {
 	rotate([0, 0, 90]){
