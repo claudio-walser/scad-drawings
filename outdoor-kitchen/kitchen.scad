@@ -244,6 +244,7 @@ module grillWalls(fireclay = true, asado = true) {
 	}
 }
 
+showSocket = true;
 showWalls = true;
 showLongSide = true;
 showShortSide = true;
@@ -257,7 +258,7 @@ grillWallThickness = 120;
 grillSideCabinetWidth = 527.5;
 backWallFullWidth = pergolaWidth + 2 * backWallThickness;
 backWallFullLength = pergolaLength + 2 * backWallThickness;
-
+socketHeight = 80;
 // Fläche
 cube(size = [floorLength, floorWidth, 10]);
 
@@ -267,8 +268,9 @@ rotate([0, 0, 180])
 color([205/255, 102/255, 29/255]) pergola();
 
 // step 2 - socket
-//socket();
-
+if (showSocket) {
+	socket();
+}
 if (showWalls) {
 	// step 3 - back walls
 	backWalls();
@@ -301,12 +303,14 @@ if (showLongSide) {
 	}
 	if (showCounterTops) {
 		counterTopLong();
+
 	}
 }
 
 if (showShortSide) {
-	cabinetsShortSide();
-
+	translate([0, backWallThickness, socketHeight]) {
+		cabinetsShortSide();
+	}
 	if (showCounterTops) {
 		counterTopShort();
 	}
