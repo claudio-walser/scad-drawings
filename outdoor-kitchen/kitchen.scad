@@ -248,7 +248,7 @@ showSocket = true;
 showWalls = true;
 showLongSide = true;
 showShortSide = true;
-showCounterTops = false;
+showCounterTops = true;
 
 grillWallDistance = outerWidth + 2 * 40 + 2 * 30;
 
