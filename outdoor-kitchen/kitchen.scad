@@ -250,6 +250,10 @@ showLongSide = true;
 showShortSide = true;
 showCounterTops = true;
 
+fireclay = true;
+fermacell = true;
+asado = false;
+
 grillWallDistance = outerWidth + 2 * 40 + 2 * 30;
 
 // configs
@@ -276,9 +280,7 @@ if (showWalls) {
 	backWalls();
 
 	translate([backWallFullLength - grillFrameWidth - grillSideCabinetWidth - 75, 125, 0]) {
-		fireclay = true;
-		fermacell = true;
-		asado = true;
+
 
 		grillWalls(fireclay, asado);
 	}
