@@ -1,14 +1,8 @@
 include <../library/modules.scad>
 
 
-module sitznische() {
-	width = 1400;
-	height = 1400;
-	depth = 400;
-	thickness = 25;
-
-
-	color("brown") {
+module niche(height, width, thickness, depth) {
+	color("#5b3a29") {
 		// lower board
 		boardMitreJoints(width, depth, thickness);
 		// top board

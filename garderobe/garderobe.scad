@@ -1,19 +1,33 @@
-include <./sitznische.scad>
+include <./niche.scad>
 
 
-module walls() {
+module walls(height, width, thickness) {
 
 	color("grey") {
-		cube(size=[2500, 200, 2200]);
-		
-		translate([0, 0, 0])
-		cube(size=[200, 2000, 2200]);
+		cube(size=[width, thickness, height]);
 	}
 
 }
 
 
-walls();
+wallHeight = 2350;
+wallWidth = 2322;
+wallThickness = 125;
 
-translate([500, 200, 400])
-sitznische();
+nicheHeight = 1400;
+nicheWidth = 1400;
+nicheThickness = 25;
+nicheDepth = 400;
+
+seatHeight = 470;
+
+compartmentWidth = 200;
+cabinetThickness = 19;
+
+
+walls(height = wallHeight, width = wallWidth, thickness = wallThickness);
+
+
+translate([compartmentWidth + 2 * cabinetThickness, wallThickness, seatHeight - nicheThickness])
+niche(width = nicheWidth, height = nicheHeight, thickness = nicheThickness, depth = nicheDepth);
+
