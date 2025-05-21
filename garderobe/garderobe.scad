@@ -9,6 +9,15 @@ module walls(height, width, thickness) {
 
 }
 
+module compartment() {
+	color("white") {
+		cube(size=[cabinetThickness, cabinetDepth, seatHeight - nicheThickness + nicheHeight]);
+		
+		translate([compartmentWidth + cabinetThickness, 0, 0])
+		cube(size=[cabinetThickness, cabinetDepth, seatHeight - nicheThickness + nicheHeight]);
+	}
+}
+
 
 wallHeight = 2350;
 wallWidth = 2322;
@@ -23,6 +32,7 @@ seatHeight = 470;
 
 compartmentWidth = 200;
 cabinetThickness = 19;
+cabinetDepth = 350;
 
 
 walls(height = wallHeight, width = wallWidth, thickness = wallThickness);
@@ -31,3 +41,5 @@ walls(height = wallHeight, width = wallWidth, thickness = wallThickness);
 translate([compartmentWidth + 2 * cabinetThickness, wallThickness, seatHeight - nicheThickness])
 niche(width = nicheWidth, height = nicheHeight, thickness = nicheThickness, depth = nicheDepth);
 
+translate([0, wallThickness, 0])
+compartment();
