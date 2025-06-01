@@ -4,7 +4,7 @@ include <../library/modules.scad>
 module niche(height, width, thickness, depth) {
 	nicheHeight = height + 2 * thickness;
 	nicheWidth = width + 2 * thickness;
-	#translate([thickness, 0, thickness])cube (size=[height, depth, width]);
+	//#translate([thickness, 0, thickness])cube (size=[height, depth, width]);
 
 	// lower board
 	boardMitreJoints(nicheWidth, depth, thickness);

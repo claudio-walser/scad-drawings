@@ -16,9 +16,7 @@ module compartment() {
     cube(size=[compartmentWidth + 2 * cabinetThickness, cabinetDepth, cabinetThickness]);
 
     // middles
-    number = 5;
-
-    for ($current = [1 : 1 : number]) {
+    for ($current = [1 : 1 : compartmentNumber]) {
         translate([0, 0, compartmentHeight - $current * (200 + cabinetThickness)])
         cube(size=[compartmentWidth + 2 * cabinetThickness, cabinetDepth, cabinetThickness]);
     }
