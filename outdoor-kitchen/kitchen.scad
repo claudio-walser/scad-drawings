@@ -198,8 +198,8 @@ module grillWalls(fireclay = true, asado = true) {
 				//color([155/255, 155/255, 155/255]) cube(size = [120, 880, 600 + 140]);
 
 				// reference block
-				//translate([120, 0, 0])
-				//color("blue") cube(size = [1880, 880, 640]);
+				translate([grillWallThickness + 30, 30, 660 + frameBeamWidth + 140 - 30])
+				color("blue") cube(size = [1580, 880 - 30, 770]);
 			}
 		}
 
@@ -227,14 +227,18 @@ module grillWalls(fireclay = true, asado = true) {
 			// back plate
 			translate([frameBeamWidth, frameBeamWidth / 4 + 15, 660 + frameBeamWidth])
 			cube([grillFrameWidth - (frameBeamWidth * 2), 30, 840]);
+    		
+			echo(str("10.1,Schamott-Rückwand", ",", "1", ",", grillFrameWidth - (frameBeamWidth * 2), ",", 840, ",", 30));
 
 			// bottom plate
 			translate([frameBeamWidth, frameBeamWidth-15, 700 + frameBeamWidth])
 			cube([grillFrameWidth - (frameBeamWidth * 2), width - frameBeamWidth + 50, 30]);
+			echo(str("10.2,Schamott-Boden", ",", "1", ",", grillFrameWidth - (frameBeamWidth * 2), ",", width - frameBeamWidth + 50, ",", 30));
 
 			// right plate
 			translate([frameBeamWidth, frameBeamWidth - 15, 660 + frameBeamWidth+30])
 			cube([30, width - (frameBeamWidth) + 50, 840 - frameBeamWidth+50]);
+			echo(str("10.2,Schamott-Seiten", ",", "2", ",", width - (frameBeamWidth) + 50, ",", 840, ",", 30));
 
 			//// left plate
 			//translate([grillFrameWidth-frameBeamWidth, frameBeamWidth, 660 + frameBeamWidth])
