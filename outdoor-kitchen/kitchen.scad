@@ -198,8 +198,8 @@ module grillWalls(fireclay = true, asado = true) {
 				//color([155/255, 155/255, 155/255]) cube(size = [120, 880, 600 + 140]);
 
 				// reference block
-				translate([grillWallThickness + 30, 30, 660 + frameBeamWidth + 140 - 30])
-				color("blue") cube(size = [1580, 880 - 30, 770]);
+				// translate([grillWallThickness + 30, 30, 660 + frameBeamWidth + 140 - 30])
+				// color("blue") cube(size = [1580, 880 - 30, 770]);
 			}
 		}
 
@@ -256,7 +256,7 @@ showCounterTops = true;
 
 fireclay = true;
 fermacell = true;
-asado = false;
+asado = true;
 
 grillWallDistance = outerWidth + 2 * 40 + 2 * 30;
 
