@@ -1,8 +1,7 @@
 include <BOSL2/std.scad>
 include <tray.scad>
 
-
-//tray([100, 60, 30], n_columns=3, n_rows=2, columns=[0.25, 0.75]);
+$fn = 256;
 
 
 gridSize = 50;
@@ -10,6 +9,23 @@ gridSize = 50;
 
 
 
+matrix = [
+    [19,0],
+    [41,0],
+    [0,55],
+    [60,55]
+];
+
+
+
+for (a = [ 0 : len(matrix) - 1 ]) 
+{
+      point=matrix[a];
+      translate([point[0],point[1],0])
+      {
+          cylinder(r=1.4,h=10);
+      }
+}
 
 
 
@@ -19,9 +35,13 @@ innerHeight = 200;
 
 wallThickness = 8;
 
+
+//translate([innerWidth/2 + 50, 0,0])
+//tray([innerWidth, innerDepth, gridSize], n_columns=3, n_rows=2, columns=[0.25, 0.75]);
+//
 //translate([0,0,0])
 //drawerContainer(innerWidth, innerDepth, innerHeight);
-//
+
 //referenceBlocks();
 
 module referenceBlocks() {
