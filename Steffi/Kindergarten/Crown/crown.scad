@@ -1,6 +1,10 @@
 $fn = 256;
 
+<<<<<<< Updated upstream
 
+=======
+scale([0.8, 0.8, 0.8])
+>>>>>>> Stashed changes
 difference() {
 	scale([4, 4, 4])
 	import("crown.stl");
@@ -31,4 +35,7 @@ difference() {
 
 	}
 }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
