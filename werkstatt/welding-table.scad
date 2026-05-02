@@ -1,5 +1,8 @@
 $fn = 256;
 
+tableExtended = false;
+legsExtended = false;
+
 tableTopWidth = 1000;
 tableTopLength = 1790;
 
@@ -8,9 +11,9 @@ tableTopProfileHeight = 20;
 tableTopProfileGap = 30;
 tableTopProfileThickness = 3;
 
-tableFrameProfileWidth = 50;
+tableFrameProfileWidth = 20;
 tableFrameProfileHeight = 50;
-tableFrameProfileThickness = 4;
+tableFrameProfileThickness = 3;
 tableFrameAirGap = 5;
 
 tableSupportsWidth = 30;
@@ -21,6 +24,11 @@ tableFrameInnerProfileHeight = tableFrameProfileHeight - tableFrameProfileThickn
 tableFrameInnerProfileThickness = 3;
 
 tableFrameExtensionLength = 950;
+
+tableLegsOverlap = 100;
+tableLegsBaseWidth = 80;
+tableLegsBaseThickness = 4;
+
 
 module tube(outerWidth = 40, outerHeight = 20, thickness = 3, length = 1500) {
     difference() {
@@ -37,6 +45,15 @@ module angle(outerWidth = 30, outerHeight = 30, thickness = 3, length = 1500) {
         
         translate([-5, thickness, thickness])
         cube([length + 10, outerWidth, outerHeight]);
+    }
+}
+
+module uProfile(outerWidth = 30, outerHeight = 30, thickness = 3, length = 1500) {
+    difference() {
+        cube([length, outerWidth, outerHeight]);
+        
+        translate([-5, thickness, -thickness])
+        cube([length + 10, outerWidth - thickness * 2, outerHeight]);
     }
 }
 
@@ -132,71 +149,145 @@ module topFrame() {
         length = tableTopLength
     );
 
-    // extension left
-    translate([-tableFrameProfileThickness, tableFrameProfileThickness, tableFrameProfileThickness])
-    tube(
-        outerWidth = tableFrameInnerProfileWidth,
-        outerHeight = tableFrameInnerProfileHeight,
-        thickness = tableFrameInnerProfileThickness,
-        length = tableFrameExtensionLength
-    );
+    extensionValue = tableExtended ? 800 : 0;
 
-    translate([-tableFrameProfileThickness, tableTopWidth + tableFrameAirGap * 2 + tableFrameProfileWidth + tableFrameProfileThickness, tableFrameProfileThickness])
-    tube(
-        outerWidth = tableFrameInnerProfileWidth,
-        outerHeight = tableFrameInnerProfileHeight,
-        thickness = tableFrameInnerProfileThickness,
-        length = tableFrameExtensionLength
-    );
+    translate([-extensionValue, 0, 0]) {
+        translate([-tableFrameProfileThickness, tableFrameProfileThickness, tableFrameProfileThickness])
+        tube(
+            outerWidth = tableFrameInnerProfileWidth,
+            outerHeight = tableFrameInnerProfileHeight,
+            thickness = tableFrameInnerProfileThickness,
+            length = tableFrameExtensionLength
+        );
 
-    translate([-tableFrameProfileThickness, tableFrameProfileWidth - tableFrameProfileWidth, 0])
-    rotate([0, 0, 90])
-    tube(
-        outerWidth = tableFrameProfileWidth,
-        outerHeight = tableFrameProfileHeight,
-        thickness = tableFrameProfileThickness,
-        length = tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2
-    );
+        translate([-tableFrameProfileThickness, tableTopWidth + tableFrameAirGap * 2 + tableFrameProfileWidth + tableFrameProfileThickness, tableFrameProfileThickness])
+        tube(
+            outerWidth = tableFrameInnerProfileWidth,
+            outerHeight = tableFrameInnerProfileHeight,
+            thickness = tableFrameInnerProfileThickness,
+            length = tableFrameExtensionLength
+        );
 
+        translate([-tableFrameProfileThickness, tableFrameProfileWidth - tableFrameProfileWidth, 0])
+        rotate([0, 0, 90])
+        tube(
+            outerWidth = tableFrameProfileWidth,
+            outerHeight = tableFrameProfileHeight,
+            thickness = tableFrameProfileThickness,
+            length = tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2
+        );
+    }
 
     // extension right
-    translate([tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2 - tableFrameExtensionLength + tableFrameProfileThickness, tableFrameProfileThickness, tableFrameProfileThickness])
-    tube(
-        outerWidth = tableFrameInnerProfileWidth,
-        outerHeight = tableFrameInnerProfileHeight,
-        thickness = tableFrameInnerProfileThickness,
-        length = tableFrameExtensionLength
-    );
+    translate([extensionValue, 0, 0]) {
 
-    translate([tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2 - tableFrameExtensionLength + tableFrameProfileThickness, tableTopWidth + tableFrameAirGap * 2 + tableFrameProfileWidth + tableFrameProfileThickness, tableFrameProfileThickness])
-    tube(
-        outerWidth = tableFrameInnerProfileWidth,
-        outerHeight = tableFrameInnerProfileHeight,
-        thickness = tableFrameInnerProfileThickness,
-        length = tableFrameExtensionLength
-    );
+        translate([tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2 - tableFrameExtensionLength + tableFrameProfileThickness, tableFrameProfileThickness, tableFrameProfileThickness])
+        tube(
+            outerWidth = tableFrameInnerProfileWidth,
+            outerHeight = tableFrameInnerProfileHeight,
+            thickness = tableFrameInnerProfileThickness,
+            length = tableFrameExtensionLength
+        );
 
-    translate([tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2 + tableFrameProfileThickness + tableFrameProfileWidth, tableFrameProfileWidth - tableFrameProfileWidth, 0])
-    rotate([0, 0, 90])
-    tube(
-        outerWidth = tableFrameProfileWidth,
-        outerHeight = tableFrameProfileHeight,
-        thickness = tableFrameProfileThickness,
-        length = tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2
-    );
+        translate([tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2 - tableFrameExtensionLength + tableFrameProfileThickness, tableTopWidth + tableFrameAirGap * 2 + tableFrameProfileWidth + tableFrameProfileThickness, tableFrameProfileThickness])
+        tube(
+            outerWidth = tableFrameInnerProfileWidth,
+            outerHeight = tableFrameInnerProfileHeight,
+            thickness = tableFrameInnerProfileThickness,
+            length = tableFrameExtensionLength
+        );
+
+        translate([tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2 + tableFrameProfileThickness + tableFrameProfileWidth, tableFrameProfileWidth - tableFrameProfileWidth, 0])
+        rotate([0, 0, 90])
+        tube(
+            outerWidth = tableFrameProfileWidth,
+            outerHeight = tableFrameProfileHeight,
+            thickness = tableFrameProfileThickness,
+            length = tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2
+        );
+    }
 } 
 
 module legs() {
+    extensionValue = legsExtended ? 500 : 100;
+
+    uProfile(
+        outerWidth = tableFrameProfileWidth,
+        outerHeight = tableFrameProfileHeight,
+        thickness = tableFrameProfileThickness,
+        length = 80
+    );
+
+    translate([0, tableFrameProfileThickness, tableFrameProfileThickness])
+    tube(
+        outerWidth = tableFrameInnerProfileWidth,
+        outerHeight = tableFrameInnerProfileHeight,
+        thickness = tableFrameInnerProfileThickness,
+        length = 600
+    );
+
+    translate([extensionValue, 0, 0])
     tube(
         outerWidth = tableFrameProfileWidth,
         outerHeight = tableFrameProfileHeight,
         thickness = tableFrameProfileThickness,
-        length = tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2
+        length = 600
     );
+
+    translate([0, tableTopWidth + tableFrameAirGap * 2 + tableFrameProfileWidth, 0]) {
+        uProfile(
+            outerWidth = tableFrameProfileWidth,
+            outerHeight = tableFrameProfileHeight,
+            thickness = tableFrameProfileThickness,
+            length = 80
+        );
+
+        translate([0, tableFrameProfileThickness, tableFrameProfileThickness])
+        tube(
+            outerWidth = tableFrameInnerProfileWidth,
+            outerHeight = tableFrameInnerProfileHeight,
+            thickness = tableFrameInnerProfileThickness,
+            length = 600
+        );
+
+        translate([extensionValue, 0, 0])
+        tube(
+            outerWidth = tableFrameProfileWidth,
+            outerHeight = tableFrameProfileHeight,
+            thickness = tableFrameProfileThickness,
+            length = 600
+        );
+    }
+
+    translate([tableFrameProfileWidth + 400 + extensionValue, tableFrameProfileWidth, 0])
+    rotate([0, 0, 90])
+    tube(
+        outerWidth = tableFrameProfileWidth,
+        outerHeight = tableFrameProfileHeight,
+        thickness = tableFrameProfileThickness,
+        length = tableTopWidth + tableFrameAirGap * 2
+    );
+
+    #translate([extensionValue, 0, 0])
+    rotate([0, 90, 0])
+    cube([tableLegsBaseWidth, tableLegsBaseWidth, tableLegsBaseThickness]);
+
+
+
 }
 
 color("grey")
 topFrame();
+
+color("darkcyan")
+translate([tableTopLength - tableLegsOverlap, 0, 0])
+rotate([0, 90, 0])
+legs();
+
+color("darkcyan")
+translate([tableLegsOverlap + tableFrameProfileHeight, tableTopWidth + tableFrameAirGap * 2 + tableFrameProfileWidth * 2, 0])
+rotate([180, 90, 0])
+legs();
 
 translate([tableTopLength + tableFrameProfileWidth + tableFrameAirGap, tableFrameProfileWidth + tableFrameAirGap, tableFrameProfileHeight - tableTopProfileHeight])
 rotate([0, 0, 90])
