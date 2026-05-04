@@ -92,6 +92,9 @@ module tableTop() {
         thickness = tableSupportsThickness,
         length = tableTopLength
     );
+
+
+
 }
 
 module topFrame() {
@@ -109,6 +112,8 @@ module topFrame() {
         thickness = tableFrameProfileThickness,
         length = tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2
     );
+
+
 
     // left
     translate([tableFrameProfileWidth, tableFrameProfileWidth, 0])
@@ -130,6 +135,8 @@ module topFrame() {
         length = tableTopWidth + tableFrameAirGap * 2
     );
 
+
+
     // table supports
     translate([tableFrameProfileWidth + tableFrameAirGap, tableFrameProfileWidth, tableFrameProfileHeight - tableTopProfileHeight])
     rotate([-90, 0, 0])
@@ -148,6 +155,7 @@ module topFrame() {
         thickness = tableSupportsThickness,
         length = tableTopLength
     );
+
 
     extensionValue = tableExtended ? 800 : 0;
 
@@ -168,6 +176,7 @@ module topFrame() {
             length = tableFrameExtensionLength
         );
 
+
         translate([-tableFrameProfileThickness, tableFrameProfileWidth - tableFrameProfileWidth, 0])
         rotate([0, 0, 90])
         tube(
@@ -176,6 +185,7 @@ module topFrame() {
             thickness = tableFrameProfileThickness,
             length = tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2
         );
+
     }
 
     // extension right
@@ -218,6 +228,7 @@ module legs() {
         length = 80
     );
 
+
     translate([0, tableFrameProfileThickness, tableFrameProfileThickness])
     tube(
         outerWidth = tableFrameInnerProfileWidth,
@@ -226,6 +237,7 @@ module legs() {
         length = 600
     );
 
+
     translate([extensionValue, 0, 0])
     tube(
         outerWidth = tableFrameProfileWidth,
@@ -233,6 +245,7 @@ module legs() {
         thickness = tableFrameProfileThickness,
         length = 600
     );
+
 
     translate([0, tableTopWidth + tableFrameAirGap * 2 + tableFrameProfileWidth, 0]) {
         uProfile(
@@ -272,9 +285,27 @@ module legs() {
     rotate([0, 90, 0])
     cube([tableLegsBaseWidth, tableLegsBaseWidth, tableLegsBaseThickness]);
 
+}
 
+module partsList()  {
+    echo("Pos;Typ;Anzahl;Breite;Höhe;Dicke;Länge");
+    echo(str("1;Platte;Vierkantrohr;25;", tableTopProfileWidth,";",tableTopProfileHeight,";",tableTopProfileThickness,";",tableTopWidth));
+    echo(str("2;Aufnahme und Verbinder Platte;Winkel;4;", tableSupportsWidth,";",tableSupportsWidth,";",tableSupportsThickness,";",tableTopLength));
+    echo(str("3;Rahmen längs;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2));
+    echo(str("4;Rahmen quer;Vierkantrohr;2;", tableTopProfileWidth,";",tableTopProfileHeight,";",tableTopProfileThickness,";",tableTopWidth + tableFrameAirGap * 2));
+    echo(str("5;Auszug längs;Vierkantrohr;4;", tableFrameInnerProfileWidth,";",tableFrameInnerProfileHeight,";",tableFrameInnerProfileThickness,";",tableFrameExtensionLength));
+    echo(str("6;Auszug quer - Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2));
+    echo(str("7;Aufnahme Beine;U-Profil;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",80));
+    echo(str("8;Auszug Beine - innen;Vierkantrohr;4;", tableFrameInnerProfileWidth,";",tableFrameInnerProfileHeight,";",tableFrameInnerProfileThickness,";",600));
+    echo(str("9;Auszug Beine - aussen;Vierkantrohr;4;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",600));
+    echo(str("10;Querverstrebung Beine;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameAirGap * 2));
+    echo(str("11;Aufnahme Füsse;Flachstahl;4;", tableLegsBaseWidth,";",tableLegsBaseWidth,";",tableLegsBaseThickness,";"));
 
 }
+
+translate([tableTopLength + tableFrameProfileWidth + tableFrameAirGap, tableFrameProfileWidth + tableFrameAirGap, tableFrameProfileHeight - tableTopProfileHeight])
+rotate([0, 0, 90])
+tableTop();
 
 color("grey")
 topFrame();
@@ -289,6 +320,4 @@ translate([tableLegsOverlap + tableFrameProfileHeight, tableTopWidth + tableFram
 rotate([180, 90, 0])
 legs();
 
-translate([tableTopLength + tableFrameProfileWidth + tableFrameAirGap, tableFrameProfileWidth + tableFrameAirGap, tableFrameProfileHeight - tableTopProfileHeight])
-rotate([0, 0, 90])
-tableTop();
+partsList();
