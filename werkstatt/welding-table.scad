@@ -281,14 +281,19 @@ module legs() {
         length = tableTopWidth + tableFrameAirGap * 2
     );
 
-    #translate([extensionValue, 0, 0])
+    translate([extensionValue + 600, - (tableLegsBaseWidth - tableFrameProfileWidth) / 2, tableLegsBaseWidth - ((tableLegsBaseWidth - tableFrameProfileHeight) / 2)])
     rotate([0, 90, 0])
     cube([tableLegsBaseWidth, tableLegsBaseWidth, tableLegsBaseThickness]);
+
+    translate([extensionValue + 600, tableTopWidth, tableLegsBaseWidth - ((tableLegsBaseWidth - tableFrameProfileHeight) / 2)])
+    rotate([0, 90, 0])
+    cube([tableLegsBaseWidth, tableLegsBaseWidth, tableLegsBaseThickness]);
+
 
 }
 
 module partsList()  {
-    echo("Pos;Typ;Anzahl;Breite;Höhe;Dicke;Länge");
+    echo("Pos;Bezeichnung;Typ;Anzahl;Breite;Höhe;Dicke;Länge");
     echo(str("1;Platte;Vierkantrohr;25;", tableTopProfileWidth,";",tableTopProfileHeight,";",tableTopProfileThickness,";",tableTopWidth));
     echo(str("2;Aufnahme und Verbinder Platte;Winkel;4;", tableSupportsWidth,";",tableSupportsWidth,";",tableSupportsThickness,";",tableTopLength));
     echo(str("3;Rahmen längs;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2));
