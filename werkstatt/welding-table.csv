@@ -4,9 +4,12 @@ Pos;Bezeichnung;Typ;Anzahl;Breite;Höhe;Dicke;Länge
 3;Rahmen längs;Vierkantrohr;2;20;50;3;1840
 4;Rahmen quer;Vierkantrohr;2;40;20;3;1010
 5;Auszug längs;Vierkantrohr;4;14;44;3;950
-6;Auszug quer - Vierkantrohr;2;20;50;3;1050
+6;Auszug quer;Vierkantrohr;2;20;50;3;1050
 7;Aufnahme Beine;U-Profil;2;20;50;3;80
 8;Auszug Beine - innen;Vierkantrohr;4;14;44;3;600
 9;Auszug Beine - aussen;Vierkantrohr;4;20;50;3;600
 10;Querverstrebung Beine;Vierkantrohr;2;20;50;3;1010
-11;Aufnahme Füsse;Flachstahl;4;80;80;4;
+11;Aufnahme Füsse;Flachstahl;4;80;;4;80
+12;Wand Montage Basis;Flachstahl;1;80;;4;1079
+13;Wand Montage unten;U-Profil;1;60;30;4;500
+14;Wand Montage oben;Vierkantrohr;1;20;50;3;80

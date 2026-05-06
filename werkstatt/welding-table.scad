@@ -29,6 +29,10 @@ tableLegsOverlap = 100;
 tableLegsBaseWidth = 80;
 tableLegsBaseThickness = 4;
 
+wallMountlength = tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2 + tableLegsBaseThickness + tableFrameProfileWidth + tableFrameAirGap;
+wallMountWidth = 80;
+wallMountThickness = 4;
+
 
 module tube(outerWidth = 40, outerHeight = 20, thickness = 3, length = 1500) {
     difference() {
@@ -92,9 +96,6 @@ module tableTop() {
         thickness = tableSupportsThickness,
         length = tableTopLength
     );
-
-
-
 }
 
 module topFrame() {
@@ -288,8 +289,18 @@ module legs() {
     translate([extensionValue + 600, tableTopWidth, tableLegsBaseWidth - ((tableLegsBaseWidth - tableFrameProfileHeight) / 2)])
     rotate([0, 90, 0])
     cube([tableLegsBaseWidth, tableLegsBaseWidth, tableLegsBaseThickness]);
+}
 
+module wallHolder() {
+    cube([wallMountWidth, wallMountThickness, wallMountlength]);
 
+    translate([-(250 - tableLegsBaseWidth/2), 60 + tableLegsBaseThickness, 30])
+    rotate([180, 0, 0])
+    uProfile(outerWidth = 60, outerHeight = 30, thickness = 4, length = 500);
+
+    translate([0, tableFrameProfileHeight + tableLegsBaseThickness, wallMountlength - tableFrameProfileWidth])
+    rotate([90, 0, 0])
+    tube(outerWidth = tableFrameProfileWidth, outerHeight = tableFrameProfileHeight, thickness = tableFrameProfileThickness, length = wallMountWidth);
 }
 
 module partsList()  {
@@ -299,12 +310,15 @@ module partsList()  {
     echo(str("3;Rahmen längs;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2));
     echo(str("4;Rahmen quer;Vierkantrohr;2;", tableTopProfileWidth,";",tableTopProfileHeight,";",tableTopProfileThickness,";",tableTopWidth + tableFrameAirGap * 2));
     echo(str("5;Auszug längs;Vierkantrohr;4;", tableFrameInnerProfileWidth,";",tableFrameInnerProfileHeight,";",tableFrameInnerProfileThickness,";",tableFrameExtensionLength));
-    echo(str("6;Auszug quer - Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2));
+    echo(str("6;Auszug quer;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2));
     echo(str("7;Aufnahme Beine;U-Profil;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",80));
     echo(str("8;Auszug Beine - innen;Vierkantrohr;4;", tableFrameInnerProfileWidth,";",tableFrameInnerProfileHeight,";",tableFrameInnerProfileThickness,";",600));
     echo(str("9;Auszug Beine - aussen;Vierkantrohr;4;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",600));
     echo(str("10;Querverstrebung Beine;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameAirGap * 2));
-    echo(str("11;Aufnahme Füsse;Flachstahl;4;", tableLegsBaseWidth,";",tableLegsBaseWidth,";",tableLegsBaseThickness,";"));
+    echo(str("11;Aufnahme Füsse;Flachstahl;4;", tableLegsBaseWidth,";",";",tableLegsBaseThickness,";",tableLegsBaseWidth));
+    echo(str("12;Wand Montage Basis;Flachstahl;1;", tableLegsBaseWidth,";",";",tableLegsBaseThickness,";",wallMountlength));
+    echo(str("13;Wand Montage unten;U-Profil;1;", 60,";",30,";",4,";", 500));
+    echo(str("14;Wand Montage oben;Vierkantrohr;1;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";", wallMountWidth));
 
 }
 
@@ -324,5 +338,10 @@ color("darkcyan")
 translate([tableLegsOverlap + tableFrameProfileHeight, tableTopWidth + tableFrameAirGap * 2 + tableFrameProfileWidth * 2, 0])
 rotate([180, 90, 0])
 legs();
+
+translate([0, -tableLegsBaseThickness, -200 + 60])
+rotate([-90, 0, 0])
+translate([(tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2) / 2, -200, 0])
+wallHolder();
 
 partsList();
