@@ -1,6 +1,6 @@
 $fn = 256;
 
-tableExtended = false;
+tableExtended = true;
 legsExtended = false;
 
 tableTopWidth = 1000;
@@ -11,16 +11,16 @@ tableTopProfileHeight = 20;
 tableTopProfileGap = 30;
 tableTopProfileThickness = 3;
 
-tableFrameProfileWidth = 20;
-tableFrameProfileHeight = 50;
-tableFrameProfileThickness = 3;
+tableFrameProfileWidth = 30;
+tableFrameProfileHeight = 60;
+tableFrameProfileThickness = 4;
 tableFrameAirGap = 5;
 
 tableSupportsWidth = 30;
 tableSupportsThickness = 3;
 
-tableFrameInnerProfileWidth = tableFrameProfileWidth - tableFrameProfileThickness * 2;
-tableFrameInnerProfileHeight = tableFrameProfileHeight - tableFrameProfileThickness * 2;
+tableFrameInnerProfileWidth = 20;
+tableFrameInnerProfileHeight = 50;
 tableFrameInnerProfileThickness = 3;
 
 tableFrameExtensionLength = 950;
@@ -294,9 +294,9 @@ module legs() {
 module wallHolder() {
     cube([wallMountWidth, wallMountThickness, wallMountlength]);
 
-    translate([-(250 - tableLegsBaseWidth/2), 60 + tableLegsBaseThickness, 30])
+    translate([-(250 - tableLegsBaseWidth/2), 70, 30])
     rotate([180, 0, 0])
-    uProfile(outerWidth = 60, outerHeight = 30, thickness = 4, length = 500);
+    uProfile(outerWidth = 70, outerHeight = 30, thickness = 4, length = 500);
 
     translate([0, tableFrameProfileHeight + tableLegsBaseThickness, wallMountlength - tableFrameProfileWidth])
     rotate([90, 0, 0])
@@ -304,21 +304,21 @@ module wallHolder() {
 }
 
 module partsList()  {
-    echo("Pos;Bezeichnung;Typ;Anzahl;Breite;Höhe;Dicke;Länge");
-    echo(str("1;Platte;Vierkantrohr;25;", tableTopProfileWidth,";",tableTopProfileHeight,";",tableTopProfileThickness,";",tableTopWidth));
-    echo(str("2;Aufnahme und Verbinder Platte;Winkel;4;", tableSupportsWidth,";",tableSupportsWidth,";",tableSupportsThickness,";",tableTopLength));
-    echo(str("3;Rahmen längs;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2));
-    echo(str("4;Rahmen quer;Vierkantrohr;2;", tableTopProfileWidth,";",tableTopProfileHeight,";",tableTopProfileThickness,";",tableTopWidth + tableFrameAirGap * 2));
-    echo(str("5;Auszug längs;Vierkantrohr;4;", tableFrameInnerProfileWidth,";",tableFrameInnerProfileHeight,";",tableFrameInnerProfileThickness,";",tableFrameExtensionLength));
-    echo(str("6;Auszug quer;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2));
-    echo(str("7;Aufnahme Beine;U-Profil;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",80));
-    echo(str("8;Auszug Beine - innen;Vierkantrohr;4;", tableFrameInnerProfileWidth,";",tableFrameInnerProfileHeight,";",tableFrameInnerProfileThickness,";",600));
-    echo(str("9;Auszug Beine - aussen;Vierkantrohr;4;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",600));
-    echo(str("10;Querverstrebung Beine;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameAirGap * 2));
-    echo(str("11;Aufnahme Füsse;Flachstahl;4;", tableLegsBaseWidth,";",";",tableLegsBaseThickness,";",tableLegsBaseWidth));
-    echo(str("12;Wand Montage Basis;Flachstahl;1;", tableLegsBaseWidth,";",";",tableLegsBaseThickness,";",wallMountlength));
-    echo(str("13;Wand Montage unten;U-Profil;1;", 60,";",30,";",4,";", 500));
-    echo(str("14;Wand Montage oben;Vierkantrohr;1;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";", wallMountWidth));
+    echo("Pos;Bezeichnung;Typ;Anzahl;Breite;Höhe;Dicke;Länge;Link Debrunner");
+    echo(str("1;Platte;Vierkantrohr;25;", tableTopProfileWidth,";",tableTopProfileHeight,";",tableTopProfileThickness,";",tableTopWidth,";https://shop.d-a.ch/de/winkelstahl-s235jr-warmgewalzt-scharfkantig/p/M100384"));
+    echo(str("2;Aufnahme und Verbinder Platte;Winkel;4;", tableSupportsWidth,";",tableSupportsWidth,";",tableSupportsThickness,";",tableTopLength,";https://shop.d-a.ch/de/winkelstahl-stahl-s235jr-kaltgerollt-gleichschenklig/p/M100407"));
+    echo(str("3;Rahmen längs;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
+    echo(str("4;Rahmen quer;Vierkantrohr;2;", tableTopProfileWidth,";",tableTopProfileHeight,";",tableTopProfileThickness,";",tableTopWidth + tableFrameAirGap * 2,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
+    echo(str("5;Auszug längs;Vierkantrohr;4;", tableFrameInnerProfileWidth,";",tableFrameInnerProfileHeight,";",tableFrameInnerProfileThickness,";",tableFrameExtensionLength,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
+    echo(str("6;Auszug quer;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
+    echo(str("7;Aufnahme Beine;U-Profil;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",80,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
+    echo(str("8;Auszug Beine - innen;Vierkantrohr;4;", tableFrameInnerProfileWidth,";",tableFrameInnerProfileHeight,";",tableFrameInnerProfileThickness,";",600,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
+    echo(str("9;Auszug Beine - aussen;Vierkantrohr;4;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",600,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
+    echo(str("10;Querverstrebung Beine;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameAirGap * 2,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
+    echo(str("11;Aufnahme Füsse;Flachstahl;4;", tableLegsBaseWidth,";",";",tableLegsBaseThickness,";",tableLegsBaseWidth,";https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378"));
+    echo(str("12;Wand Montage Basis;Flachstahl;1;", tableLegsBaseWidth,";",";",tableLegsBaseThickness,";",wallMountlength,";https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378"));
+    echo(str("13;Wand Montage unten;U-Profil;1;", 70,";",30,";",4,";", 500,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
+    echo(str("14;Wand Montage oben;Vierkantrohr;1;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";", wallMountWidth,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
 
 }
 
@@ -339,7 +339,7 @@ translate([tableLegsOverlap + tableFrameProfileHeight, tableTopWidth + tableFram
 rotate([180, 90, 0])
 legs();
 
-translate([0, -tableLegsBaseThickness, -200 + 60])
+translate([0, -tableLegsBaseThickness, -200 + 60 + tableLegsBaseThickness])
 rotate([-90, 0, 0])
 translate([(tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2) / 2, -200, 0])
 wallHolder();
