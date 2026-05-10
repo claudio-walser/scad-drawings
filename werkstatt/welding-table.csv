@@ -1,15 +1,15 @@
-Pos;Bezeichnung;Typ;Anzahl;Breite;Höhe;Dicke;Länge;Link Debrunner
-1;Platte;Vierkantrohr;25;40;20;3;1000;https://shop.d-a.ch/de/winkelstahl-s235jr-warmgewalzt-scharfkantig/p/M100384
-2;Aufnahme und Verbinder Platte;Winkel;4;30;30;3;1790;https://shop.d-a.ch/de/winkelstahl-stahl-s235jr-kaltgerollt-gleichschenklig/p/M100407
-3;Rahmen längs;Vierkantrohr;2;30;60;4;1860;https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
-4;Rahmen quer;Vierkantrohr;2;40;20;3;1010;https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
-5;Auszug längs;Vierkantrohr;4;50;20;3;950;https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
-6;Auszug quer;Vierkantrohr;2;30;60;4;1070;https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
-7;Aufnahme Beine;U-Profil;2;30;60;4;80;https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
-8;Auszug Beine - innen;Vierkantrohr;4;50;20;3;600;https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
-9;Auszug Beine - aussen;Vierkantrohr;4;30;60;4;600;https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
-10;Querverstrebung Beine;Vierkantrohr;2;30;60;4;1010;https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
-11;Aufnahme Füsse;Flachstahl;4;80;;4;80;https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378
-12;Wand Montage Basis;Flachstahl;1;80;;4;1109;https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378
-13;Wand Montage unten;U-Profil;1;60;30;4;500;https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
-14;Wand Montage oben;Vierkantrohr;1;30;60;4;80;https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+﻿Pos,Bezeichnung,Typ,Anzahl,Breite,Höhe,Dicke,Länge,Link Debrunner
+1,Platte,Vierkantrohr,25,40,20,3,1000,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+2,Aufnahme und Verbinder Platte,Winkel,4,30,30,3,1790,https://shop.d-a.ch/de/winkelstahl-stahl-s235jr-kaltgerollt-gleichschenklig/p/M100407
+3,Rahmen längs,Vierkantrohr,2,30,60,4,1860,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+4,Rahmen quer,Vierkantrohr,2,30,60,4,1010,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+5,Auszug längs,Vierkantrohr,4,20,50,3,950,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+6,Auszug quer,Vierkantrohr,2,30,60,4,1070,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+7,Aufnahme Beine,Vierkantrohr,2,30,60,4,80,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+8,Auszug Beine - innen,Vierkantrohr,4,20,50,3,600,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+9,Auszug Beine - aussen,Vierkantrohr,4,30,60,4,600,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+10,Querverstrebung Beine,Vierkantrohr,2,30,60,4,1010,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+11,Aufnahme Füsse,Flachstahl,4,80,,4,80,https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378
+12,Wand Montage Basis,Flachstahl,1,80,,4,1109,https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378
+13,Wand Montage unten,Vierkantrohr,1,70,40,4,500,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
+14,Wand Montage oben,Vierkantrohr,1,30,60,4,80,https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647
