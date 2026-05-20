@@ -3,31 +3,43 @@ $fn = 256;
 tableExtended = true;
 legsExtended = false;
 
-tableTopWidth = 1000;
-tableTopLength = 1790;
+tableTopWidth = 800;
+tableTopLength = 1680;
 
 tableTopProfileWidth = 40;
 tableTopProfileHeight = 20;
 tableTopProfileGap = 30;
 tableTopProfileThickness = 3;
 
+tableTopProfileWeightPerMeter = 2.5;
+
 tableFrameProfileWidth = 30;
 tableFrameProfileHeight = 60;
 tableFrameProfileThickness = 4;
 tableFrameAirGap = 5;
 
+tableFrameWeightPerMeter = 5.8;
+
+
 tableSupportsWidth = 30;
 tableSupportsThickness = 3;
+
+tableSupportsWeightPerMeter = 1.3;
+
 
 tableFrameInnerProfileWidth = 20;
 tableFrameInnerProfileHeight = 50;
 tableFrameInnerProfileThickness = 3;
+
+tableFrameInnerProfileWeightPerMeter = 3;
+
 
 tableFrameExtensionLength = 950;
 
 tableLegsOverlap = 100;
 tableLegsBaseWidth = 80;
 tableLegsBaseThickness = 4;
+tableLegsBaseWeightPerMeter = 2.5;
 
 wallMountlength = tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2 + tableLegsBaseThickness + tableFrameProfileWidth + tableFrameAirGap;
 wallMountWidth = 80;
@@ -304,21 +316,130 @@ module wallHolder() {
 }
 
 module partsList()  {
-    echo("Pos;Bezeichnung;Typ;Anzahl;Breite;Höhe;Dicke;Länge;Link Debrunner");
-    echo(str("1;Platte;Vierkantrohr;25;", tableTopProfileWidth,";",tableTopProfileHeight,";",tableTopProfileThickness,";",tableTopWidth,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
-    echo(str("2;Aufnahme und Verbinder Platte;Winkel;4;", tableSupportsWidth,";",tableSupportsWidth,";",tableSupportsThickness,";",tableTopLength,";https://shop.d-a.ch/de/winkelstahl-stahl-s235jr-kaltgerollt-gleichschenklig/p/M100407"));
-    echo(str("3;Rahmen längs;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
-    echo(str("4;Rahmen quer;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameAirGap * 2,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
-    echo(str("5;Auszug längs;Vierkantrohr;4;", tableFrameInnerProfileWidth,";",tableFrameInnerProfileHeight,";",tableFrameInnerProfileThickness,";",tableFrameExtensionLength,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
-    echo(str("6;Auszug quer;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
-    echo(str("7;Aufnahme Beine;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",80,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
-    echo(str("8;Auszug Beine - innen;Vierkantrohr;4;", tableFrameInnerProfileWidth,";",tableFrameInnerProfileHeight,";",tableFrameInnerProfileThickness,";",600,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
-    echo(str("9;Auszug Beine - aussen;Vierkantrohr;4;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",600,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
-    echo(str("10;Querverstrebung Beine;Vierkantrohr;2;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";",tableTopWidth + tableFrameAirGap * 2,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
-    echo(str("11;Aufnahme Füsse;Flachstahl;4;", tableLegsBaseWidth,";",";",tableLegsBaseThickness,";",tableLegsBaseWidth,";https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378"));
-    echo(str("12;Wand Montage Basis;Flachstahl;1;", tableLegsBaseWidth,";",";",tableLegsBaseThickness,";",wallMountlength,";https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378"));
-    echo(str("13;Wand Montage unten;Vierkantrohr;1;", 70,";",40,";",4,";", 500,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
-    echo(str("14;Wand Montage oben;Vierkantrohr;1;", tableFrameProfileWidth,";",tableFrameProfileHeight,";",tableFrameProfileThickness,";", wallMountWidth,";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647"));
+    incrementWidth = tableTopProfileWidth + tableTopProfileGap;
+    increments = (tableTopLength - tableTopProfileWidth) / incrementWidth;
+
+    echo("Pos;Bezeichnung;Typ;Anzahl;Breite;Höhe;Dicke;Länge;Link Debrunner;Gewicht per m';Gewicht Total");
+    echo(str(
+        "1;Platte;Vierkantrohr;",
+        increments ,";",
+        tableTopProfileWidth,";",
+        tableTopProfileHeight,";",
+        tableTopProfileThickness,";",
+        tableTopWidth,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
+        tableTopProfileWeightPerMeter,";",
+        (increments*tableTopWidth*tableTopProfileWeightPerMeter/1000)
+    ));
+    echo(str("2;Aufnahme und Verbinder Platte;Winkel;",
+        "4;",
+        tableSupportsWidth,";",
+        tableSupportsWidth,";",
+        tableSupportsThickness,";",
+        tableTopLength,
+        ";https://shop.d-a.ch/de/winkelstahl-stahl-s235jr-kaltgerollt-gleichschenklig/p/M100407;",
+        tableSupportsWeightPerMeter,";",
+        (4*tableTopLength*tableSupportsWeightPerMeter/1000)
+    ));
+    echo(str("3;Rahmen längs;Vierkantrohr;",
+        "2;",
+        tableFrameProfileWidth,";",
+        tableFrameProfileHeight,";",
+        tableFrameProfileThickness,";",
+        tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
+        tableFrameWeightPerMeter,";",
+        (2*tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2*tableFrameWeightPerMeter/1000)
+    ));
+    echo(str("4;Rahmen quer;Vierkantrohr;",
+        "2;", 
+        tableFrameProfileWidth,";",
+        tableFrameProfileHeight,";",
+        tableFrameProfileThickness,";",
+        tableTopWidth + tableFrameAirGap * 2,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
+        tableFrameWeightPerMeter));
+    echo(str("5;Auszug längs;Vierkantrohr;",
+        "4;",
+        tableFrameInnerProfileWidth,";",
+        tableFrameInnerProfileHeight,";",
+        tableFrameInnerProfileThickness,";",
+        tableFrameExtensionLength,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
+        tableFrameInnerProfileWeightPerMeter));
+    echo(str("6;Auszug quer;Vierkantrohr;",
+        "2;",
+        tableFrameProfileWidth,";",
+        tableFrameProfileHeight,";",
+        tableFrameProfileThickness,";",
+        tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647",
+        tableFrameWeightPerMeter));
+    echo(str("7;Aufnahme Beine;Vierkantrohr;",
+        "2;",
+        tableFrameProfileWidth,";",
+        tableFrameProfileHeight,";",
+        tableFrameProfileThickness,";",
+        80,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
+        tableFrameWeightPerMeter));
+    echo(str("8;Auszug Beine - innen;Vierkantrohr;",
+        "4;",
+        tableFrameInnerProfileWidth,
+        ";",
+        tableFrameInnerProfileHeight,";",
+        tableFrameInnerProfileThickness,";",
+        600,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647M100647;",
+        tableFrameInnerProfileWeightPerMeter));
+    echo(str("9;Auszug Beine - aussen;Vierkantrohr;",
+        "4;",
+        tableFrameProfileWidth,";",
+        tableFrameProfileHeight,";",
+        tableFrameProfileThickness,";",
+        600,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
+        tableFrameWeightPerMeter));
+    echo(str("10;Querverstrebung Beine;Vierkantrohr;",
+        "2;",
+        tableFrameProfileWidth,";",
+        tableFrameProfileHeight,";",
+        tableFrameProfileThickness,";",
+        tableTopWidth + tableFrameAirGap * 2,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
+        tableFrameWeightPerMeter));
+    echo(str("11;Aufnahme Füsse;Flachstahl;",
+        "4;",
+        tableLegsBaseWidth,";",
+        ";",
+        tableLegsBaseThickness,";",
+        tableLegsBaseWidth,
+        ";https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378;",
+        tableLegsBaseWeightPerMeter));
+    echo(str("12;Wand Montage Basis;Flachstahl;",
+        "1;",
+        tableLegsBaseWidth,";",
+        ";",
+        tableLegsBaseThickness,";",
+        wallMountlength,
+        ";https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378;",
+        tableLegsBaseWeightPerMeter));
+    echo(str("13;Wand Montage unten;Vierkantrohr;",
+        "1;", 
+        70,";",
+        40,";",
+        4,";", 
+        500,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
+        "6.4"));
+    echo(str("14;Wand Montage oben;Vierkantrohr;",
+        "1;",
+        tableFrameProfileWidth,";",
+        tableFrameProfileHeight,";",
+        tableFrameProfileThickness,";",
+        wallMountWidth,
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
+        tableFrameWeightPerMeter));
 
 }
 
