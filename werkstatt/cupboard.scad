@@ -1,6 +1,6 @@
 hasDoor = false;
 largeDrawers = 0; //1:3; 2:1
-smallDrawers = 6; // 5||3||1
+smallDrawers = 5; // 5||3||1
 drawerSideClearance = 12.5;
 drawerTopClearance = 15;
 drawerBottomClearance = 5;
@@ -8,7 +8,7 @@ drawerDepthClearance = 20;
 //drawerHeightSmall = 134;
 drawerThickness = 12;
 
-
+drawerEnclosed = true;
 
 
 wheelHeight = 108;
@@ -21,8 +21,9 @@ thickness = 18;
 
 
 corpusHeight = height - wheelHeight;
-
-drawerHeightSmall = (corpusHeight) / smallDrawers - frontClearance;
+corpusInnerHeight = corpusHeight - thickness * 2;
+corpusCalculationHeight = drawerEnclosed == true ? corpusInnerHeight : corpusHeight;
+drawerHeightSmall = (corpusCalculationHeight - frontClearance) / smallDrawers;
 drawerSideHeightSmall = drawerHeightSmall - drawerTopClearance - drawerBottomClearance;
 
 material = "Birke Multiplex";
@@ -41,21 +42,25 @@ module corpus() {
 	//	cube([width, depth, corpusHeight]);
 	//}
 
+	wallDepth = drawerEnclosed == true ? depth - thickness : depth;
+	wallTranslateY = drawerEnclosed == true ? thickness : 0;
+	
+	translate([0, wallTranslateY, thickness]) {
+		// left wall
+		cube([thickness, wallDepth, corpusInnerHeight]);
 
-	// left wall
-	cube([thickness, depth, corpusHeight]);
-
-	// right wall
-	translate([width - thickness, 0, 0])
-	cube([thickness, depth, corpusHeight]);
-
+		// right wall
+		translate([width - thickness, 0, 0])
+		cube([thickness, wallDepth, corpusInnerHeight]);
+	}
+	
 	// bottom
-	translate([thickness, 0, 0])
-	cube([width - thickness * 2, depth, thickness]);
+	translate([0, 0, 0])
+	cube([width, depth, thickness]);
 
 	// top
-	translate([thickness, 0, corpusHeight - thickness])
-	cube([width - thickness * 2, depth, thickness]);
+	translate([0, 0, corpusHeight - thickness])
+	cube([width, depth, thickness]);
 
 	// back wall
 	translate([thickness, depth - thickness, thickness])
@@ -75,23 +80,24 @@ module partsList() {
     //echo(str("3;Korpus Rückwand;", material ,";2;", width - thickness * 2,";",corpusHeight - thickness * 2,";",thickness));
 }
 
-module drawer(type = "small") {
+module drawer(type = "small", last = false, num = 0) {
 	
+	drawerDepth = drawerEnclosed == true ? depth - thickness - drawerDepthClearance - thickness : depth - thickness - drawerDepthClearance;
 	color("darkgreen") {
 		drawerHeight = type == "small" ? drawerSideHeightSmall : 240;
 		// left
-		cube([drawerThickness, depth - thickness - drawerDepthClearance, drawerHeight]);
+		cube([drawerThickness, drawerDepth, drawerHeight]);
 
 		// right
 		translate([width - 2 * thickness - drawerThickness - drawerSideClearance * 2, 0, 0])
-		cube([drawerThickness, depth - thickness - drawerDepthClearance, drawerHeight]);
+		cube([drawerThickness, drawerDepth, drawerHeight]);
 
 		// front
 		translate([drawerThickness, 0, 0])
 		cube([width - 2 * thickness - drawerThickness * 2 - drawerSideClearance * 2, 12, drawerHeight]);
 
 		// back
-		translate([drawerThickness, depth - thickness - drawerDepthClearance - drawerThickness, 0])
+		translate([drawerThickness, drawerDepth - drawerThickness, 0])
 		cube([width - 2 * thickness - drawerThickness * 2 - drawerSideClearance * 2, 12, drawerHeight]);
 	}
 
@@ -102,16 +108,24 @@ module drawer(type = "small") {
 	}
 
 	// front
-	//translate([-thickness - drawerSideClearance + frontClearance/2, -thickness, 0])
-	//cube([width - frontClearance, thickness, drawerHeightSmall]);
+	drawerColor = num % 2 == 0 ? "orange" : "purple";
+
+	//translate([-thickness - drawerSideClearance + frontClearance/2, -thickness, -drawerBottomClearance - frontClearance])
+	//color(drawerColor) cube([width - frontClearance, thickness, drawerHeightSmall - frontClearance]);
 }
 
 corpus();
 
+drawerY = drawerEnclosed == true ? thickness : 0;
+
 for (num =[0:smallDrawers - 1]) {
-	numTop = num * (drawerHeightSmall + frontClearance);
-	translate([thickness + drawerSideClearance, 0, corpusHeight - drawerSideHeightSmall - thickness - frontClearance - numTop])
-	drawer();
+	last = num == smallDrawers - 1 && drawerEnclosed == false ? true : false;
+	corpusOuterAddition = drawerEnclosed == true ? 0 : thickness;
+
+	numTop = num * (drawerHeightSmall) - thickness - frontClearance - frontClearance + drawerTopClearance - corpusOuterAddition;
+	translate([thickness + drawerSideClearance, drawerY, corpusInnerHeight - drawerSideHeightSmall - frontClearance - numTop])
+	//drawer(last = last);
+	drawer(last = last, num = num);
 }
 
 partsList();
