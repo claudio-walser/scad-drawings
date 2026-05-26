@@ -1,6 +1,6 @@
 $fn = 256;
 
-tableExtended = true;
+tableExtended = false;
 legsExtended = false;
 
 tableTopWidth = 800;
@@ -331,6 +331,7 @@ module partsList()  {
         tableTopProfileWeightPerMeter,";",
         (increments*tableTopWidth*tableTopProfileWeightPerMeter/1000)
     ));
+
     echo(str("2;Aufnahme und Verbinder Platte;Winkel;",
         "4;",
         tableSupportsWidth,";",
@@ -349,7 +350,7 @@ module partsList()  {
         tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2,
         ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
         tableFrameWeightPerMeter,";",
-        (2*tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2*tableFrameWeightPerMeter/1000)
+        (2*(tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2)*tableFrameWeightPerMeter/1000)
     ));
     echo(str("4;Rahmen quer;Vierkantrohr;",
         "2;", 
@@ -358,7 +359,9 @@ module partsList()  {
         tableFrameProfileThickness,";",
         tableTopWidth + tableFrameAirGap * 2,
         ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
-        tableFrameWeightPerMeter));
+        tableFrameWeightPerMeter, ";",
+        (2 * (tableTopWidth + tableFrameAirGap * 2) * tableFrameWeightPerMeter/1000)
+        ));
     echo(str("5;Auszug längs;Vierkantrohr;",
         "4;",
         tableFrameInnerProfileWidth,";",
@@ -366,15 +369,19 @@ module partsList()  {
         tableFrameInnerProfileThickness,";",
         tableFrameExtensionLength,
         ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
-        tableFrameInnerProfileWeightPerMeter));
+        tableFrameInnerProfileWeightPerMeter, ";",
+        (4 * tableFrameExtensionLength * tableFrameInnerProfileWeightPerMeter/1000)
+    ));
     echo(str("6;Auszug quer;Vierkantrohr;",
         "2;",
         tableFrameProfileWidth,";",
         tableFrameProfileHeight,";",
         tableFrameProfileThickness,";",
         tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2,
-        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647",
-        tableFrameWeightPerMeter));
+        ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647", ";",
+        tableFrameWeightPerMeter, ";",
+        (4 * (tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2) * tableFrameWeightPerMeter/1000)
+    ));
     echo(str("7;Aufnahme Beine;Vierkantrohr;",
         "2;",
         tableFrameProfileWidth,";",
@@ -382,7 +389,9 @@ module partsList()  {
         tableFrameProfileThickness,";",
         80,
         ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
-        tableFrameWeightPerMeter));
+        tableFrameWeightPerMeter, ";",
+        (2 * 80 * tableFrameWeightPerMeter/1000)
+    ));
     echo(str("8;Auszug Beine - innen;Vierkantrohr;",
         "4;",
         tableFrameInnerProfileWidth,
@@ -391,7 +400,9 @@ module partsList()  {
         tableFrameInnerProfileThickness,";",
         600,
         ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647M100647;",
-        tableFrameInnerProfileWeightPerMeter));
+        tableFrameInnerProfileWeightPerMeter, ";",
+        (4 * 600 * tableFrameInnerProfileWeightPerMeter/1000)
+    ));
     echo(str("9;Auszug Beine - aussen;Vierkantrohr;",
         "4;",
         tableFrameProfileWidth,";",
@@ -399,7 +410,9 @@ module partsList()  {
         tableFrameProfileThickness,";",
         600,
         ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
-        tableFrameWeightPerMeter));
+        tableFrameWeightPerMeter, ";",
+        (4 * 600 * tableFrameWeightPerMeter/1000)
+    ));
     echo(str("10;Querverstrebung Beine;Vierkantrohr;",
         "2;",
         tableFrameProfileWidth,";",
@@ -407,7 +420,9 @@ module partsList()  {
         tableFrameProfileThickness,";",
         tableTopWidth + tableFrameAirGap * 2,
         ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
-        tableFrameWeightPerMeter));
+        tableFrameWeightPerMeter, ";",
+        (2 * (tableTopWidth + tableFrameAirGap * 2) * tableFrameWeightPerMeter/1000)
+    ));
     echo(str("11;Aufnahme Füsse;Flachstahl;",
         "4;",
         tableLegsBaseWidth,";",
@@ -415,7 +430,9 @@ module partsList()  {
         tableLegsBaseThickness,";",
         tableLegsBaseWidth,
         ";https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378;",
-        tableLegsBaseWeightPerMeter));
+        tableLegsBaseWeightPerMeter, ";",
+        (1 * tableLegsBaseWidth * tableLegsBaseWeightPerMeter/1000)
+    ));
     echo(str("12;Wand Montage Basis;Flachstahl;",
         "1;",
         tableLegsBaseWidth,";",
@@ -423,7 +440,9 @@ module partsList()  {
         tableLegsBaseThickness,";",
         wallMountlength,
         ";https://shop.d-a.ch/de/flachstahl-stahl-s235jr-warmgewalzt/p/M100378;",
-        tableLegsBaseWeightPerMeter));
+        tableLegsBaseWeightPerMeter, ";",
+        (1 * wallMountlength * tableLegsBaseWeightPerMeter/1000)
+    ));
     echo(str("13;Wand Montage unten;Vierkantrohr;",
         "1;", 
         70,";",
@@ -431,7 +450,9 @@ module partsList()  {
         4,";", 
         500,
         ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
-        "6.4"));
+        "6.4", ";",
+        (1 * 500 * 6.4/1000)
+    ));
     echo(str("14;Wand Montage oben;Vierkantrohr;",
         "1;",
         tableFrameProfileWidth,";",
@@ -439,7 +460,29 @@ module partsList()  {
         tableFrameProfileThickness,";",
         wallMountWidth,
         ";https://shop.d-a.ch/de/rechteckrohre-stahl-s235jr-kaltgewalzt-s1-rohschwarz/p/M100647;",
-        tableFrameWeightPerMeter));
+        tableFrameWeightPerMeter, ";",
+        (1 * wallMountWidth * tableFrameWeightPerMeter/1000)
+    ));
+
+    totalWeight = 
+        /*Platte*/ (increments*tableTopWidth*tableTopProfileWeightPerMeter/1000)
+        /*Aufnahme und Verbinder Platte*/ + (4*tableTopLength*tableSupportsWeightPerMeter/1000)
+        /*Rahmen längs*/ + (2*(tableTopLength + tableFrameProfileWidth * 2 + tableFrameAirGap * 2)*tableFrameWeightPerMeter/1000)
+        /*Rahmen quer*/ + (2 * (tableTopWidth + tableFrameAirGap * 2) * tableFrameWeightPerMeter/1000)
+        /*Auszug längs*/ + (4 * tableFrameExtensionLength * tableFrameInnerProfileWeightPerMeter/1000)
+        /*Auszug quer*/ + (4 * (tableTopWidth + tableFrameProfileWidth * 2+ tableFrameAirGap * 2) * tableFrameWeightPerMeter/1000)
+        /*Aufnahme Beine*/ + (2 * 80 * tableFrameWeightPerMeter/1000)
+        /*Auszug Beine innen*/ + (4 * 600 * tableFrameInnerProfileWeightPerMeter/1000)
+        /*Auszug Beine aussen*/ + (4 * 600 * tableFrameWeightPerMeter/1000)
+        /*Querverstrebung Beine*/ + (2 * (tableTopWidth + tableFrameAirGap * 2) * tableFrameWeightPerMeter/1000)
+        /*Aufnahme Füsse*/ + (1 * tableLegsBaseWidth * tableLegsBaseWeightPerMeter/1000)
+        /*Wand Montage Basis*/ + (1 * wallMountlength * tableLegsBaseWeightPerMeter/1000)
+        /*Wand Montage unten*/ + (1 * 500 * 6.4/1000)
+        /*Wand Montage oben*/ + (1 * wallMountWidth * tableFrameWeightPerMeter/1000)
+
+    ;
+
+    echo(str(";Gewicht Total;;;;;;;;", totalWeight));
 
 }
 
