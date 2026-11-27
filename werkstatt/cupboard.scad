@@ -17,7 +17,12 @@ width = 500;
 depth = 400;
 thickness = 18;
 
+// Anzahl Schubladen-Abteile nebeneinander, getrennt durch Trennwände in Korpusdicke
+compartments = 1;
+
 innerWidth = width - 2 * thickness;
+compartmentWidth = (innerWidth - (compartments - 1) * thickness) / compartments;
+function compartmentX(i) = thickness + i * (compartmentWidth + thickness);
 
 corpusHeight = height - wheelHeight;
 corpusInnerHeight = corpusHeight - thickness * 2;
@@ -43,6 +48,12 @@ frontHeightSmall = round(frontPitch - frontClearance);
 frontHeightLarge = round(frontPitch * 2 - frontClearance);
 frontInsetSmall = (frontPitch - frontHeightSmall) / 2;
 frontInsetLarge = (frontPitch * 2 - frontHeightLarge) / 2;
+
+// In der Breite werden die Fronten gleichmässig über die ganze Möbelbreite verteilt
+frontPitchX = width / compartments;
+frontWidth = round(frontPitchX - frontClearance);
+frontInsetX = (frontPitchX - frontWidth) / 2;
+function frontX(i) = i * frontPitchX + frontInsetX;
 
 function frontHeight(size) = size == 1 ? frontHeightSmall : frontHeightLarge;
 function frontZ(unit, size) = frontStartZ + unit * frontPitch + (size == 1 ? frontInsetSmall : frontInsetLarge);
@@ -77,7 +88,9 @@ if (largeDrawers > 0) echo(str("Kastenhöhe gross: ", drawerSideHeightLarge, " /
 
 // Masse der Schubladenkästen (auch für die Stückliste)
 drawerDepth = drawerEnclosed ? depth - 2 * thickness - drawerDepthClearance : depth - thickness - drawerDepthClearance;
-drawerInnerWidth = innerWidth - drawerThickness * 2 - drawerSideClearance * 2;
+// auf ganze mm gerundet; der Kasten wird im Abteil zentriert
+drawerInnerWidth = round(compartmentWidth - drawerThickness * 2 - drawerSideClearance * 2);
+drawerOuterWidth = drawerInnerWidth + drawerThickness * 2;
 // Boden liegt ringsum gleich tief in einer Nut in Seiten, Vorder- und Rückwand
 drawerFloorGrooveDepth = 5;
 drawerFloorZ = 10;
@@ -87,8 +100,10 @@ drawerFloorThickness = 6;
 
 // Korpus-Seitenwände: bei innen liegenden Fronten um die Frontdicke kürzer
 corpusWallDepth = drawerEnclosed ? depth - thickness : depth;
+// Trennwände: wie Seitenwände, enden aber an der Rückwand
+dividerDepth = corpusWallDepth - thickness;
 
-material = "Birke Multiplex";
+material = "MDF";
 pricePerQM = 19.32;
 
 module corpus() {
@@ -101,6 +116,11 @@ module corpus() {
 		// right wall
 		translate([innerWidth + thickness, 0, 0])
 		cube([thickness, corpusWallDepth, corpusInnerHeight]);
+
+		// dividers
+		for (i = [1:1:compartments - 1])
+			translate([compartmentX(i) - thickness, 0, 0])
+			cube([thickness, dividerDepth, corpusInnerHeight]);
 	}
 
 	// bottom
@@ -126,13 +146,14 @@ allParts = [
 	["Korpus Seiten", 2, corpusWallDepth, corpusInnerHeight, thickness],
 	["Korpus Boden und Deckel", 2, depth, width, thickness],
 	["Korpus Rückwand", 1, innerWidth, corpusInnerHeight, thickness],
-	["Schubladen Fronten klein", smallDrawers, frontHeightSmall, width - frontClearance, thickness],
-	["Schubladen Fronten gross", largeDrawers, frontHeightLarge, width - frontClearance, thickness],
-	["Schubladenkasten Seiten klein", smallDrawers * 2, drawerSideHeightSmall, drawerDepth, drawerThickness],
-	["Schubladenkasten Seiten gross", largeDrawers * 2, drawerSideHeightLarge, drawerDepth, drawerThickness],
-	["Schubladenkasten Vorder- und Rückwand klein", smallDrawers * 2, drawerSideHeightSmall, drawerInnerWidth, drawerThickness],
-	["Schubladenkasten Vorder- und Rückwand gross", largeDrawers * 2, drawerSideHeightLarge, drawerInnerWidth, drawerThickness],
-	["Schubladenböden", drawerCount, drawerFloorDepth, drawerFloorWidth, drawerFloorThickness],
+	["Korpus Trennwände", compartments - 1, dividerDepth, corpusInnerHeight, thickness],
+	["Schubladen Fronten klein", smallDrawers * compartments, frontHeightSmall, frontWidth, thickness],
+	["Schubladen Fronten gross", largeDrawers * compartments, frontHeightLarge, frontWidth, thickness],
+	["Schubladenkasten Seiten klein", smallDrawers * compartments * 2, drawerSideHeightSmall, drawerDepth, drawerThickness],
+	["Schubladenkasten Seiten gross", largeDrawers * compartments * 2, drawerSideHeightLarge, drawerDepth, drawerThickness],
+	["Schubladenkasten Vorder- und Rückwand klein", smallDrawers * compartments * 2, drawerSideHeightSmall, drawerInnerWidth, drawerThickness],
+	["Schubladenkasten Vorder- und Rückwand gross", largeDrawers * compartments * 2, drawerSideHeightLarge, drawerInnerWidth, drawerThickness],
+	["Schubladenböden", drawerCount * compartments, drawerFloorDepth, drawerFloorWidth, drawerFloorThickness],
 ];
 parts = [for (part = allParts) if (part[1] > 0) part];
 
@@ -152,7 +173,7 @@ module drawer(drawerHeight) {
 		cube([drawerThickness, drawerDepth, drawerHeight]);
 
 		// right
-		translate([innerWidth - drawerThickness - drawerSideClearance * 2, 0, 0])
+		translate([drawerThickness + drawerInnerWidth, 0, 0])
 		cube([drawerThickness, drawerDepth, drawerHeight]);
 
 		// front
@@ -172,30 +193,33 @@ module drawer(drawerHeight) {
 }
 
 module frontPanel(frontHeight) {
-	cube([width - frontClearance, thickness, frontHeight]);
+	cube([frontWidth, thickness, frontHeight]);
 }
 
-corpus();
+#corpus();
 
 drawerY = drawerEnclosed ? thickness : 0;
 
-for (d = drawers) {
+for (c = [0:compartments - 1], d = drawers) {
 	unit = d[0];
 	size = d[1];
+	fx = frontX(c);
 	fz = frontZ(unit, size);
 	fh = frontHeight(size);
+	dx = compartmentX(c) + (compartmentWidth - drawerOuterWidth) / 2;
 	dz = drawerZ(unit);
 	dh = drawerHeight(size);
 
 	assert(dz >= fz - 0.01, str("Schubladenkasten in Einheit ", unit, " ragt unter seine Front"));
 	assert(dz + dh <= fz + fh + 0.01, str("Schubladenkasten in Einheit ", unit, " ragt über seine Front"));
+	assert(dx >= fx && dx + drawerOuterWidth <= fx + frontWidth, str("Schubladenkasten in Abteil ", c, " ragt seitlich über seine Front"));
 
 	// Kasten: eigenes Raster, bleibt immer hinter seiner Front
-	translate([thickness + drawerSideClearance, drawerY, dz])
+	translate([dx, drawerY, dz])
 	drawer(dh);
 
-	// Front: Raster über corpusCalculationHeight
-	translate([frontClearance / 2, drawerY - thickness, fz])
+	// Front: Raster über corpusCalculationHeight bzw. die ganze Breite
+	translate([fx, drawerY - thickness, fz])
 	frontPanel(fh);
 }
 
