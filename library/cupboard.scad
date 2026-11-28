@@ -47,6 +47,9 @@ compartmentDrawers = [];
 material = "MDF";
 pricePerQM = 19.32;
 
+// Echo all parts with position and size (used by export-cupboard.py)
+exportData = false;
+
 // ---- Calculations ----
 
 innerWidth = width - 2 * thickness;
@@ -156,34 +159,75 @@ corpusWallDepth = drawerEnclosed ? depth - thickness : depth;
 // Dividers: like side walls, but end at the back wall
 dividerDepth = corpusWallDepth - thickness;
 
-module corpus() {
-	wallTranslateY = drawerEnclosed ? thickness : 0;
+// ---- All parts as data ----
+// Every part is an axis-aligned box:
+//   [type, part name, compartment, index, position, size, color]
+// The part name matches the parts list. cupboard() draws these boxes, and
+// export-cupboard.py reads them to create the construction drawings.
+function box(type, name, c, i, pos, size, col = undef) = [type, name, c, i, pos, size, col];
+function sizeName(size) = size == 1 ? "klein" : "gross";
 
-	translate([0, wallTranslateY, thickness]) {
-		// left wall
-		cube([thickness, corpusWallDepth, corpusInnerHeight]);
+wallY = drawerEnclosed ? thickness : 0;
+drawerY = drawerEnclosed ? thickness : 0;
+frontY = drawerY - thickness;
 
-		// right wall
-		translate([innerWidth + thickness, 0, 0])
-		cube([thickness, corpusWallDepth, corpusInnerHeight]);
+corpusBoxes = concat(
+	[
+		box("side", "Korpus Seiten", 0, 0, [0, wallY, thickness], [thickness, corpusWallDepth, corpusInnerHeight]),
+		box("side", "Korpus Seiten", compartments - 1, 1, [innerWidth + thickness, wallY, thickness], [thickness, corpusWallDepth, corpusInnerHeight]),
+	],
+	[for (i = [1:1:compartments - 1])
+		box("divider", "Korpus Trennwände", i, i, [compartmentX(i) - thickness, wallY, thickness], [thickness, dividerDepth, corpusInnerHeight])],
+	[
+		box("bottom", "Korpus Boden und Deckel", -1, 0, [0, 0, 0], [width, depth, thickness]),
+		box("top", "Korpus Boden und Deckel", -1, 1, [0, 0, corpusHeight - thickness], [width, depth, thickness]),
+		box("back", "Korpus Rückwand", -1, 0, [thickness, depth - thickness, thickness], [innerWidth, thickness, corpusHeight - thickness * 2]),
+	]
+);
 
-		// dividers
-		for (i = [1:1:compartments - 1])
-			translate([compartmentX(i) - thickness, 0, 0])
-			cube([thickness, dividerDepth, corpusInnerHeight]);
-	}
+// Drawer box: centered in its compartment, floor in a groove all around
+function drawerBoxX(c) = compartmentX(c) + (compartmentWidth(c) - drawerOuterWidth(c)) / 2;
+function drawerBoxes(c, unit, size) = let (
+		x = drawerBoxX(c),
+		z = drawerZ(c, unit),
+		h = drawerHeight(c, size),
+		iw = drawerInnerWidth(c),
+		t = drawerThickness,
+		g = drawerFloorGrooveDepth,
+		n = sizeName(size)
+	) [
+		box("drawerSide", str("Schubladenkasten Seiten ", n), c, unit, [x, drawerY, z], [t, drawerDepth, h], "darkgreen"),
+		box("drawerSide", str("Schubladenkasten Seiten ", n), c, unit, [x + t + iw, drawerY, z], [t, drawerDepth, h], "darkgreen"),
+		box("drawerFrontBack", str("Schubladenkasten Vorder- und Rückwand ", n), c, unit, [x + t, drawerY, z], [iw, t, h], "darkgreen"),
+		box("drawerFrontBack", str("Schubladenkasten Vorder- und Rückwand ", n), c, unit, [x + t, drawerY + drawerDepth - t, z], [iw, t, h], "darkgreen"),
+		box("drawerFloor", "Schubladenböden", c, unit, [x + t - g, drawerY + t - g, z + drawerFloorZ], [iw + g * 2, drawerFloorDepth, drawerFloorThickness], "purple"),
+	];
 
-	// bottom
-	cube([width, depth, thickness]);
+cupboardBoxes = concat(
+	corpusBoxes,
+	[for (c = [0:compartments - 1], d = drawers(c)) each drawerBoxes(c, d[0], d[1])],
+	// Fronts: grid over corpusCalculationHeight and the full width
+	[for (c = [0:compartments - 1], d = drawers(c))
+		box("front", str("Schubladen Fronten ", sizeName(d[1])), c, d[0],
+			[frontX(c), frontY, frontZ(c, d[0], d[1])], [frontWidth(c), thickness, frontHeight(c, d[1])])],
+	[for (c = [0:compartments - 1]) if (hasCompartmentDoor(c)) for (i = [0:doorCount(c) - 1])
+		box("door", "Türen", c, i, [doorX(c, i), frontY, doorZ], [doorWidth(c), thickness, doorHeight])]
+);
 
-	// top
-	translate([0, 0, corpusHeight - thickness])
-	cube([width, depth, thickness]);
-
-	// back wall
-	translate([thickness, depth - thickness, thickness])
-	cube([innerWidth, thickness, corpusHeight - thickness * 2]);
-}
+// General data for the construction drawings: [key, value] pairs
+cupboardInfo = [
+	["width", width], ["depth", depth], ["height", height], ["wheelHeight", wheelHeight],
+	["corpusHeight", corpusHeight], ["thickness", thickness], ["material", material],
+	["drawerEnclosed", drawerEnclosed], ["frontClearance", frontClearance],
+	["drawerThickness", drawerThickness], ["drawerDepth", drawerDepth],
+	["drawerSideClearance", drawerSideClearance], ["drawerTopClearance", drawerTopClearance],
+	["drawerBottomClearance", drawerBottomClearance],
+	["drawerFloorGrooveDepth", drawerFloorGrooveDepth], ["drawerFloorZ", drawerFloorZ],
+	["drawerFloorThickness", drawerFloorThickness],
+	// per compartment: [x, clear width, small drawers, large drawers, door count]
+	["compartments", [for (c = [0:compartments - 1])
+		[compartmentX(c), compartmentWidth(c), smallDrawersIn(c), largeDrawersIn(c), hasCompartmentDoor(c) ? doorCount(c) : 0]]],
+];
 
 // Price of a line item (count × area × price per m²).
 // All parts are priced at the corpus material rate: thinner panels for the
@@ -231,36 +275,6 @@ module partsList() {
 	echo(str(";Total;;;;;;", sumList([for (part = parts) partPrice(part)])));
 }
 
-module drawer(drawerHeight, drawerInnerWidth) {
-	color("darkgreen") {
-
-		// left
-		cube([drawerThickness, drawerDepth, drawerHeight]);
-
-		// right
-		translate([drawerThickness + drawerInnerWidth, 0, 0])
-		cube([drawerThickness, drawerDepth, drawerHeight]);
-
-		// front
-		translate([drawerThickness, 0, 0])
-		cube([drawerInnerWidth, drawerThickness, drawerHeight]);
-
-		// back
-		translate([drawerThickness, drawerDepth - drawerThickness, 0])
-		cube([drawerInnerWidth, drawerThickness, drawerHeight]);
-	}
-
-	// floor
-	color("purple") {
-		translate([drawerThickness - drawerFloorGrooveDepth, drawerThickness - drawerFloorGrooveDepth, drawerFloorZ])
-		cube([drawerInnerWidth + drawerFloorGrooveDepth * 2, drawerFloorDepth, drawerFloorThickness]);
-	}
-}
-
-module frontPanel(frontWidth, frontHeight) {
-	cube([frontWidth, thickness, frontHeight]);
-}
-
 // Whole cabinet: corpus, drawer boxes and fronts
 module cupboard() {
 	for (c = [0:compartments - 1]) {
@@ -272,38 +286,25 @@ module cupboard() {
 		if (largeDrawersIn(c) > 0) echo(str("  Kastenhöhe gross: ", drawerHeight(c, 2), " / Fronthöhe gross: ", frontHeight(c, 2)));
 	}
 
-	corpus();
-
-	drawerY = drawerEnclosed ? thickness : 0;
-
 	for (c = [0:compartments - 1], d = drawers(c)) {
 		unit = d[0];
 		size = d[1];
 		fx = frontX(c);
-		fw = frontWidth(c);
 		fz = frontZ(c, unit, size);
-		fh = frontHeight(c, size);
-		dx = compartmentX(c) + (compartmentWidth(c) - drawerOuterWidth(c)) / 2;
+		dx = drawerBoxX(c);
 		dz = drawerZ(c, unit);
-		dh = drawerHeight(c, size);
-
 		assert(dz >= fz - 0.01, str("Schubladenkasten in Abteil ", c + 1, ", Einheit ", unit, " ragt unter seine Front"));
-		assert(dz + dh <= fz + fh + 0.01, str("Schubladenkasten in Abteil ", c + 1, ", Einheit ", unit, " ragt über seine Front"));
-		assert(dx >= fx && dx + drawerOuterWidth(c) <= fx + fw, str("Schubladenkasten in Abteil ", c + 1, " ragt seitlich über seine Front"));
-
-		// Box: its own grid, always stays behind its front
-		translate([dx, drawerY, dz])
-		drawer(dh, drawerInnerWidth(c));
-
-		// Front: grid over corpusCalculationHeight and the full width
-		translate([fx, drawerY - thickness, fz])
-		frontPanel(fw, fh);
+		assert(dz + drawerHeight(c, size) <= fz + frontHeight(c, size) + 0.01, str("Schubladenkasten in Abteil ", c + 1, ", Einheit ", unit, " ragt über seine Front"));
+		assert(dx >= fx && dx + drawerOuterWidth(c) <= fx + frontWidth(c), str("Schubladenkasten in Abteil ", c + 1, " ragt seitlich über seine Front"));
 	}
 
-	// Doors for compartments without drawers
-	for (c = [0:compartments - 1]) if (hasCompartmentDoor(c))
-		for (i = [0:doorCount(c) - 1])
-			translate([doorX(c, i), drawerY - thickness, doorZ])
-			//color("saddlebrown")
-			frontPanel(doorWidth(c), doorHeight);
+	for (b = cupboardBoxes)
+		translate(b[4])
+		if (is_undef(b[6])) cube(b[5]);
+		else color(b[6]) cube(b[5]);
+
+	if (exportData) {
+		echo(cupboardInfo = cupboardInfo);
+		for (b = cupboardBoxes) echo(box = b);
+	}
 }

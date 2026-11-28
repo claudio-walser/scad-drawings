@@ -1,7 +1,7 @@
 // Lowboard: 3 compartments side by side with 3 drawers each.
 // All logic (layout, model, parts list) comes from cupboard-library.scad,
 // only the differing parameters are overridden here.
-include <cupboard-library.scad>
+include <../../library/cupboard.scad>
 
 width = 1400;
 depth = 790;

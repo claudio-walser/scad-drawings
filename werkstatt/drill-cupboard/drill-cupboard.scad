@@ -1,10 +1,10 @@
 // Rolling cabinet with drawers.
 // All logic (layout, model, parts list) comes from cupboard-library.scad.
-include <cupboard-library.scad>
+include <../../library/cupboard.scad>
 
 hasDoor = false;
-largeDrawers = 1; //1:3; 2:1
-smallDrawers = 3; // 5||3||1
+largeDrawers = 0; //1:3; 2:1
+smallDrawers = 5; // 5||3||1
 drawerSideClearance = 12.5;
 drawerTopClearance = 15;
 drawerBottomClearance = 5;

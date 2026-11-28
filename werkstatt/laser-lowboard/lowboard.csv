@@ -1,0 +1,11 @@
+Pos;Bezeichnung;Typ;Anzahl;Breite;Länge;Dicke;Preis
+1;Korpus Seiten;MDF;2;772;464;18;13.8412
+2;Korpus Boden und Deckel;MDF;2;790;1400;18;42.7358
+3;Korpus Rückwand;MDF;1;1364;464;18;12.2276
+4;Korpus Trennwände;MDF;2;754;464;18;13.5184
+5;Schubladen Fronten klein;MDF;6;151;563;18;9.85471
+6;Schubladenkasten Seiten klein;MDF;12;138;734;12;23.4835
+7;Schubladenkasten Vorder- und Rückwand klein;MDF;12;138;494;12;15.805
+8;Schubladenböden;MDF;6;720;504;6;42.065
+9;Türen;MDF;1;460;262;18;2.32845
+;Total;;;;;;175.86

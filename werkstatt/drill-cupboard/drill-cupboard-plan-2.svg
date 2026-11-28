@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
+<defs><pattern id="hatch" patternUnits="userSpaceOnUse" width="1.6" height="1.6" patternTransform="rotate(45)"><rect width="1.6" height="1.6" fill="#e4e4e4"/><line x1="0" y1="0" x2="0" y2="1.6" stroke="#666" stroke-width="0.25"/></pattern></defs>
+<rect width="420" height="297" fill="#fff"/>
+<text x="15.00" y="19.50" font-size="3.5" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Stückliste</text>
+<rect x="15.00" y="22.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.35"/>
+<text x="20.00" y="26.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Pos</text>
+<text x="26.50" y="26.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Bezeichnung</text>
+<text x="104.50" y="26.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Material</text>
+<text x="142.50" y="26.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Anzahl</text>
+<text x="158.50" y="26.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Breite</text>
+<text x="174.50" y="26.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Länge</text>
+<text x="187.50" y="26.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Dicke</text>
+<text x="205.50" y="26.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Preis</text>
+<rect x="15.00" y="28.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.2"/>
+<text x="20.00" y="32.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">1</text>
+<text x="26.50" y="32.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Korpus Seiten</text>
+<text x="104.50" y="32.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF</text>
+<text x="142.50" y="32.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">2</text>
+<text x="158.50" y="32.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">400</text>
+<text x="174.50" y="32.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">778</text>
+<text x="187.50" y="32.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">18</text>
+<text x="205.50" y="32.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12.02</text>
+<rect x="15.00" y="34.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.2"/>
+<text x="20.00" y="38.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">2</text>
+<text x="26.50" y="38.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Korpus Boden und Deckel</text>
+<text x="104.50" y="38.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF</text>
+<text x="142.50" y="38.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">2</text>
+<text x="158.50" y="38.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">400</text>
+<text x="174.50" y="38.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">500</text>
+<text x="187.50" y="38.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">18</text>
+<text x="205.50" y="38.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">7.73</text>
+<rect x="15.00" y="40.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.2"/>
+<text x="20.00" y="44.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">3</text>
+<text x="26.50" y="44.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Korpus Rückwand</text>
+<text x="104.50" y="44.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF</text>
+<text x="142.50" y="44.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">1</text>
+<text x="158.50" y="44.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">464</text>
+<text x="174.50" y="44.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">778</text>
+<text x="187.50" y="44.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">18</text>
+<text x="205.50" y="44.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">6.97</text>
+<rect x="15.00" y="46.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.2"/>
+<text x="20.00" y="50.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">4</text>
+<text x="26.50" y="50.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Schubladen Fronten klein</text>
+<text x="104.50" y="50.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF</text>
+<text x="142.50" y="50.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">1</text>
+<text x="158.50" y="50.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">159</text>
+<text x="174.50" y="50.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">496</text>
+<text x="187.50" y="50.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">18</text>
+<text x="205.50" y="50.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">1.52</text>
+<rect x="15.00" y="52.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.2"/>
+<text x="20.00" y="56.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">5</text>
+<text x="26.50" y="56.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Schubladen Fronten gross</text>
+<text x="104.50" y="56.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF</text>
+<text x="142.50" y="56.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">2</text>
+<text x="158.50" y="56.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">322</text>
+<text x="174.50" y="56.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">496</text>
+<text x="187.50" y="56.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">18</text>
+<text x="205.50" y="56.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">6.17</text>
+<rect x="15.00" y="58.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.2"/>
+<text x="20.00" y="62.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">6</text>
+<text x="26.50" y="62.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Schubladenkasten Seiten klein</text>
+<text x="104.50" y="62.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF</text>
+<text x="142.50" y="62.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">2</text>
+<text x="158.50" y="62.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">128</text>
+<text x="174.50" y="62.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">362</text>
+<text x="187.50" y="62.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<text x="205.50" y="62.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">1.79</text>
+<rect x="15.00" y="64.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.2"/>
+<text x="20.00" y="68.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">7</text>
+<text x="26.50" y="68.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Schubladenkasten Seiten gross</text>
+<text x="104.50" y="68.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF</text>
+<text x="142.50" y="68.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">4</text>
+<text x="158.50" y="68.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">285</text>
+<text x="174.50" y="68.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">362</text>
+<text x="187.50" y="68.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<text x="205.50" y="68.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">7.97</text>
+<rect x="15.00" y="70.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.2"/>
+<text x="20.00" y="74.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">8</text>
+<text x="26.50" y="74.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Schubladenkasten Vorder- und Rückwand klein</text>
+<text x="104.50" y="74.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF</text>
+<text x="142.50" y="74.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">2</text>
+<text x="158.50" y="74.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">128</text>
+<text x="174.50" y="74.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">415</text>
+<text x="187.50" y="74.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<text x="205.50" y="74.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">2.05</text>
+<rect x="15.00" y="76.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.2"/>
+<text x="20.00" y="80.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">9</text>
+<text x="26.50" y="80.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Schubladenkasten Vorder- und Rückwand gross</text>
+<text x="104.50" y="80.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF</text>
+<text x="142.50" y="80.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">4</text>
+<text x="158.50" y="80.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">285</text>
+<text x="174.50" y="80.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">415</text>
+<text x="187.50" y="80.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<text x="205.50" y="80.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">9.14</text>
+<rect x="15.00" y="82.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.2"/>
+<text x="20.00" y="86.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">10</text>
+<text x="26.50" y="86.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Schubladenböden</text>
+<text x="104.50" y="86.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF</text>
+<text x="142.50" y="86.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">3</text>
+<text x="158.50" y="86.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">348</text>
+<text x="174.50" y="86.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">425</text>
+<text x="187.50" y="86.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">6</text>
+<text x="205.50" y="86.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">8.57</text>
+<rect x="15.00" y="88.00" width="192.00" height="6.00" fill="none" stroke="#000" stroke-width="0.35"/>
+<text x="20.00" y="92.20" font-size="2.6" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold"></text>
+<text x="26.50" y="92.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Total</text>
+<text x="104.50" y="92.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold"></text>
+<text x="142.50" y="92.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold"></text>
+<text x="158.50" y="92.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold"></text>
+<text x="174.50" y="92.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold"></text>
+<text x="187.50" y="92.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold"></text>
+<text x="205.50" y="92.20" font-size="2.6" text-anchor="end" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">63.95</text>
+<line x1="25.00" y1="22.00" x2="25.00" y2="94.00" stroke="#000" stroke-width="0.2"/>
+<line x1="103.00" y1="22.00" x2="103.00" y2="94.00" stroke="#000" stroke-width="0.2"/>
+<line x1="129.00" y1="22.00" x2="129.00" y2="94.00" stroke="#000" stroke-width="0.2"/>
+<line x1="144.00" y1="22.00" x2="144.00" y2="94.00" stroke="#000" stroke-width="0.2"/>
+<line x1="160.00" y1="22.00" x2="160.00" y2="94.00" stroke="#000" stroke-width="0.2"/>
+<line x1="176.00" y1="22.00" x2="176.00" y2="94.00" stroke="#000" stroke-width="0.2"/>
+<line x1="189.00" y1="22.00" x2="189.00" y2="94.00" stroke="#000" stroke-width="0.2"/>
+<text x="219.00" y="19.50" font-size="3.5" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Hinweise</text>
+<text x="219.00" y="25.00" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">– Alle Masse in mm.</text>
+<text x="219.00" y="29.60" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">– Korpus und Fronten: MDF 18 mm, Schubladenkasten 12 mm, Schubladenböden 6 mm.</text>
+<text x="219.00" y="34.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">– Fronten aufliegend, Fuge 4 mm (am Rand 2 mm).</text>
+<text x="219.00" y="38.80" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">– Schubladenkasten: Seiten über die ganze Tiefe, Vorder- und Rückwand dazwischen.</text>
+<text x="219.00" y="43.40" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">– Boden ringsum in Nut: 5 mm tief, 6 mm breit, Unterkante Nut 10 mm über Kastenunterkante.</text>
+<text x="219.00" y="48.00" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">– Seitliche Luft für Auszüge: 12.5 mm pro Seite (Kastenbreite = lichte Abteilbreite − 25 mm).</text>
+<text x="219.00" y="52.60" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">– Kastentiefe 362 mm, Auszüge passend wählen.</text>
+<text x="219.00" y="57.20" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">– Kasten 5 mm über dem Korpusboden, mind. 15 mm unter dem Deckel.</text>
+<text x="219.00" y="61.80" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">– Rollenhöhe 108 mm, Gesamthöhe mit Rollen 922 mm.</text>
+<text x="219.00" y="66.40" font-size="2.6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">– Preis total 63.95: alle Teile zum m²-Preis des Korpusmaterials gerechnet.</text>
+<text x="15.00" y="106.50" font-size="3.5" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Kasten 439 × 285, 2×: Schnitt quer</text>
+<rect x="30.20" y="111.00" width="41.50" height="28.50" fill="#eaf4ea" stroke="#000" stroke-width="0.3"/>
+<rect x="29.00" y="111.00" width="1.20" height="28.50" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<rect x="71.70" y="111.00" width="1.20" height="28.50" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<rect x="29.70" y="137.90" width="42.50" height="0.60" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<line x1="29.00" y1="141.00" x2="29.00" y2="149.00" stroke="#000" stroke-width="0.18"/>
+<line x1="28.00" y1="148.50" x2="30.00" y2="146.50" stroke="#000" stroke-width="0.35"/>
+<line x1="30.20" y1="141.00" x2="30.20" y2="149.00" stroke="#000" stroke-width="0.18"/>
+<line x1="29.20" y1="148.50" x2="31.20" y2="146.50" stroke="#000" stroke-width="0.35"/>
+<line x1="71.70" y1="141.00" x2="71.70" y2="149.00" stroke="#000" stroke-width="0.18"/>
+<line x1="70.70" y1="148.50" x2="72.70" y2="146.50" stroke="#000" stroke-width="0.35"/>
+<line x1="72.90" y1="141.00" x2="72.90" y2="149.00" stroke="#000" stroke-width="0.18"/>
+<line x1="71.90" y1="148.50" x2="73.90" y2="146.50" stroke="#000" stroke-width="0.35"/>
+<line x1="27.50" y1="147.50" x2="74.40" y2="147.50" stroke="#000" stroke-width="0.18"/>
+<text x="26.00" y="146.70" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<text x="50.95" y="146.70" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">415</text>
+<text x="75.90" y="146.70" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<line x1="29.00" y1="141.00" x2="29.00" y2="157.00" stroke="#000" stroke-width="0.18"/>
+<line x1="28.00" y1="156.50" x2="30.00" y2="154.50" stroke="#000" stroke-width="0.35"/>
+<line x1="72.90" y1="141.00" x2="72.90" y2="157.00" stroke="#000" stroke-width="0.18"/>
+<line x1="71.90" y1="156.50" x2="73.90" y2="154.50" stroke="#000" stroke-width="0.35"/>
+<line x1="27.50" y1="155.50" x2="74.40" y2="155.50" stroke="#000" stroke-width="0.18"/>
+<text x="50.95" y="154.70" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">439</text>
+<line x1="27.50" y1="111.00" x2="19.50" y2="111.00" stroke="#000" stroke-width="0.18"/>
+<line x1="22.00" y1="110.00" x2="20.00" y2="112.00" stroke="#000" stroke-width="0.35"/>
+<line x1="27.50" y1="137.90" x2="19.50" y2="137.90" stroke="#000" stroke-width="0.18"/>
+<line x1="22.00" y1="136.90" x2="20.00" y2="138.90" stroke="#000" stroke-width="0.35"/>
+<line x1="27.50" y1="138.50" x2="19.50" y2="138.50" stroke="#000" stroke-width="0.18"/>
+<line x1="22.00" y1="137.50" x2="20.00" y2="139.50" stroke="#000" stroke-width="0.35"/>
+<line x1="27.50" y1="139.50" x2="19.50" y2="139.50" stroke="#000" stroke-width="0.18"/>
+<line x1="22.00" y1="138.50" x2="20.00" y2="140.50" stroke="#000" stroke-width="0.35"/>
+<line x1="21.00" y1="109.50" x2="21.00" y2="141.00" stroke="#000" stroke-width="0.18"/>
+<text x="20.20" y="124.45" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" transform="rotate(-90 20.20 124.45)">269</text>
+<text x="20.20" y="140.75" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" transform="rotate(-90 20.20 140.75)">6</text>
+<text x="23.80" y="142.50" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" transform="rotate(-90 23.80 142.50)">10</text>
+<line x1="74.40" y1="111.00" x2="82.40" y2="111.00" stroke="#000" stroke-width="0.18"/>
+<line x1="81.90" y1="110.00" x2="79.90" y2="112.00" stroke="#000" stroke-width="0.35"/>
+<line x1="74.40" y1="139.50" x2="82.40" y2="139.50" stroke="#000" stroke-width="0.18"/>
+<line x1="81.90" y1="138.50" x2="79.90" y2="140.50" stroke="#000" stroke-width="0.35"/>
+<line x1="80.90" y1="109.50" x2="80.90" y2="141.00" stroke="#000" stroke-width="0.18"/>
+<text x="80.10" y="125.25" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" transform="rotate(-90 80.10 125.25)">285</text>
+<text x="98.90" y="106.50" font-size="3.5" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Schnitt längs</text>
+<rect x="100.90" y="111.00" width="36.20" height="28.50" fill="#eaf4ea" stroke="#000" stroke-width="0.3"/>
+<rect x="100.90" y="111.00" width="1.20" height="28.50" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<rect x="135.90" y="111.00" width="1.20" height="28.50" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<rect x="101.60" y="137.90" width="34.80" height="0.60" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<line x1="100.90" y1="141.00" x2="100.90" y2="149.00" stroke="#000" stroke-width="0.18"/>
+<line x1="99.90" y1="148.50" x2="101.90" y2="146.50" stroke="#000" stroke-width="0.35"/>
+<line x1="102.10" y1="141.00" x2="102.10" y2="149.00" stroke="#000" stroke-width="0.18"/>
+<line x1="101.10" y1="148.50" x2="103.10" y2="146.50" stroke="#000" stroke-width="0.35"/>
+<line x1="135.90" y1="141.00" x2="135.90" y2="149.00" stroke="#000" stroke-width="0.18"/>
+<line x1="134.90" y1="148.50" x2="136.90" y2="146.50" stroke="#000" stroke-width="0.35"/>
+<line x1="137.10" y1="141.00" x2="137.10" y2="149.00" stroke="#000" stroke-width="0.18"/>
+<line x1="136.10" y1="148.50" x2="138.10" y2="146.50" stroke="#000" stroke-width="0.35"/>
+<line x1="99.40" y1="147.50" x2="138.60" y2="147.50" stroke="#000" stroke-width="0.18"/>
+<text x="97.90" y="146.70" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<text x="119.00" y="146.70" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">338</text>
+<text x="140.10" y="146.70" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<line x1="100.90" y1="141.00" x2="100.90" y2="157.00" stroke="#000" stroke-width="0.18"/>
+<line x1="99.90" y1="156.50" x2="101.90" y2="154.50" stroke="#000" stroke-width="0.35"/>
+<line x1="137.10" y1="141.00" x2="137.10" y2="157.00" stroke="#000" stroke-width="0.18"/>
+<line x1="136.10" y1="156.50" x2="138.10" y2="154.50" stroke="#000" stroke-width="0.35"/>
+<line x1="99.40" y1="155.50" x2="138.60" y2="155.50" stroke="#000" stroke-width="0.18"/>
+<text x="119.00" y="154.70" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">362</text>
+<text x="151.10" y="106.50" font-size="3.5" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Kasten 439 × 128, 1×: Schnitt quer</text>
+<rect x="166.30" y="111.00" width="41.50" height="12.80" fill="#eaf4ea" stroke="#000" stroke-width="0.3"/>
+<rect x="165.10" y="111.00" width="1.20" height="12.80" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<rect x="207.80" y="111.00" width="1.20" height="12.80" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<rect x="165.80" y="122.20" width="42.50" height="0.60" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<line x1="165.10" y1="125.30" x2="165.10" y2="133.30" stroke="#000" stroke-width="0.18"/>
+<line x1="164.10" y1="132.80" x2="166.10" y2="130.80" stroke="#000" stroke-width="0.35"/>
+<line x1="166.30" y1="125.30" x2="166.30" y2="133.30" stroke="#000" stroke-width="0.18"/>
+<line x1="165.30" y1="132.80" x2="167.30" y2="130.80" stroke="#000" stroke-width="0.35"/>
+<line x1="207.80" y1="125.30" x2="207.80" y2="133.30" stroke="#000" stroke-width="0.18"/>
+<line x1="206.80" y1="132.80" x2="208.80" y2="130.80" stroke="#000" stroke-width="0.35"/>
+<line x1="209.00" y1="125.30" x2="209.00" y2="133.30" stroke="#000" stroke-width="0.18"/>
+<line x1="208.00" y1="132.80" x2="210.00" y2="130.80" stroke="#000" stroke-width="0.35"/>
+<line x1="163.60" y1="131.80" x2="210.50" y2="131.80" stroke="#000" stroke-width="0.18"/>
+<text x="162.10" y="131.00" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<text x="187.05" y="131.00" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">415</text>
+<text x="212.00" y="131.00" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<line x1="165.10" y1="125.30" x2="165.10" y2="141.30" stroke="#000" stroke-width="0.18"/>
+<line x1="164.10" y1="140.80" x2="166.10" y2="138.80" stroke="#000" stroke-width="0.35"/>
+<line x1="209.00" y1="125.30" x2="209.00" y2="141.30" stroke="#000" stroke-width="0.18"/>
+<line x1="208.00" y1="140.80" x2="210.00" y2="138.80" stroke="#000" stroke-width="0.35"/>
+<line x1="163.60" y1="139.80" x2="210.50" y2="139.80" stroke="#000" stroke-width="0.18"/>
+<text x="187.05" y="139.00" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">439</text>
+<line x1="163.60" y1="111.00" x2="155.60" y2="111.00" stroke="#000" stroke-width="0.18"/>
+<line x1="158.10" y1="110.00" x2="156.10" y2="112.00" stroke="#000" stroke-width="0.35"/>
+<line x1="163.60" y1="122.20" x2="155.60" y2="122.20" stroke="#000" stroke-width="0.18"/>
+<line x1="158.10" y1="121.20" x2="156.10" y2="123.20" stroke="#000" stroke-width="0.35"/>
+<line x1="163.60" y1="122.80" x2="155.60" y2="122.80" stroke="#000" stroke-width="0.18"/>
+<line x1="158.10" y1="121.80" x2="156.10" y2="123.80" stroke="#000" stroke-width="0.35"/>
+<line x1="163.60" y1="123.80" x2="155.60" y2="123.80" stroke="#000" stroke-width="0.18"/>
+<line x1="158.10" y1="122.80" x2="156.10" y2="124.80" stroke="#000" stroke-width="0.35"/>
+<line x1="157.10" y1="109.50" x2="157.10" y2="125.30" stroke="#000" stroke-width="0.18"/>
+<text x="156.30" y="116.60" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" transform="rotate(-90 156.30 116.60)">112</text>
+<text x="156.30" y="125.05" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" transform="rotate(-90 156.30 125.05)">6</text>
+<text x="159.90" y="126.80" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" transform="rotate(-90 159.90 126.80)">10</text>
+<line x1="210.50" y1="111.00" x2="218.50" y2="111.00" stroke="#000" stroke-width="0.18"/>
+<line x1="218.00" y1="110.00" x2="216.00" y2="112.00" stroke="#000" stroke-width="0.35"/>
+<line x1="210.50" y1="123.80" x2="218.50" y2="123.80" stroke="#000" stroke-width="0.18"/>
+<line x1="218.00" y1="122.80" x2="216.00" y2="124.80" stroke="#000" stroke-width="0.35"/>
+<line x1="217.00" y1="109.50" x2="217.00" y2="125.30" stroke="#000" stroke-width="0.18"/>
+<text x="216.20" y="117.40" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" transform="rotate(-90 216.20 117.40)">128</text>
+<text x="235.00" y="106.50" font-size="3.5" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">Schnitt längs</text>
+<rect x="237.00" y="111.00" width="36.20" height="12.80" fill="#eaf4ea" stroke="#000" stroke-width="0.3"/>
+<rect x="237.00" y="111.00" width="1.20" height="12.80" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<rect x="272.00" y="111.00" width="1.20" height="12.80" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<rect x="237.70" y="122.20" width="34.80" height="0.60" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<line x1="237.00" y1="125.30" x2="237.00" y2="133.30" stroke="#000" stroke-width="0.18"/>
+<line x1="236.00" y1="132.80" x2="238.00" y2="130.80" stroke="#000" stroke-width="0.35"/>
+<line x1="238.20" y1="125.30" x2="238.20" y2="133.30" stroke="#000" stroke-width="0.18"/>
+<line x1="237.20" y1="132.80" x2="239.20" y2="130.80" stroke="#000" stroke-width="0.35"/>
+<line x1="272.00" y1="125.30" x2="272.00" y2="133.30" stroke="#000" stroke-width="0.18"/>
+<line x1="271.00" y1="132.80" x2="273.00" y2="130.80" stroke="#000" stroke-width="0.35"/>
+<line x1="273.20" y1="125.30" x2="273.20" y2="133.30" stroke="#000" stroke-width="0.18"/>
+<line x1="272.20" y1="132.80" x2="274.20" y2="130.80" stroke="#000" stroke-width="0.35"/>
+<line x1="235.50" y1="131.80" x2="274.70" y2="131.80" stroke="#000" stroke-width="0.18"/>
+<text x="234.00" y="131.00" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<text x="255.10" y="131.00" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">338</text>
+<text x="276.20" y="131.00" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">12</text>
+<line x1="237.00" y1="125.30" x2="237.00" y2="141.30" stroke="#000" stroke-width="0.18"/>
+<line x1="236.00" y1="140.80" x2="238.00" y2="138.80" stroke="#000" stroke-width="0.35"/>
+<line x1="273.20" y1="125.30" x2="273.20" y2="141.30" stroke="#000" stroke-width="0.18"/>
+<line x1="272.20" y1="140.80" x2="274.20" y2="138.80" stroke="#000" stroke-width="0.35"/>
+<line x1="235.50" y1="139.80" x2="274.70" y2="139.80" stroke="#000" stroke-width="0.18"/>
+<text x="255.10" y="139.00" font-size="2.5" text-anchor="middle" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">362</text>
+<rect x="10.00" y="10.00" width="400.00" height="277.00" fill="none" stroke="#000" stroke-width="0.5"/>
+<rect x="230.00" y="257.00" width="180.00" height="30.00" fill="none" stroke="#000" stroke-width="0.5"/>
+<line x1="230.00" y1="269.00" x2="410.00" y2="269.00" stroke="#000" stroke-width="0.25"/>
+<line x1="230.00" y1="278.00" x2="410.00" y2="278.00" stroke="#000" stroke-width="0.25"/>
+<line x1="290.00" y1="269.00" x2="290.00" y2="287.00" stroke="#000" stroke-width="0.25"/>
+<line x1="350.00" y1="269.00" x2="350.00" y2="287.00" stroke="#000" stroke-width="0.25"/>
+<text x="233.00" y="265.50" font-size="6" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-weight="bold">drill-cupboard</text>
+<text x="232.00" y="272.00" font-size="2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Massstab</text>
+<text x="232.00" y="276.50" font-size="3.2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">1:10</text>
+<text x="292.00" y="272.00" font-size="2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Blatt</text>
+<text x="292.00" y="276.50" font-size="3.2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">2 / 2</text>
+<text x="352.00" y="272.00" font-size="2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Datum</text>
+<text x="352.00" y="276.50" font-size="3.2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">28.11.2026</text>
+<text x="232.00" y="281.00" font-size="2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Aussenmasse B × T × H</text>
+<text x="232.00" y="285.50" font-size="3.2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">500 × 418 × 922</text>
+<text x="292.00" y="281.00" font-size="2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Material</text>
+<text x="292.00" y="285.50" font-size="3.2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">MDF 18 mm</text>
+<text x="352.00" y="281.00" font-size="2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">Masse</text>
+<text x="352.00" y="285.50" font-size="3.2" text-anchor="start" font-family="DejaVu Sans, Arial, Helvetica, sans-serif">mm</text>
+</svg>
